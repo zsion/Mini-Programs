@@ -1,0 +1,20 @@
+/* ListedDrugs/list.wxss */
+@import "/common/list.wxss";
+@import "/common/list_more_detail.wxss";
+Page{
+  margin:0;
+  padding:0;
+}
+.sub-fixed{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 3;
+}
+.data-body{
+  width:100%;
+  position: absolute;
+  top:130rpx;
+  left:0;
+  z-index: 1;
+}

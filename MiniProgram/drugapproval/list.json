@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "中国申报药品",
+  "usingComponents": {
+    "condition2": "/components/condition2/condition2",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

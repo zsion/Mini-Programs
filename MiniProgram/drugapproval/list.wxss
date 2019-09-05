@@ -1,0 +1,319 @@
+/* ListedDrugs/list.wxss */
+@import "/common/list.wxss";
+Page{
+  margin:0;
+  padding:0;
+}
+/* 下面是tobar */
+.swiper-tab {
+  position:fixed;top:0;z-index:3;
+  width: 100%;
+  height:80rpx;
+  margin:auto;
+  display: flex;
+  justify-content:space-between;
+  background: #fff;
+  border-bottom:1rpx solid #F6F6F7;
+}
+.swiper-tab view{
+  width:25%;
+}
+.swiper-tab-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #B1B1B1;
+} 
+.on {
+  color: #00BEEE;
+  height:80rpx;
+  line-height: 80rpx;
+}
+.arrow{
+  width:0;
+  height:0;
+  border-left:10rpx solid transparent;
+  border-right:10rpx solid transparent;
+  border-top:15rpx solid #B1B1B1;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+.rorate{
+  border-top:15rpx solid #00BEEE;
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+
+.content{
+  position: absolute;
+  top: 80rpx;
+  z-index: 3;
+  width:100%;
+  background: #fff;
+  border-top:1rpx solid #F6F6F7;
+}
+
+.add-bg{
+  background: rgba(0,0,0,0.5);
+}
+
+.add-bg-bg{
+  width:100%;
+  background: #fff;
+}
+
+.add-bg-bg view.select-list >view:last-child{
+  padding-bottom: 25rpx;
+}
+
+.all-btn{
+  width:100%;
+  height:90rpx;
+  position: fixed;
+  bottom:0;
+  left:0;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.all-btn view{
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.all-btn view:first-child{
+  background: #F7F7F7;
+  color: #31363B;
+}
+
+.all-btn view:last-child{
+  background: #00BEEE;
+  color: #fff;
+}
+
+.data-list-wrap{
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.list-header{
+  width:90%;
+  margin:auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding:15rpx 0 15rpx;
+}
+
+.list-header view:first-child{
+  font-size: 32rpx;
+  color: #31363B;
+  
+}
+.list-header view:first-child text{
+  
+}
+.oblong{
+  position: absolute;
+  top:27rpx;
+  left:-10rpx;
+  width:6rpx;
+  height:30rpx;
+  background: #4A90E2;
+}
+.list-header view:last-child{
+  width:60rpx;
+  height:40rpx;
+  overflow: hidden;
+  background: #F6F6F7;
+  border-radius: 5rpx;
+}
+
+.list-header view:last-child image{
+  width:100%;
+}
+.rorates{
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+.list-body,.more-detail{
+  width:90%;
+  margin:auto;
+  font-size: 26rpx;
+  color: #626A71;
+}
+
+.list-body view,.more-detail view{
+  padding:5rpx 0 5rpx;
+}
+
+.more-detail-atc view:not(:first-child){
+  padding-left:125rpx;
+}
+
+.small-title{
+  font-size: 22rpx;
+  color: #969DA4;
+  line-height: 45rpx;
+}
+
+.other-more{
+  background: rgba(0,190,238,0.05);
+  border-top: 1rpx solid #94DCEE;
+  border-bottom: 1rpx solid #94DCEE;
+}
+
+.preparation{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.preparation view:last-child{
+  margin-right: 100rpx;
+}
+
+.slide-bar{
+  position: fixed;
+  top:80rpx;
+  left:0;
+  width:200rpx;
+  background: #fff;
+  border-right:1rpx solid #F6F6F7;
+
+}
+.slide-bar view{
+  text-align: center;
+  height:80rpx;
+  line-height: 80rpx;
+  font-size:28rpx;
+  color:#626A71;
+
+}
+.slide-bar view.active{
+  background: #F6F6F7;
+  -moz-box-shadow:10rpx 0 0 #00BEEE inset;
+	-webkit-box-shadow:10rpx 0 0 #00BEEE inset;
+	box-shadow:10rpx 0 0 #00BEEE inset;
+}
+.content-list{
+  position: absolute;
+  top:80rpx;
+  z-index: 1;
+  background:#F6F6F7;
+}
+.ModuleList{
+  padding:30rpx 26rpx 32rpx 30rpx;
+  background:#fff;
+  margin-bottom: 15rpx;
+}
+.ModuleTitle{
+  
+  margin-bottom: 24rpx;
+   display: flex;
+}
+.ModuleTitle text{
+  display: block;
+  width:21rpx;
+  border-left:6rpx solid #4A90E2;
+  height: 32rpx;
+}
+.ModuleTitle view{
+font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #31363B; 
+  line-height: 32rpx;
+}
+.ModuleContent{
+    width:96.5%;
+   display: flex;
+   justify-content: space-between;
+   padding-left:27rpx;
+}
+.td{
+   width:80%;
+   font-size: 26rpx;
+   color: #626A71;
+   line-height: 26px;
+}
+.td1{
+   width:20%;
+}
+.td2{
+   width:30%;
+}
+.TotalNumber{
+  text-align: center;
+  font-size:24rpx;
+  height:38rpx;
+  line-height: 38rpx;
+  background:#f6f6f7;
+}
+.small-tips{
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#FF9F89;
+}
+.small-tips image{
+  width:25rpx;
+  height:24rpx;
+  margin-right: 5rpx;
+}
+
+.tel{
+  display: flex;
+  justify-content: space-around;
+  color:#00BEEE;
+}
+
+.apply view{
+  width:300rpx;
+  height:70rpx;
+  line-height:70rpx;
+  margin:auto;
+  margin-top:30rpx;
+  text-align:center;
+  background:#00BEEE;
+  font-size:30rpx;
+  color:#fff;
+}
+
+.quanxian{
+  width:100%;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:28rpx;
+  color:#00ABD6;
+}
+.quanxian image{
+  width:50rpx;
+  margin-left: 5rpx;
+}

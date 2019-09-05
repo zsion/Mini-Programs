@@ -1,0 +1,86 @@
+<!--ConsistencyProgress//high_search.wxml-->
+<view bindtap="Close_NameTip" style="min-height:95%;">
+
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <view class="nav-tabs">
+    <view class="nav-tab {{currentsTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNavs">查品种</view>
+    <view class="nav-tab {{currentsTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNavs">查企业</view>
+  </view>
+
+  <view hidden="{{currentsTab==0 ? false : true}}">
+    <view class="auto-width">
+      <view class='list-row'>
+        <view>药品通用名</view>
+        <view><input type="text" placeholder="请输入药品通用名或英文通用名" name='' value="{{GenericName}}" bindinput="input_GenericName" /></view>
+      </view>
+      <nameTip id="nameTip_GenericName" address="{{address_GenericName}}" PublicName="{{GenericName}}" bind:PublicName="Get_GenericName" />
+
+      <!-- 最高进程 -->
+      <custompicker id="CustomPicker_HighestProcessId" Power="{{true}}" address="{{picker_address}}" type="0" name="最高进程" bind:Public_value="Get_HighestProcessId" />
+
+      <!-- 289目录品 -->
+      <custompicker id="CustomPicker_IsVariety289" Power="{{true}}" address="{{picker_address}}" type="1" name="289目录品" bind:Public_value="Get_IsVariety289" />
+
+      <!-- 待评价企业数 -->
+      <numberpicker id="Numberpicker_NumberNeedEvaluate" Power="{{true}}" Name="待评价企业数" bind:Number_Start="Get_NumberNeedEvaluate_Start" bind:Number_End="Get_NumberNeedEvaluate_End"/>
+
+      <!-- 申报企业数 -->
+      <numberpicker id="Numberpicker_NumberApproval" Power="{{true}}" Name="申报企业数" bind:Number_Start="Get_NumberApproval_Start" bind:Number_End="Get_NumberApproval_End"/>
+
+      <!-- 通过企业数 -->
+      <numberpicker id="Numberpicker_NumberPass" Power="{{true}}" Name="通过企业数" bind:Number_Start="Get_NumberPass_Start" bind:Number_End="Get_NumberPass_End"/>
+
+      <!-- 首次承办时间 -->
+      <datepicker id="FirstUndertakeDate" Power="{{true}}" Name="首次承办时间" bind:Date_Start="Get_FirstUndertakeDate_Start" bind:Date_End="Get_FirstUndertakeDate_End"/>
+
+      <!-- 首次批准时间 -->
+      <datepicker id="FirstApprovalDate" Power="{{true}}" Name="首次批准时间" bind:Date_Start="Get_FirstApprovalDate_Start" bind:Date_End="Get_FirstApprovalDate_End"/>
+
+    </view>
+
+    <!-- 治疗类别 -->
+    <area id="area_picker" Power="{{true}}" address="{{address_area}}" dbtype="{{dbtype}}" bind:ATC="Get_ATC" bind:PHIIC="Get_PHIIC"/>
+    
+    <view>
+      <text class='auto-high'>\n</text>
+      <view class='pub-btn-con'>
+        <button bindtap="Reset_all_Drug">重置</button>
+        <button bindtap="{{Power.ConsistencyProgress == true ? 'Next_navigator_Drug' : 'Show_modal'}}">确定</button>
+      </view>
+    </view>
+  </view>
+
+  <view hidden="{{currentsTab==1 ? false : true}}">
+    <view class="auto-width">
+      <view class='list-row'>
+        <view>企业名称</view>
+        <view><input type="text" placeholder="请输入企业名称" name='' value="{{CompanyName}}" bindinput="input_CompanyName" /></view>
+      </view>
+      <nameTip id="nameTip_CompanyName" address="{{address_CompanyName}}" PublicName="{{CompanyName}}" bind:PublicName="Get_CompanyName" />
+
+      <!-- 最高进程 -->
+      <custompicker id="CustomPicker_HighestProcessId_Company" Power="{{true}}" address="{{picker_address_Company}}" type="0" name="最高进程" bind:Public_value="Get_HighestProcessId_Company" />
+
+      <!-- 289目录品 -->
+      <custompicker id="CustomPicker_IsVariety289_Company" Power="{{true}}" address="{{picker_address_Company}}" type="1" name="289目录品" bind:Public_value="Get_IsVariety289_Company" />
+
+      <!-- BE备案品种数 -->
+      <numberpicker id="Numberpicker_NumberBE" Power="{{true}}" Name="BE备案品种数" bind:Number_Start="Get_NumberBE_Start" bind:Number_End="Get_NumberBE_End"/>
+
+      <!-- 申报品种数 -->
+      <numberpicker id="Numberpicker_NumberApproval_Company" Power="{{true}}" Name="申报品种数" bind:Number_Start="Get_NumberApproval_Start_Company" bind:Number_End="Get_NumberApproval_End_Company"/>
+
+      <!-- 通过品种数 -->
+      <numberpicker id="Numberpicker_NumberPass_Company" Power="{{true}}" Name="通过品种数" bind:Number_Start="Get_NumberPass_Start_Company" bind:Number_End="Get_NumberPass_End_Company"/>
+
+    </view>
+    <view>
+      <text class='auto-high'>\n</text>
+      <view class='pub-btn-con'>
+        <button bindtap="Reset_all_Company">重置</button>
+        <button bindtap="{{Power.ConsistencyProgress_Co == true ? 'Next_navigator_Company' : 'Show_modal'}}">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

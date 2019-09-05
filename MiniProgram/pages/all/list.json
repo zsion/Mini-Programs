@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "WarningCode": "/components/WarningCode/WarningCode",
+    "modal": "/components/modal/modal"
+  }
+}

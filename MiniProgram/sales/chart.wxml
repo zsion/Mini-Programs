@@ -1,0 +1,87 @@
+<!--/sales/chart -->
+<import src="/common/modal.wxml" />
+<view class="bar">
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <view wx:if="{{hidden != true}}">
+    <template is="modal" />
+  </view>
+
+  <view hidden="{{!hidden}}" wx:if="{{Code_moadl}}" class="bar-body">
+    <view class="bar-head">
+      <text>|</text><text>{{search_Con || ATC4 || ATC3 || ATC2 || ATC1 || SubCategory || Category}}</text>
+    </view>
+
+    <view class='part-one'>
+      <view class="tab-head">
+        <view class="{{tabArr.curHdIndex=='0'? 'active' : ''}}" data-id="0" bindtap="tab">
+          <text>近五年市场销售趋势</text>
+        </view> 
+        <text class='add-eval'>|</text>
+        <view class="{{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1" bindtap="tab">
+          <text>近三年市场增长变化</text>
+        </view> 
+      </view>
+
+      <view class='sub-wrap'>
+        <view class='sub-head' bindtap='show_modal'>
+          <image src='/image/eye.png' mode='widthFix'></image> <text>查看详细数据>></text>
+        </view>
+      </view>
+      
+      <view class="tab-body" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+        <view class="body-item {{tabArr.curBdIndex=='0'? 'active' : ''}}" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+          <ec-canvas ec="{{ ecBar1 }}"></ec-canvas>
+        </view> 
+        <view class="body-item {{tabArr.curBdIndex=='1'? 'active' : ''}}" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+          <ec-canvas ec="{{ ecBar2 }}"></ec-canvas>
+        </view> 
+      </view> 
+    </view>
+      
+    <view class='part-two'>
+      <view class="tab-head">
+        <view class="{{tabArray.tabHdIndex=='0' ? 'active' : ''}}" data-current="0" bindtap="tabNav">
+          <text>{{switch_con[0]}}</text>
+        </view>
+        <text class='add-eval'>|</text>
+        <view class="{{tabArray.tabHdIndex=='1' ? 'active' : ''}}" data-current="1" bindtap="tabNav">
+          <text>{{switch_con[1]}}</text>
+        </view>
+        <text class='add-eval'>|</text>
+        <view class="{{tabArray.tabHdIndex=='2' ? 'active' : ''}}" data-current="2" bindtap="tabNav">
+          <text>{{switch_con[2]}}</text>
+        </view>
+      </view>
+      <view class="tab-body" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+        <view class="body-item {{tabArray.tabBdIndex=='0'? 'active' : ''}}" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+          <ec-canvas ec="{{ ecBar3 }}"></ec-canvas>
+        </view> 
+        <view class="body-item {{tabArray.tabBdIndex=='1'? 'active' : ''}}" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+          <ec-canvas ec="{{ ecBar4 }}"></ec-canvas>
+        </view> 
+        <view class="body-item {{tabArray.tabBdIndex=='2'? 'active' : ''}}" style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+          <ec-canvas ec="{{ ecBar5 }}"></ec-canvas>
+        </view> 
+        
+      </view>
+    </view>
+
+    <view class='tooltip'>
+      <image src='/image/laba.png' mode='widthFix'></image>
+      <text>提示：点击饼图彩色部分,展示详细细分领域。</text>
+    </view>
+    <text> \n </text>
+
+    <view hidden="{{chart_hidden}}">
+      <view style='width:{{canvas_width-20}}px;height:{{canvas_width}}px;margin:auto;background:#fff;border-radius:20rpx;margin-bottom:30rpx;'>
+        <ec-canvas ec="{{ ecBar6 }}"></ec-canvas>
+      </view>
+      <view style='width:{{canvas_width-20}}px;height:{{canvas_width}}px;margin:auto;background:#fff;border-radius:20rpx;margin-bottom:30rpx;'>
+        <ec-canvas ec="{{ ecBar7 }}"></ec-canvas>
+      </view>
+    </view>
+    
+  </view>
+  
+</view>

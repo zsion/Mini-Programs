@@ -1,0 +1,8 @@
+<view class="list-row {{addwidth == true ? 'add-width': ''}}">
+  <view>{{name}}</view>
+  <view>
+    <picker disabled="{{!Power}}" bindchange="bind_Public_value" value="{{index}}" range="{{Public_array}}" range-key="item_title">
+      <view class="weui-input">{{Public_array[Public_index].item_title}}</view>
+    </picker>
+  </view>
+</view>

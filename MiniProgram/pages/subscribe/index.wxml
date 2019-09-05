@@ -1,0 +1,94 @@
+<!--pages/subscribe/index.wxml-->
+<view class='Dingyue'>
+  <view class='Dingyue-head'>
+    <view class='head-one'><image src='{{imgUrl.bg}}' mode='widthFix'></image></view>
+
+    <view class='head-two-wrap'>
+      <view class='head-two'><navigator url="/pages/subscribe/history">订阅历史</navigator></view>
+      <view class='default' wx:if="{{!hasUserInfo && canIUse}}">
+        <view class='default-left'>
+          <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+            <image src='{{imgUrl.face}}' mode='cover'></image>
+          </button>  
+        </view>
+        <view class='default-right'>
+          <view class='right-one'>
+            <view><button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">请登录</button></view>
+          </view>
+          <view class='right-two' wx:if="{{!isbind}}">
+            <view class='free'>免费用户</view>
+            <view class='binding'><navigator url="/pages/subscribe/binding">绑定成为正式用户</navigator></view>
+          </view>
+          <view class='right-two' wx:else>
+            <view class='vip'><image src='/image/stone.png' mode='widthFix'></image>正式用户</view>
+            <view class='untying' bindtap='unbind'>解绑成为免费用户</view>
+          </view>
+        </view>
+      </view>
+      <view class='default' wx:else>
+        <view class='default-left'><image src="{{userInfo.avatarUrl}}" mode="cover"></image></view>
+        <view class='default-right'>
+          <view class='right-one'><text>{{userInfo.nickName}}</text></view>
+          <view class='right-two' wx:if="{{!isbind}}">
+            <view class='free'>免费用户</view>
+            <view class='binding'><navigator url="/pages/subscribe/binding">绑定成为正式用户</navigator></view>
+          </view>
+          <view class='right-two' wx:else>
+            <view class='vip'><image src='/image/stone.png' mode='widthFix'></image>正式用户</view>
+            <view class='untying' bindtap='unbind'>解绑成为免费用户</view>
+          </view>
+        </view>
+      </view>
+      <view class='careful' wx:if="{{isbind}}">
+        <text>{{information}}</text>
+      </view>
+    </view>
+      
+  </view>
+  
+  <view class='Dingyue-body'>
+    <view class='for-con' wx:key='index' wx:for="{{data_list}}">
+      <view class='for-left'>
+        <view class='left-left'>
+          <image wx:if="{{item.type==0}}" src='{{imgUrl.lzgsb}}' mode='widthFix'></image>
+          <image wx:elif="{{item.type==1}}" src='{{imgUrl.hzgss}}' mode='widthFix'></image>
+          <image wx:elif="{{item.type==2}}" src='{{imgUrl.lyzxpj}}' mode='widthFix'></image>
+        </view>
+        <view class='left-right'>
+          <view><text>{{item.title}}</text></view>
+          <view><text>{{item.description}}</text></view>
+        </view>
+      </view>
+      <view class='for-center'><text>|</text></view>
+      <view class='for-right'>
+        <view wx:if="{{item.type==0}}">
+          <view class="grey" wx:if="{{item.is_subscribe==true}}" bindtap='close' data-type="{{item.type}}">取消</view>
+          <view wx:elif="{{item.is_subscribe==false}}" bindtap='open' data-type="{{item.type}}">订阅</view>
+        </view>
+        <view wx:else>
+          <view class='hope'>敬请期待</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='QR-code'> 
+    <view class='part1'>
+      <image src='/image/6.png' mode='widthFix'></image>
+      <text>医药地理Data</text>
+      <image src='/image/7.png' mode='widthFix'></image>
+    </view>
+    <view class='part2'><text>关注公众号可获得即时推送信息</text></view>
+    <view class='part3'>
+      <text>微信搜索“医药地理Data”关注</text>
+      <view bindtap="copyTBL" data-content="医药地理Data">一键复制公众号</view>
+    </view>
+    <view class='part4'>
+      <image src='{{imgUrl.qrcode1}}' data-src="{{imgUrl.qrcode2}}" mode='widthFix' bindtap="previewImage"></image>
+      <text>点击并长按保存二维码，微信识别关注</text>
+    </view>
+  </view>
+ 
+  
+</view>

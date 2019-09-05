@@ -1,0 +1,17 @@
+<!--pages/PDB/index.wxml-->
+<view>
+  <view>
+    <view class='part1'>
+      <view><image src='{{imgUrl[0]}}' mode='widthFix'></image></view>
+      <view><text>PDB药物综合数据库</text></view>
+    </view>
+    <view class='part2'>
+      <view>PDB药物综合数据库是一个展现药品终端市场等信息的平台</view>
+      <view>v1.0着重于重点城市医院用药及分析</view>
+      <view>更多信息请查阅:<text>pdb.pharmadl.com</text></view>
+    </view>
+    <view class='part3'>
+      <view bindtap='to_PDB'>进入小程序</view>
+    </view>
+  </view>
+</view>

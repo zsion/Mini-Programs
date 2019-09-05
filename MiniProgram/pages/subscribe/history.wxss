@@ -1,0 +1,69 @@
+/* page/pages/DingyueList/DingyueList.wxss */
+
+.add-fixed{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 3;
+}
+.DingyueList-head{
+  width:100%;
+  height:70rpx;
+  line-height: 70rpx;
+  background: #fff;
+  border-bottom: 1px solid #E1EDEE;
+  text-align: center;
+}
+.DingyueList-body{
+  padding-top: 70rpx;
+}
+
+.list-head{
+  width:100%;
+  height:70rpx;
+  line-height: 70rpx;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 28rpx;
+  color: #81878C;
+}
+.list-head view text:nth-child(1){
+  margin-right:30rpx;
+}
+.list-head view text:nth-child(2){
+  color: #00BEEE;
+}
+
+.list-con{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding:10rpx 0 25rpx;
+  margin-bottom: 15rpx;
+}
+.list-con view:nth-child(1){
+  width:8%;
+  text-align: center;
+}
+.con-left text{
+  font-size: 32rpx;
+  color: #CECED3;
+}
+.con-right view text{
+  font-size: 28rpx;
+  color: #31363B;
+}
+.con-right view:nth-child(1) text{
+  color: #00BEEE;
+}
+.list-con view:nth-child(2){
+  width:92%;
+}
+.list-con view:nth-child(3){
+  width:95%;
+  word-wrap:break-word;
+  word-break:break-all; 
+}
+
+

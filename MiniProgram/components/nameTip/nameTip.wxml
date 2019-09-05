@@ -1,0 +1,6 @@
+<view hidden="{{prompt_hidden}}" class='prompt-other'>
+  <!-- <view catchtap='blur_NameTip' class='close'><image src='/image/components/close.png' mode='widthFix'></image></view> -->
+  <scroll-view hidden="{{prompt_hidden}}" class='prompt' scroll-y scroll-top="{{Top}}">
+    <view wx:key='index' wx:for="{{NameTip}}" catchtap='click_NameTip' data-index="{{item}}">{{item}}</view>
+  </scroll-view>
+</view>

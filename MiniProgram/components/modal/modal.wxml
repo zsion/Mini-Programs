@@ -1,0 +1,10 @@
+<modal hidden="{{Modal_hidden}}" title="提示" confirm-text="取消" no-cancel="true" bindconfirm="confirm">
+  <block wx:if="{{Isbind}}">
+    <view><text>您暂无该功能使用权限，请联系客服人员！</text></view>
+    <!-- <view class='tel'><text bindtap="PhoneCall1">021-62477965</text><text bindtap="PhoneCall2">021-62474272</text></view> -->
+  </block>
+  <block wx:else>
+    <view><text>您暂无该功能使用权限，请至用户中心绑定CPM账号或点击下方按钮申请试用，我们会尽快联系您！</text></view>
+    <view class='apply'><view bindtap='to_wjx'>申请试用</view></view>
+  </block>
+</modal>

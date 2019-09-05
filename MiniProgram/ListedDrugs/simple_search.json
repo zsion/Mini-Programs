@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "中国橙皮书",
+  "usingComponents": {
+    "nameTip": "/components/nameTip/nameTip"
+  },
+  "disableScroll": true
+}

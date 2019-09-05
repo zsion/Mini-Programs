@@ -1,0 +1,73 @@
+<!--ChineseReferencePreparation//list.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+
+<view>
+  
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <!-- 二次筛选组件 -->
+  <condition id="condition" Power="{{Power}}" Special_CategoryId="1" Special_SubCategoryId="2" Name_Array="{{Name_Array}}" Tool_Name_Array="{{Tool_Name_Array}}" SubCategoryId ="{{SubCategoryId}}" bind:SubCategoryId="Get_SubCategoryId" bind:Name_Array="Get_Name_Array" bind:Field="Get_Field" bind:Reset="Get_Reset" bind:Show_modal="Show_modal"/>
+
+  <!-- 列表 -->
+  <scroll-view scroll-y="{{According}}" scroll-top="{{topNum}}" scroll-with-animation class="data-body" style='height:{{content_height}}px;' enable-back-to-top="true" bindscrolltolower="Load_more">
+
+    <view hidden='{{con_null}}' class='total'>
+      共<text>{{total}}</text>条结果
+    </view>
+    
+    
+    <view class='data-list-wrap' wx:key='index' wx:for="{{return_list}}" data-index="{{index}}" data-name="{{item.ProductName}}" bindtap="{{Power == true ? 'more_toggle' : 'Show_modal'}}">
+      <view class='list-header'>
+
+        <view>
+          <label class='oblong'></label>
+          <text>{{tools.emptyStr(item.ProductName)}}</text>
+          <text wx:if='{{tools.includeStr(item.GenericName,"复方")}}'>\n</text>
+          <text class='small-title'>（{{tools.emptyStr(item.Specifications)}}）</text>
+        </view>
+
+        <view class="{{item.open == false ? '' : 'rorates'}}"><image src='/image/toggle.png' mode='widthFix'></image></view>
+      </view>
+      <view class='list-body'>
+        <label>英文名称：<text>{{tools.emptyStr(item.ProductEnglishname)}}</text></label>
+        <label>持证商：<text>{{tools.emptyStr(item.CertificateHolder)}}</text></label>
+        <view class='preparation'>
+          <label>商品名：<text>{{tools.emptyStr(item.TradeName)}}</text></label>
+          <label>来源：<text>{{tools.emptyStr(item.PreparationSource)}}</text></label>
+        </view>
+        <view class='preparation'>
+          <label>国产企业数：<text class='special'>{{tools.emptyStr(item.CountDomesticEnterprises)}}</text></label>
+          <label>发布日期：<text>{{tools.emptyStr(item.ReleaseTime)}}</text></label>
+        </view>
+      </view>
+      <view wx:if='{{item.open}}' class='other-more'>
+        <view class='list-body'>
+          <label>发布序号：<text>{{tools.emptyStr(item.SeqNum)}}</text></label>
+          <label>药品通用名：<text>{{tools.emptyStr(item.GenericName)}}</text></label>
+          <label>英文通用名：<text>{{tools.emptyStr(item.EnglishName)}}</text></label>
+          <label>备注：<text>{{tools.emptyStr(item.Remarks)}}</text></label>
+          <label>治疗类别：<text>{{tools.emptyStr(item.Category)}}</text><text>></text><text>{{tools.emptyStr(item.SubCategory)}}</text></label>
+          <label>ATC分类：<text>{{tools.emptyStr(item.ATCCategory01)}}</text></label>
+          <label class='more-detail-atc'><text>>{{tools.emptyStr(item.ATCCategory02)}}</text></label>
+          <label class='more-detail-atc'><text>>{{tools.emptyStr(item.ATCCategory03)}}</text></label>
+          <label class='more-detail-atc'><text>>{{tools.emptyStr(item.ATCCategory04)}}</text></label>
+        </view>
+      </view>
+    </view>
+    
+
+    <view wx:if="{{con_null==true}}">
+      <template is="null" />
+    </view>
+
+    <view hidden='{{con_null}}' wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+
+  </scroll-view>
+
+</view>

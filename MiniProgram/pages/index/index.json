@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "backgroundColor": "#00BEEE",
+  "usingComponents": {
+    "home-list": "/components/list/list"
+  }
+}

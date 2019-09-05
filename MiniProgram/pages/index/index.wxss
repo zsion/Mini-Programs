@@ -1,0 +1,186 @@
+/* page/home.wxss */ 
+@import "/common/navtab.wxss";
+.home{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.home-hd{
+  position: absolute;
+  z-index: -1;
+  width:100%;
+}
+.home-hd image{
+  width:100%;
+  height:379rpx;
+}
+.logo{
+  margin-bottom:70rpx;
+  margin-left: -3.5%;
+}
+.logo image{
+  display: flex;
+  width:384rpx;
+  height:124rpx;
+  margin:auto;
+}
+/* 搜索栏切换 */
+.tab-wrap{
+  width:94%;
+  height:270rpx;
+  margin-left: 3%;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 10rpx 5rpx rgba(0,0,0,0.1);
+}
+.tab-body .body-item{display: none}
+.tab-body .body-item.active{display: block}
+.search-wrap {display:flex;justify-content:space-around;align-items:center;width:90%;height:110rpx;margin:auto;}
+.search-wrap input{
+  width:82%;
+  padding:15rpx;
+  background: #F2F3F5;
+  border-radius:35rpx;
+  font-size: 28rpx;
+}
+.search-wrap view{
+  width:70rpx;
+  height:70rpx;
+  padding:0;
+  background: transparent;
+}
+.search-wrap view::after{ border: none; }
+.search-wrap view image{width:70rpx;height:70rpx;}
+
+/* 下面是tobar */ 
+.tab-head {
+  width: 70%;
+  margin:auto;
+  text-align: center;
+  height:90rpx;
+  background-color:white;
+  display: flex;
+  justify-content:space-around;
+  
+}
+.tab-head view{
+  font-size: 32rpx;
+  font-weight:bold;
+}
+.tab-body{
+  height:175rpx;
+}
+.hot-part{
+  width:90%;
+  margin:auto;
+  display: flex;
+  justify-content: flex-start;
+}
+.hot-part navigator{
+  font-size: 24rpx;
+  color:#777;
+  margin:0 20rpx 0 12rpx;
+}
+
+
+/* 第二个点击切换部分 */
+.tabs-wrap{
+  margin:auto;
+  margin-top: 70rpx;
+  /* margin-bottom: 20rpx; */
+  width:94%;
+  background: #fff;
+  box-shadow: 0 0 10rpx 5rpx rgba(0,0,0,0.1);
+}
+.swiper-tabs {
+  width: 100%;
+  text-align: center;
+  line-height: 70rpx;
+  background-color:white;
+  display: flex;
+  justify-content:space-around;
+} 
+.swiper-tab-lists {
+  margin-top: -35rpx;
+  font-size: 28rpx;
+  font-weight:bold;
+  width: 32.5%;
+  background:#fff;
+  border: 1px solid #00B9E7;
+  transition: all 0.2s ease-in-out;
+}
+.diff1{width: 26%;}
+.diff2{width: 37%;}
+.diff3{width: 30%;}
+.ons {
+  color: #fff;
+  background: #00B9E7;
+} 
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+} 
+.swiper-box view {
+  text-align: center;
+}
+.tabs-con-wrap{
+  height:1090rpx;
+}
+.care{
+  text-align: center;
+  color: #A2A8A8;
+  font-size: 24rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.care image{
+  width:23rpx;
+  height:32rpx;
+  margin-right: 5rpx;
+}
+.tabs-con{
+  width:96%;
+  height:50rpx;
+  display: flex;
+  margin:auto;
+  color:#33363A;
+  font-size: 26rpx;
+}
+.tabs-con view:first-child{
+  width:25%;
+}
+.tabs-con view:last-child{
+  width:75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+.tabs-add view:first-child{
+  width:7%;
+}
+.tabs-add view:last-child{
+  width:93%;
+}
+
+.apply view{
+  width:300rpx;
+  height:70rpx;
+  line-height:70rpx;
+  margin:auto;
+  margin-top:30rpx;
+  text-align:center;
+  background:#00BEEE;
+  font-size:30rpx;
+  color:#fff;
+}
+
+

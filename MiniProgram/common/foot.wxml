@@ -1,0 +1,5 @@
+<template name="foot">
+  <navigator class="go-home" openType="redirect" url="/pages/index/start" hover-class="navigator-hover">
+    <image src='/image/house.png' mode='widthFix'></image>回到首页
+  </navigator>
+</template>

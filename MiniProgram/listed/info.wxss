@@ -1,0 +1,14 @@
+.wrapper{
+  width:94%;
+  background:#fff;
+  margin-bottom:30rpx;
+  padding:15rpx 3% 15rpx 3%;
+}
+.wrapper view text{
+  font-size: 26rpx;
+  color:#31363B;
+}
+.sub-titile{
+  font-size: 30rpx;
+  color:#31363B;
+}

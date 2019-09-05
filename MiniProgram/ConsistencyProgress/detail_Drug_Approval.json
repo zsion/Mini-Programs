@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "品种申报一致性评价企业列表",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

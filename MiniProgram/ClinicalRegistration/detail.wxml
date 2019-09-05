@@ -1,0 +1,131 @@
+<!--ClinicalRegistration//detail.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <view class="detail-title-wrap" hidden='{{fixed}}'>
+    <view class='detail-title'>
+      <view class='title-icon'>
+        <image src='/image/ClinicalRegistration/bell.png' mode='widthFix'></image>
+      </view>
+      <view>
+        <label wx:if="{{DataList.IsBeTestRecord == 1}}">BE试验备案</label><text>{{DataList.TestPopularTopic}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="nav-wrap {{fixed == true ? 'fixed' : ''}}">
+    <view class="nav-tabs">
+      <view class="nav-tab {{currentsTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNavs">基本情况</view>
+      <view class="nav-tab {{currentsTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNavs">试验方案</view>
+      <view class="nav-tab {{currentsTab==2 ? 'on' : ''}}" data-current="2" bindtap="tabNavs">时间轴</view>
+    </view>
+  </view>  
+
+  <view class="content-wrap {{fixed == true ? 'add-distance' : ''}}">
+    <view class='content'>
+      <!-- 基本情况 -->
+      <view wx:if="{{currentsTab==0 ? true : false}}">
+        <block wx:for="{{condition}}" wx:key="index">
+          <view class='list-row'>
+            <view><label>{{item.name}}</label></view>
+            <view><text>{{item.value}}</text></view>
+          </view>
+        </block>
+
+        <view class='list-row'>
+          <view><label>经费来源</label></view>
+          <view bindtap="{{DataList.FundsSource == '有外部资助' ? 'toggle_source' : ''}}">
+            <text>{{DataList.FundsSource}}</text>
+            <image src='/image/toggle.png' mode='widthFix' hidden="{{DataList.FundsSource == '完全自筹'}}" class="{{toggle_content == false ? '' : 'rorates'}}"></image>
+          </view>
+        </view>
+        <view wx:if="{{toggle_content}}" class='other-more'>
+          <view class='more-label'>资助部门：</view>
+          <view class='more-content'>{{DataList.FundingDepartment}}</view>
+          <view class='more-label'>资助项目名称：</view>
+          <view class='more-content'>{{DataList.FinancedProjectName}}</view>
+        </view>
+
+        <block wx:if="{{DataList.TestingOrganizationTotalCn == 0 && DataList.TestingOrganizationTotalOther == 0}}">
+          <view class='toggle-title size-ctrl'>
+            <text>试验开展机构</text>
+            <text>中国({{DataList.TestingOrganizationTotalCn}})</text>
+            <text>境外({{DataList.TestingOrganizationTotalOther}})</text>
+            <icon></icon>
+          </view>
+        </block>
+        <block wx:else>
+          <navigator url="/ClinicalRegistration/Trial_development?RegistrationNo={{RegistrationNo}}&TestingOrganizationTotalCn={{DataList.TestingOrganizationTotalCn}}&TestingOrganizationTotalOther={{DataList.TestingOrganizationTotalOther}}" class='toggle-wrap' hover-class="navigator-hover">
+            <view class='toggle-title size-ctrl'>
+              <text>试验开展机构</text>
+              <text>中国({{DataList.TestingOrganizationTotalCn}})</text>
+              <text>境外({{DataList.TestingOrganizationTotalOther}})</text>
+              <icon class="icon-close"></icon>
+            </view>
+          </navigator>
+        </block>
+        
+        
+      </view>
+      <!-- 试验方案 -->
+      <view wx:if="{{currentsTab==1 ? true : false}}">
+        <!-- 展开 -->
+        <view wx:for="{{toggle}}" wx:key="index" class='toggle-wrap'>
+          <view class='toggle-title' bindtap='toggle_Ctrl' data-name="{{item.name}}">
+            <text>{{item.name}}</text><icon class="icon-close-toggle {{item.open == true ? 'icon-open' : ''}}"></icon>
+          </view>
+          <view wx:if="{{item.open == true}}" class='toggle-content'>
+            <block wx:if="{{index == 0}}">
+              <text>{{item.value}}</text>
+            </block>
+            <block wx:else>
+              <view class='list-row' wx:for="{{item.value}}" wx:for-item="cell" wx:key="number">
+                <view><label>{{cell.name}}</label></view>
+                <view><text>{{cell.value}}</text></view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <!-- 跳转 -->
+        <block wx:for="{{skip}}" wx:key="index">
+          <navigator url="{{item.url}}?RegistrationNo={{RegistrationNo}}&AgeDistribution={{tools.encodeURI(DataList.AgeDistribution)}}&HealthySubjects={{tools.encodeURI(DataList.HealthySubjects)}}&Gender={{tools.encodeURI(DataList.Gender)}}&TargetEntry={{tools.encodeURI(DataList.TargetEntry)}}&ActualEntry={{tools.encodeURI(DataList.ActualEntry)}}" class='toggle-wrap' hover-class="navigator-hover">
+            <view class='toggle-title'>
+              <text>{{item.name}}</text><icon class="icon-close"></icon>
+            </view>
+          </navigator>
+        </block>
+        
+      </view>
+      <!-- 时间轴 -->
+      <view wx:if="{{currentsTab==2 ? true : false}}">
+
+        <view class='time-status'>
+          <view class='time-status-title'>
+            <image src='/image/tips.png' mode='widthFix'></image><label>当前试验状态</label>：<text>{{DataList.TestState}}</text>
+          </view>
+        </view>
+
+        <view class='time-content'>
+          <view class='slip' wx:for="{{TimeLine}}" wx:key="{{index}}">
+            <view class='slip-date'>{{item.Date}}</view>
+            <view class='slip-line'>
+              <image src='/image/timeline_04.png' mode='widthFix'></image>
+              <view class="{{index+1 == TimeLine.length ? 'end' : ''}}"></view>
+            </view>
+            <view class='slip-content'>{{item.Content}}</view>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+    
+    
+  
+  
+  
+
+</view>
+

@@ -1,0 +1,45 @@
+<!--pages/subscribe/history.wxml-->
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+<view class='DingyueList'>
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+  <view class="DingyueList-head add-fixed">
+    <text>中国申报-CDE新受理</text>
+  </view>
+
+  <!-- <text>\n</text><text>\n</text><text>\n</text>
+  <navigator hover-class="navigator-hover" url="/pages/subscribe/pushlist?id=104">跳转到订阅推送页面</navigator> -->
+  
+  <view class='DingyueList-body'>
+
+    
+    <view wx:key='index' wx:for="{{data_list}}">
+      <view class='list-head'>
+        <view><text>{{data_list[index].date}}</text>共<text>{{data_list[index].data.length}}</text>条</view>
+      </view>
+
+      
+        <navigator class='list-con' hover-class="navigator-hover" wx:key='num' wx:for="{{data_list[index].data}}" url="/drugapproval/info?AcceptanceNo={{item.slh}}">
+          <view class='con-left'>
+            <text>{{index+1}}</text>
+          </view>
+          <view class='con-right'>
+            <view><text>{{item.slh}}</text></view>
+            <view><text>{{item.ypmc}}</text></view>
+            <view><text>{{item.scqy}}</text></view>
+          </view>
+        </navigator>
+      
+    </view>
+
+    
+
+
+    <view wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+
+  </view>
+</view>

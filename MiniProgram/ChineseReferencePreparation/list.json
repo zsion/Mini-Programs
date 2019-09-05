@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "仿制药参比制剂目录",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal":"/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

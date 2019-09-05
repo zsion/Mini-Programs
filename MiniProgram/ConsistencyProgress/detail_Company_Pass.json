@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "企业通过一致性评价药品列表",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

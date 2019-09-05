@@ -1,0 +1,85 @@
+<!--ListedDrugs/list.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+<view>
+  <view class='sub-title sub-fixed'><text>本模块数据来自《中国上市药品目录集》</text></view>
+
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <view>
+    
+    <view>
+      <!-- 二次筛选组件 -->
+      <condition id="condition" Power="{{Power}}" Special_CategoryId="1" Special_SubCategoryId="2" Name_Array="{{Name_Array}}" Tool_Name_Array="{{Tool_Name_Array}}" SubCategoryId ="{{SubCategoryId}}" bind:SubCategoryId="Get_SubCategoryId" bind:Name_Array="Get_Name_Array" bind:Field="Get_Field" bind:Reset="Get_Reset" bind:Show_modal="Show_modal" Top="{{According == true ? '50' : '0'}}" />
+
+      <!-- 列表 -->
+      <scroll-view scroll-y="{{According}}" scroll-top="{{topNum}}" scroll-with-animation class="data-body" style='height:{{content_height}}px;' enable-back-to-top="true" bindscrolltolower="Load_more">
+
+        <view hidden='{{con_null}}' class='total'>
+          共<text>{{total}}</text>条结果
+        </view>
+        
+        <view class='data-list-wrap' wx:key='index' wx:for="{{return_list}}" data-index="{{index}}" data-name="{{item.DrugName}}" bindtap="{{Power == true ? 'more_toggle' : 'Show_modal'}}">
+          <view class='list-header'>
+            <view>
+              <label class='oblong'></label>
+              <text>{{item.DrugName}}</text>
+              <text wx:if='{{tools.includeStr(item.GenericName,"复方")}}'>\n</text>
+              <text class='small-title'>（{{item.Specifications}}）</text>
+            </view>
+            <view class="{{item.open == false ? '' : 'rorates'}}"><image src='/image/toggle.png' mode='widthFix'></image></view>
+          </view>
+          <view class='list-body'>
+            <label>商品名：<text>{{item.TradeName}}</text></label>
+            <block wx:if='{{item.ApprovalHolderCompanyName != ""}}'>
+              <label>上市许可持有人：<text>{{item.ApprovalHolderCompanyName}}</text></label>
+            </block>
+            <block wx:else>
+              <label>生产厂商：<text>{{item.ManufactureCompanyName}}</text></label>
+            </block>
+            <label>收录类别：<text>{{item.CollectionCategory}}</text></label>
+            <label>{{(tools.includeStr(item.ApprovalNo,"国药准字") == true) ? "批准文号" : "注册证号"}}：
+              <text>{{item.ApprovalNo}}</text>
+              <text wx:if='{{item.ApprovalDate != ""}}'>（{{item.ApprovalDate}}）</text>
+            </label>
+          </view>
+          <view wx:if='{{item.open}}' class='other-more'>
+            <view class='list-body'>
+              <label>药品通用名：<text>{{item.GenericName}}</text></label>
+              <label>英文通用名：<text>{{item.EnglishName}}</text></label>
+              <block wx:if='{{item.ApprovalHolderCompanyName == ""}}'>
+                <label>上市许可持有人：<text>{{item.ApprovalHolderCompanyName}}</text></label>
+              </block>
+              <block wx:else>
+                <label>生产厂商：<text>{{item.ManufactureCompanyName}}</text></label>
+              </block>
+              <view class='preparation'>
+                <label>参比制剂：<text>{{(item.ReferencePreparation == 1) ? "是" : "否"}}</text></label>
+                <label>标准制剂：<text>{{(item.StandardPreparation == 1) ? "是" : "否"}}</text></label>
+              </view>
+              <label>治疗类别：<text>{{item.Category}}</text><text>></text><text>{{item.SubCategory}}</text></label>
+              <label>ATC分类：<text>{{item.ATCCategory01}}</text></label>
+              <label class='more-detail-atc'><text>>{{item.ATCCategory02}}</text></label>
+              <label class='more-detail-atc'><text>>{{item.ATCCategory03}}</text></label>
+              <label class='more-detail-atc'><text>>{{item.ATCCategory04}}</text></label>
+            </view>
+          </view>
+        </view>
+        
+        <view wx:if="{{con_null==true}}">
+          <template is="null" />
+        </view>
+
+        <view hidden='{{con_null}}' wx:if="{{!have_more}}">
+          <template is="nomore" />
+        </view>
+
+      </scroll-view>
+
+    </view>
+
+  </view>
+</view>

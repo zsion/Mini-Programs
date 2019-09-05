@@ -1,0 +1,160 @@
+<!--pages/all/list -->
+<import src="/common/null.wxml" />
+<wxs src="../../common/tools.wxs" module="tools" />
+<view class="search">
+
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+  
+  <view class="search-body">
+    <view wx:key='index' wx:for="{{total_data}}">
+      
+      <view class='search-list' wx:if='{{item.dbname == "sales"}}'>
+        <navigator url="{{item.comparetype == 0 ? '/sales/dic?' : '/sales/chart?'}}search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&ATC1={{ATC1}}&ATC2={{ATC2}}&ATC3={{ATC3}}&ATC4={{ATC4}}&zldl={{zldl}}&zlxl={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.zgxs[index%2]}}' mode='widthFix'></image></view>
+            <text>中国销售</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two'><view>近五年市场销售趋势</view></view>
+            <view class='list-right-three'><view>近三年市场增长变化</view></view>
+          </view>
+        </navigator>
+      </view>
+      
+      <view class='search-list' wx:if='{{item.dbname == "zgsb"}}'>
+        <navigator url="/drugapproval/list?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.zgsb[index%2]}}' mode='widthFix'></image></view>
+            <text>中国申报</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+          </view>
+        </navigator> 
+      </view>
+
+      <view class='search-list' wx:if='{{item.dbname == "zgss"}}'>
+        <navigator url="/listed/list_all?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.zgss[index%2]}}' mode='widthFix'></image></view>
+            <text>中国上市</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+          </view>
+        </navigator>  
+      </view>
+
+      <view class='search-list' wx:if='{{item.dbname == "ConsistencyProgress"}}'>
+        <block wx:if="{{search_Type == 1}}">
+          <block wx:if="{{Target_Company == true}}">
+            <navigator url="/ConsistencyProgress/CompanyList?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+              <view class='list-left'>
+                <view><image src='{{imgUrl.yzxpj[index%2]}}' mode='widthFix'></image></view>
+                <text>一致性评价</text>
+              </view>
+              <view class='list-right'>
+                <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+                <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+              </view>
+            </navigator>
+          </block>
+          <block wx:else>
+            <view bindtap="Show_modal">
+              <view class='list-left'>
+                <view><image src='{{imgUrl.yzxpj[index%2]}}' mode='widthFix'></image></view>
+                <text>一致性评价</text>
+              </view>
+              <view class='list-right'>
+                <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+                <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:else>
+          <block wx:if="{{Target_Drug == true}}">
+            <navigator url="/ConsistencyProgress/DrugList?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+              <view class='list-left'>
+                <view><image src='{{imgUrl.yzxpj[index%2]}}' mode='widthFix'></image></view>
+                <text>一致性评价</text>
+              </view>
+              <view class='list-right'>
+                <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+                <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+              </view>
+            </navigator>
+          </block>
+          <block wx:else>
+            <view bindtap="Show_modal">          
+              <view class='list-left'>
+                <view><image src='{{imgUrl.yzxpj[index%2]}}' mode='widthFix'></image></view>
+                <text>一致性评价</text>
+              </view>
+              <view class='list-right'>
+                <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+                <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+              </view>
+            </view>  
+          </block>
+        </block>
+      </view>
+
+      <view class='search-list' wx:if='{{item.dbname == "ChineseReferencePreparation"}}'>
+        <navigator url="/ChineseReferencePreparation/list?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.cbzjml[index%2]}}' mode='widthFix'></image></view>
+            <text>参比制剂目录</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+          </view>
+        </navigator> 
+      </view>
+
+      <view class='search-list' wx:if='{{item.dbname == "ListedDrugs"}}'>
+        <navigator url="/ListedDrugs/list?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.zgcps[index%2]}}' mode='widthFix'></image></view>
+            <text>中国橙皮书</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+          </view>
+        </navigator> 
+      </view>
+
+      <view class='search-list' wx:if='{{item.dbname == "ClinicalRegistration"}}'>
+        <navigator url="/ClinicalRegistration/list?search_Type={{search_Type}}&search_Con={{tools.encodeURI(search_Con)}}&O_ATCCategory01={{ATC1}}&O_ATCCategory02={{ATC2}}&O_ATCCategory03={{ATC3}}&O_ATCCategory04={{ATC4}}&O_Category={{zldl}}&O_SubCategory={{zlxl}}" hover-class="navigator-hover">
+          <view class='list-left'>
+            <view><image src='{{imgUrl.zglc[index%2]}}' mode='widthFix'></image></view>
+            <text>CDE临床试验</text>
+          </view>
+          <view class='list-right'>
+            <view class='list-right-one'><view>共<text> {{item.cnt}} </text>条结果</view><view><image src='/image/eye.png' mode='widthFix'></image>查看更多</view></view>
+            <view class='list-right-two' wx:key='indexs' wx:for="{{item.list}}"><view>{{item.col1}}</view><view>{{item.col2}}</view></view>
+          </view>
+        </navigator> 
+      </view>
+
+
+    </view>
+    
+    
+    
+
+
+  </view>
+  
+</view>

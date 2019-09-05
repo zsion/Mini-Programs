@@ -1,0 +1,266 @@
+<wxs src="../common/tools.wxs" module="tools" />
+
+<!--page/component/declare/Declare.wxml-->
+<!-- <text>page/component/declare/Declare.wxml</text> -->
+
+<view style='overflow-x:hidden;'>
+  <view class="sousuo">
+      <input type="text" id="DelareInput" name="yptongyongming"  bindfocus="yptymFocus" bindinput="yptymInput" bindconfirm="yptymConfirm" confirm-type="search"  placeholder="药品名称/企业名称" value='{{input_value}}'  />
+        <image class='SousuoImg' src="/image/cha.png"  bindtap="docha"></image>
+      <view class='cancel' bindtap="yptymCancel" hidden="{{ctrldic.hidden}}">取消</view>  
+      <navigator url="search" hover-class="navigator-hover" hidden="{{!ctrldic.hidden}}" class='gaoji'>
+          <view style='height:70rpx;border-radius: 100rpx;'><image src="/image/Advanced.png"></image>
+          <label>高级检索</label></view>
+      </navigator>
+      <view class='hotKeywords'>
+        <navigator wx:key='index' wx:for="{{hostarr}}" url="list?O_Keywords={{tools.encodeURI(item)}}" hover-class="navigator-hover">{{item}}</navigator>
+      </view>
+      
+  </view>
+  <view class="dic" hidden="{{ctrldic.hidden}}" scroll-top="200" style="height:100%;">
+      <scroll-view scroll-top="0" scroll-y="true" style="height:99%;z-index:9999;" scroll-into-view="{{ctrllistscroll.scrollintoview}}">
+         <view class='hot'>
+             <label>热门搜索</label>
+             <view>
+                <navigator url="list?O_Tab_Type=0" hover-class="navigator-hover">
+                    一致性评价申请
+                </navigator>
+                <navigator url="list?O_Tab_Type=1" hover-class="navigator-hover">
+                    本月首次申报新药
+                </navigator>
+                <navigator url="list?O_Tab_Type=2" hover-class="navigator-hover">
+                    本月首次申报上市新药
+                </navigator>
+                <navigator url="list?O_Tab_Type=3" hover-class="navigator-hover">
+                    独家申报品种
+                </navigator>
+             </view>
+         </view>
+         <view class='History_box'>
+             <label>历史搜索</label>
+             <view>
+                <text class='History_list' wx:for="{{listarr}}" data-text="{{item}}" wx:key="key" bindtap='this_value' hover-class="navigator-hover">
+                    {{item}}
+                </text>
+             </view>
+         </view>
+      </scroll-view>
+  </view>  
+  <view class='explain'>
+    <text>该模块数据来源于新药研发监测数据库CPM</text>
+  </view>
+  <view class='tabs-wrap'>
+      <view class="swiper-tabs" style='background:#fff'>
+        <view class="swiper-tab-lists Category {{currentsTab123==0 ? 'active' : ''}}" data-current="0" catchtap="tabNavs">
+            <image src="/image/Chen.png" class='ChangeImage' style='width:37rpx;height:37rpx;'  ></image> 
+            <image src="/image/chenh.png" class='ChangeImageh' style='width:37rpx;height:37rpx;'  ></image> 
+            <text>承办/审批趋势 </text>
+        </view>
+        <view class="swiper-tab-lists Category {{currentsTab123==1 ? 'active' : ''}}" data-current="1" catchtap="tabNavs">
+            <image src="/image/Company.png" class='ChangeImage' style='width:45rpx;height:35rpx;' ></image> 
+            <image src="/image/Companyh.png" class='ChangeImageh' style='width:45rpx;height:35rpx;' ></image> 
+            <text>企业TOP榜</text>
+        </view>
+        <view class="swiper-tab-lists Category {{currentsTab123==2 ? 'active' : ''}}" data-current="2" catchtap="tabNavs">
+            <image src="/image/Pin.png" class='ChangeImage' style='width:37rpx;height:37rpx;' ></image> 
+            <image src="/image/Pinh.png" class='ChangeImageh' style='width:37rpx;height:37rpx;' ></image> 
+            <text>热门品种</text>
+        </view>
+      </view>
+        <!-- 承办/审批趋势 -->
+        <view  style="display:{{currentsTab123==0 ? 'block' : 'none'}};background:#f6f6f7;">
+            <view class='SwitchContent'>
+                <view wx:for="{{UndertakeInfo.Data}}" class="{{UndertakeInfo.index==index ? 'active' : ''}}" wx:key="key" wx:for-item="ItemTitle" data-num="{{index}}" bindtap='TitleChange' data-open="UndertakeInfo">
+                    {{ItemTitle.tabtitle}}
+                  <label></label>
+                </view>
+            </view>
+            <view class='ChartsMode' hidden='{{UndertakeInfo.Data[UndertakeInfo.index].list[0].type==-1||!ctrldic.hidden}}'>
+              <view class='ModeTitle'>
+                {{UndertakeInfo.Data[UndertakeInfo.index].list[0].title}}
+                <block wx:if="{{Jurisdiction}}">
+                  <navigator url="list?O_TendencyChart_Type={{UndertakeInfo.Data[UndertakeInfo.index].list[0].type}}&O_TendencyChart_DateTotalType={{UndertakeInfo.Data[UndertakeInfo.index].list[0].charts[UndertakeInfo.Data[UndertakeInfo.index].list[0].index].totaltype}}" hover-class="none">
+                    查看详情
+                  </navigator>
+               </block>
+               <!-- <block wx:if="{{!Jurisdiction}}">
+                  <label>
+                    查看详情
+                  </label>
+                </block> -->
+              </view>
+              <view style='text-align:center;'>
+                <view class="TermSwitch">
+                  <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[0].charts}}" wx:key="key" wx:for-index="idx" class="swiper-tab-list {{UndertakeInfo.Data[UndertakeInfo.index].list[0].index==idx?'active':''}}" bindtap="btnCategory" data-num="{{idx}}" data-father='0' data-open="UndertakeInfo">
+                      {{item.tabtitle}}
+                  </view>
+                </view>
+                <view class='TermContent'style='width:{{canvas_width}}px;height:{{canvas_width}}px;'>
+                  <ec-canvas ec="{{ ecBar0 }}"></ec-canvas>
+                </view>
+              </view>
+            </view>
+            <view class='ChartsMode' hidden='{{UndertakeInfo.Data[UndertakeInfo.index].list[1].type==-1||!ctrldic.hidden}}'>
+              <view class='ModeTitle'>
+                {{UndertakeInfo.Data[UndertakeInfo.index].list[1].title}}
+                <block wx:if="{{Jurisdiction}}">
+                  <navigator url="list?O_TendencyChart_Type={{UndertakeInfo.Data[UndertakeInfo.index].list[1].type}}&O_TendencyChart_DateTotalType={{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].totaltype}}" hover-class="none">
+                    查看详情
+                  </navigator>
+                </block>
+                <!-- <block wx:if="{{!Jurisdiction}}">
+                  <label>
+                    查看详情
+                  </label>
+                </block> -->
+              </view>
+              <view style='text-align:center;'>
+                <view class="TermSwitch ">
+                  <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts}}" wx:key="key" wx:for-index="idx" class="swiper-tab-list {{UndertakeInfo.Data[UndertakeInfo.index].list[1].index==idx?'active':''}}" bindtap="btnCategory" data-num="{{idx}}" data-father='1' data-open="UndertakeInfo">
+                      {{item.tabtitle}}
+                  </view>
+                </view>
+                <view class='circle'>
+                    <view class='circlecontent'  wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].legend}}"  wx:key="key"><text class='yuan{{index}}'></text>{{item}}</view>
+                </view>
+                  <view class='VerticalHistogram'>
+                        <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].group}}" wx:key="key"  wx:for-item="DrugType"  wx:for-index="fidx" class='VerticalModel' style='width:{{1/UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].group.length*100}}%'>
+                            <view  class='VerticalContent'>
+                                <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].data}}"  wx:key="key"  wx:for-index="idx"> 
+                                    <block wx:if="{{Jurisdiction}}">
+                                      <navigator style="height:{{0.57*canvas_width*(item[fidx]/UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].max)}}px;" class='zhu zhu{{idx}}' url="list?O_TendencyChart_ApplyType_New={{DrugType.Name}}&O_TendencyChart_DomesticOrImport={{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].legend[idx]}}&O_TendencyChart_DateTotalType={{UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].totaltype}}&O_TendencyChart_Type={{UndertakeInfo.Data[UndertakeInfo.index].list[1].type}}"  >
+                                      <text class='count' >{{item[fidx]}}</text>
+                                      </navigator>
+                                    </block>
+                                    <block wx:if="{{!Jurisdiction}}">
+                                      <label style="height:{{0.57*canvas_width*(item[fidx]/UndertakeInfo.Data[UndertakeInfo.index].list[1].charts[UndertakeInfo.Data[UndertakeInfo.index].list[1].index].max)}}px;" class='zhu zhu{{idx}}' >
+                                      <text class='count' >{{item[fidx]}}</text>
+                                      </label>
+                                    </block>
+                                </view>
+                            </view>
+                           
+                               <label class='HeadTitle {{DrugType.istrue?"HeadTitleTrue":""}}'>{{DrugType.Name}}</label>
+                           
+                        </view>
+                    <!-- <ec-canvas ec="{{ ecBar1 }}"></ec-canvas> -->
+                  </view>
+              </view>
+            </view>
+            <view class='ChartsMode' hidden='{{UndertakeInfo.Data[UndertakeInfo.index].list[2].type==-1}}'>
+              <view class='ModeTitle'>
+                {{UndertakeInfo.Data[UndertakeInfo.index].list[2].title}}
+                <block wx:if="{{Jurisdiction}}">
+                  <navigator url="list?O_TendencyChart_Type={{UndertakeInfo.Data[UndertakeInfo.index].list[2].type}}&O_TendencyChart_DateTotalType={{UndertakeInfo.Data[UndertakeInfo.index].list[2].charts[UndertakeInfo.Data[UndertakeInfo.index].list[2].index].totaltype}}" hover-class="none" hover-stop-propagation="true">
+                  查看详情
+                 </navigator>
+                </block>
+                <!-- <block wx:if="{{!Jurisdiction}}">
+                  <label>
+                    查看详情
+                  </label>
+                </block> -->
+              </view>
+              <view style='text-align:center;'>
+                <view class="TermSwitch">
+                  <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[2].charts}}" wx:key="key" wx:for-index="idx" class="swiper-tab-list {{UndertakeInfo.Data[UndertakeInfo.index].list[2].index==idx?'active':''}}" bindtap="btnCategory" data-num="{{idx}}" data-father='2' data-open="UndertakeInfo" data-type="type3">
+                      {{item.tabtitle}}
+                  </view>
+                </view>
+
+                <view class='TermContent' style='padding-top:20rpx;padding-bottom:30rpx;'>
+                  <view wx:for="{{UndertakeInfo.Data[UndertakeInfo.index].list[2].charts[UndertakeInfo.Data[UndertakeInfo.index].list[2].index].data}}" wx:key="key" wx:for-item="DrugType" class='Regist'>
+                      <label class='DrugName'>{{DrugType.Type}}</label>
+                      <view class='DrugDetails'>
+                     
+                     
+                      <view wx:for="{{DrugType.TypeList}}" wx:key="key"  class='Histogram {{DrugType.TypeList.length==1?"Histogram1":""}}'>
+                          <text class='code'>{{item.Code}}</text> 
+                            <block wx:if="{{Jurisdiction}}">
+                              <navigator style="width:{{0.52*canvas_width*(item.Count/UndertakeInfo.Data[UndertakeInfo.index].list[2].charts[UndertakeInfo.Data[UndertakeInfo.index].list[2].index].max)}}px;" url="list?O_TendencyChart_DateTotalType={{UndertakeInfo.Data[UndertakeInfo.index].list[2].charts[UndertakeInfo.Data[UndertakeInfo.index].list[2].index].totaltype}}&O_TendencyChart_DrugType={{DrugType.Type}}&O_TendencyChart_RegisterType={{item.Code}}&O_TendencyChart_Type={{UndertakeInfo.Data[UndertakeInfo.index].list[2].type}}">
+                              </navigator>
+                            </block>
+                            <block wx:if="{{!Jurisdiction}}">
+                              <label style="width:{{0.52*canvas_width*(item.Count/UndertakeInfo.Data[UndertakeInfo.index].list[2].charts[UndertakeInfo.Data[UndertakeInfo.index].list[2].index].max)}}px;">
+                              </label>
+                            </block>
+                          <text class='count'>{{item.Count}}</text> 
+                        </view>
+                      </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>
+        <!-- 企业TOP榜 -->
+        <view style="display:{{currentsTab123==1 ? 'block' : 'none'}};background:#f6f6f7;">
+            <view class='SwitchContent'>
+                <view wx:for="{{EnterTopInfo.Data}}" class="{{EnterTopInfo.index==index ? 'active' : ''}}" wx:key="key" wx:for-item="ItemTitle" data-num="{{index}}" bindtap='TitleChange' data-open="EnterTopInfo">
+                    {{ItemTitle.tabtitle}}
+                  <label></label>
+                </view>
+            </view>
+            <scroll-view style='height:{{windowHeight}}' scroll-y="true">
+              <view class='ChartsMode' wx:for="{{EnterTopInfo.Data[EnterTopInfo.index].list}}" wx:key="key" wx:for-index="widx" wx:for-item="itemName">
+                <view class='ModeTitle'>
+                    {{itemName.cate1}}
+                  <view class="titleChange">
+                    <label bindtap="btnCondOpen" data-open="EnterTopInfo" data-num="{{widx}}">
+                      <image src='/image/shaixuan.png' style='width:26rpx;height:26rpx;position:relative;top:4rpx;' mode='widthFix'></image>
+                      <text class='Choice'>{{itemName.listInfo[itemName.index].cate2}}</text>
+                      <image class='Down' src='/image/downh.png' style='width:13rpx;height:10rpx;position:relative;top:-4rpx;' mode='widthFix'></image>
+                    </label>
+                    <view class="Title-text" hidden='{{itemName.hidden}}'>
+                      <text wx:for="{{itemName.listInfo}}" wx:for-index="idx" wx:key="key" class="title1 {{itemName.index==idx?'active':''}}" bindtap="btnCategory" data-num="{{idx}}" data-father='{{widx}}' data-open="EnterTopInfo">{{item.cate2}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view style="text-align:left;" class='EnterMode'>
+                    <view wx:for="{{itemName.listInfo[itemName.index].listInfo}}" wx:key="key" class="EnterContent" hidden="{{itemName.listInfo[itemName.index].ShowMore==0&&index>9}}">
+                      <text class='Num'>{{index+1}}</text>  <view>{{item.name}}</view> <text class='total'>{{item.total}}</text>  
+                    </view>
+                </view>
+                <!-- 大于十条出展开更多 -->
+                <view  bindtap="ToggleMore" class="ToggleMore {{itemName.listInfo[itemName.index].ShowMore==1?'ToggleActive':''}}" data-open="EnterTopInfo" data-father='{{widx}}' hidden="{{itemName.listInfo[itemName.index].ShowMore==2}}">
+                  {{itemName.listInfo[itemName.index].ShowMore==0?'展开更多':'收起'}}<image src='/image/zk.png'></image>
+                </view>
+              </view>
+            </scroll-view>
+        </view>
+        <!-- 热门品种 -->
+        <view style="display:{{currentsTab123==2 ? 'block' : 'none'}};background:#f6f6f7;">
+            <view class='SwitchContent'>
+                <view wx:for="{{BrandInfo.Data}}" class="{{BrandInfo.index==index ? 'active' : ''}}" wx:key="key" wx:for-item="ItemTitle" data-num="{{index}}" bindtap='TitleChange' data-open="BrandInfo">
+                    {{ItemTitle.tabtitle}}
+                  <label></label>
+                </view>
+            </view>
+            <scroll-view style='height:{{windowHeight}}' scroll-y="true">
+              <view class='ChartsMode' wx:for="{{BrandInfo.Data[BrandInfo.index].list}}" wx:key="key" wx:for-index="widx" wx:for-item="itemName">
+                <view class='ModeTitle'>
+                  {{itemName.title}}
+                </view>
+                <view style="text-align:center;">
+                    <view class="TermSwitch">
+                      <view wx:for="{{itemName.typelist}}" wx:for-index="idx" wx:key="key" class="swiper-tab-list {{itemName.index==idx?'active':''}}" bindtap="btnCategory" data-num="{{idx}}" data-father='{{widx}}' data-open="BrandInfo">
+                          {{item.tabtitle}}
+                      </view>
+                    </view>
+                    <view style='text-align:left;padding:30rpx 21rpx;'>
+                      <block wx:if="{{Jurisdiction}}">
+                        <navigator wx:for="{{itemName.typelist[itemName.index].list}}" wx:key="key" class='tag' url="list?O_DrugTop_Type={{itemName.type}}&O_DrugTop_DateTotalType={{itemName.typelist[itemName.index].totaltype}}&O_DrugTop_GenericName={{item.GenericName}}&O_DrugTop_Dosage={{item.Dosage}}" hover-class="navigator-hover">
+                            {{item.GenericName}}{{item.Dosage}}
+                        </navigator>
+                      </block>
+                      <block wx:if="{{!Jurisdiction}}">
+                         <label wx:for="{{itemName.typelist[itemName.index].list}}" wx:key="key" class='tag' >
+                            {{item.GenericName}}{{item.Dosage}}
+                        </label>
+                      </block>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

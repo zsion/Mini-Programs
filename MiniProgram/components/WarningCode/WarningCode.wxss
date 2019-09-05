@@ -1,0 +1,40 @@
+.waring-content{
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.waring-image{
+  width:300rpx;
+  margin:auto;
+  margin-bottom: 30rpx;
+  height:95rpx;
+  border:1rpx solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.waring-image image{
+  width:300rpx;
+  height:93.75rpx;
+}
+.waring-text{
+  margin:auto;
+  width:333rpx;
+  height:75rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.waring-text text{
+  width:70rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  border:2rpx solid #CACACA;
+  text-align: center;
+  font-size: 28rpx;
+  color: #636364;
+}
+.waring-input{
+  width:0;
+  height:0;
+  overflow: hidden;
+}

@@ -1,0 +1,58 @@
+<wxs src="../common/tools.wxs" module="tools" />
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+
+<view>
+
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <condition2 Power="{{Power}}" DosageId="{{DosageId}}" ListingSituation="{{ListingSituation}}" DrugTypeId="{{DrugTypeId}}" ApplyType_NewId="{{ApplyType_NewId}}" HandleState_CFDAId="{{HandleState_CFDAId}}" Conclusion="{{Conclusion}}" ProjectType="{{ProjectType}}" CategoryId="{{CategoryId}}" SubCategoryId="{{SubCategoryId}}" Use_SubCategoryId="{{Use_SubCategoryId}}" Update_DosageId="{{Update_DosageId}}" Update_ListingSituation="{{Update_ListingSituation}}" Update_DrugTypeId="{{Update_DrugTypeId}}" Update_ApplyType_NewId="{{Update_ApplyType_NewId}}" Update_HandleState_CFDAId="{{Update_HandleState_CFDAId}}" Update_Conclusion="{{Update_Conclusion}}" Update_ProjectType="{{Update_ProjectType}}" Update_CategoryId="{{Update_CategoryId}}" Update_SubCategoryId="{{Update_SubCategoryId}}" bind:Reset_and_Sure="Get_Reset_and_Sure" bind:Reset_item="Get_Reset_item" bind:Choice_Sort="Get_Choice_Sort" bind:Is_arrow="Get_Is_arrow" bind:Show_modal="Show_modal"/>
+
+  <!-- 列表 -->
+  <scroll-view scroll-with-animation class='content-list' style='height:{{content_height}}px;' scroll-y="{{According}}" scroll-top="{{topNum}}" bindscrolltolower="Load_more">
+
+    <view class='TotalNumber' hidden='{{con_null}}'>
+      共<text style='color:#00B1E0;'>{{total}}</text>条结果
+    </view> 
+
+    <view class="ModuleList" wx:for="{{return_list}}" wx:key="key" bindtap="btnListInfo" data-value="{{item.AcceptanceNo}}">
+      <view class='ModuleTitle'>
+        <text></text>
+        <view>{{item.ProductName}}</view>
+      </view>
+      <view class="ModuleContent">
+        <view class="td td1">受理号：</view>
+        <view class="td td2">{{item.AcceptanceNo}}</view>
+        <view class="td td1">申请类型：</view>
+        <view class="td td2">{{item.ApplyType_New}}</view>
+      </view>
+      <view class="ModuleContent">
+        <view class="td td1">受理日期：</view>
+        <view class="td td2">{{item.UndertakeDate}}</view>
+        <view class="td td1">办理状态：</view>
+        <view class="td td2">{{item.HandleState_CFDA}}</view>
+      </view>
+      <view class="ModuleContent">
+        <view class="td td1">企业名称：</view>
+        <view class="td ">{{item.CompanyName}}</view>
+      </view>
+    </view>
+
+    <view hidden='{{con_null}}' wx:if="{{!have_more && ShowMore == false}}">
+      <template is="nomore" />
+    </view>
+
+    <view wx:if="{{con_null==true}}">
+      <template is="null" />
+    </view>
+
+    <view wx:if="{{ShowMore == true}}" class='quanxian' bindtap='Show_modal'>
+      <text>更多</text>
+      <image src='/image/zk.png' mode='widthFix'></image>
+    </view>
+    
+  </scroll-view>
+</view>
+

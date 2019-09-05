@@ -1,0 +1,227 @@
+/* page/component/declare/AdvancedSearch.wxss */
+.title{
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #0F0F0F;
+  font-weight: bold;
+  height: 81rpx;
+  line-height: 81rpx;
+  
+}
+.InputBox{
+  height: 81rpx;
+  line-height: 81rpx;
+  border-top:1rpx solid  #DEDEDE;
+  clear: both;
+}
+.InputBox .Info{
+  display: block;
+  width: 220rpx;
+  float: left;
+}
+.InputBox .Research{
+   width: 260rpx;
+}
+.InputBox .Info text{
+  font-size: 26rpx;
+  color: #5C6376;
+}
+
+.InputBox input{
+  float: left;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #31363B;
+  width:460rpx;
+  height: 37rpx;
+  line-height: 37rpx;
+  padding-top:20rpx;
+}
+.InputBox input::placeholder{
+  color: #AAADB5;
+}
+.InputBox  picker{
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #AAADB5;
+  width:420rpx;
+  height: 37rpx;
+  line-height: 37rpx;
+}
+.InputBox .MinDate{
+    width:196rpx;
+}
+.InputBox .MaxDate{
+  width:196rpx;
+}
+.InputBox .zhi{
+   width:40rpx;
+   text-align: left;
+   display: inline-block;
+}
+.content{
+  padding-bottom: 90rpx;
+}
+.content .ContentInput{
+  padding-left:32rpx;
+  padding-right:32rpx;
+  border-bottom: 11rpx solid #f6f6f7;
+  background: #fff;
+}
+
+button::after{
+  border: none;
+}
+
+.titleChange{
+  display: block;
+  float:right;
+  position: relative;
+  margin-right:30rpx;
+  height: 70rpx;
+}
+.titleChange label{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #868686;
+  
+}
+.titleChange .Title-text{
+  position: absolute;
+  width: 104rpx;
+  height: 104rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 7px 0 rgba(0,0,0,0.14);
+  left:21rpx;
+  margin-top:-10px;
+
+}
+.titleChange .Title-text text{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+ color: #666666;
+  display: block;
+  font-weight: normal;
+  height: 50rpx;
+  padding-left:12rpx;
+  line-height: 50rpx;
+  width:92rpx;
+}
+.Down{
+  transform: rotate(180deg);
+}
+.Choice{
+  display: inline-block;
+  width:80rpx;
+  color: #868686;
+  font-weight: normal;
+  margin-left:6rpx;
+}
+.titleChange .Title-text .title1{
+  border-bottom:1rpx solid #ECEEF2;
+}
+.titleChange  .Title-text .active{
+  color: #FF877A;
+}
+.ShowItem{
+  display: none;
+}
+.ShowIndex{
+  display: block;
+}
+
+/* 枚举字典的样式 */
+.Initials{
+  padding:15rpx 5rpx 15rpx 5rpx;
+  font-size:26rpx;
+  color:#5C6376;
+}
+.quit{
+  font-size: 28rpx;
+  position: absolute;
+  right: -9rpx;
+ padding:0;
+ background: #fff;
+  width:70rpx;
+  color:#0F0F0F;
+  top:5rpx;
+  margin:0;
+}
+
+.dic{
+  position: fixed;
+  top:168rpx;
+  right:3%;
+  bottom:10rpx;
+  z-index: 5;
+  width:65%;
+  box-shadow:-3px -2px 7px 0 rgba(0,0,0,0.09);
+}
+
+.HideTag{
+  height: 325rpx;
+  width: 100%;
+  transition:height ease-in 0.2s;
+  overflow: hidden;
+}
+.ShowTag{
+  height: auto;
+  width: 100%;
+  transition:height ease-in 0.2s;
+  overflow: hidden;
+}
+
+/* 查看更多 */
+.ToggleMore{
+  height:85rpx;
+  line-height:85rpx;
+  text-align:center;
+  font-size:26rpx;
+  color:#00ABD6;
+}
+.ToggleMore image{
+  width:60rpx;
+  height:34rpx;
+  margin:0 0 -5rpx 5rpx;
+}
+.ToggleActive image{
+   transform: rotate(180deg);
+}
+
+.tel{
+  display: flex;
+  justify-content: space-around;
+  color:#00BEEE;
+}
+.apply view{
+  width:300rpx;
+  height:70rpx;
+  line-height:70rpx;
+  margin:auto;
+  margin-top:30rpx;
+  text-align:center;
+  background:#00BEEE;
+  font-size:30rpx;
+  color:#fff;
+}
+
+.prompt-other{
+  position: absolute;
+  top:170rpx;
+  right:0;
+  left:0;
+  z-index: 3;
+  width:100%;
+  background:transparent;
+}
+
+.noscroll {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 0;
+}

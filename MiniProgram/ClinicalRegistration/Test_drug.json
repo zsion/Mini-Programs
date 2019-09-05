@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "试验药",
+  "usingComponents": {
+    "detaillist": "/components/detaillist/detaillist"
+  },
+  "onReachBottomDistance": 0
+}

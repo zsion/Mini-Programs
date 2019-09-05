@@ -1,0 +1,15 @@
+<!--/yield/index -->
+
+<view class="clxx">
+  
+  <view class="clxx-body">
+    <view class='con-title'><text>氨溴索注射剂（50ml:30mg）国内产量</text></view>
+    <view class='con-tp'><image src='{{imgUrl[0]}}' mode='widthFix'></image></view>
+    <view class='con-text'><text>该模块涵盖了国内5000多家企业的产量信息，涉及原料药、制剂、医疗器械等各个子行业。</text></view>
+    <view class='con-tip'>您可直接点击下方按钮申请试用，我们会尽快联系您</view>
+    <view class='con-btn'>
+      <view bindtap='to_wjx'>申请试用</view>
+    </view>
+  </view>
+  
+</view>

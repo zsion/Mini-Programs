@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "CDE临床试验",
+  "usingComponents": {
+    "nameTip": "/components/nameTip/nameTip"
+  },
+  "disableScroll": true
+}

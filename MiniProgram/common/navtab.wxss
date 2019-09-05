@@ -1,0 +1,31 @@
+.nav-tab {
+  position: relative;
+  height:80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #5C5E5F;
+  text-align: center;
+  transition: 0.2s all linear;
+  font-family: PingFangSC-Medium;
+}
+.nav-tab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 100%;
+  border-bottom: 5rpx solid #00BEEE;
+  transition: 0.2s all linear;
+}
+.on ~ .nav-tab::before {
+  left: 0;
+}
+.on::before {
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.on{
+  color:#00BEEE;
+}

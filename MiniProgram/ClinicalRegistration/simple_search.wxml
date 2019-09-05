@@ -1,0 +1,42 @@
+<!--ClinicalRegistration//simple_search.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view bindtap="Close_NameTip" style="min-height:95%;">
+  <view class='public-simple'>
+
+    <view>
+      
+      <view class='list-title'>基本情况</view>
+
+      <view class='list-row'>
+        <view>药品名称</view>
+        <view><input type="text" placeholder="请输入药品名称" name='' value="{{DrugName}}" bindinput="input_DrugName" /></view>
+      </view>
+      <nameTip id="nameTip_DrugName" address="{{address_DrugName}}" PublicName="{{DrugName}}" bind:PublicName="Get_DrugName" />
+
+      <view class='list-row'>
+        <view>申办者名称</view>
+        <view><input type="text" placeholder="请输入申办者名称" name='' value="{{ApplicantName}}" bindinput="input_ApplicantName" /></view>
+      </view>
+      <nameTip id="nameTip_ApplicantName" address="{{address_ApplicantName}}" PublicName="{{ApplicantName}}" bind:PublicName="Get_ApplicantName" />
+
+      <view class='list-row'>
+        <view>适应症</view>
+        <view><input type="text" placeholder="请输入适应症" name='' value="{{Indications}}" bindinput="input_Indications" /></view>
+      </view>
+
+
+    </view>
+
+
+    <view class='more-wrap'>
+      <navigator url="/ClinicalRegistration/high_search" hover-class="navigator-hover" hidden='{{!Power}}'>更多检索条件>></navigator>
+    </view>
+
+    <text class='auto-high'>\n</text>
+    <view class='pub-btn-con'>
+      <button bindtap='Reset_all'>重置</button>
+      <button bindtap='Next_navigator'>确定</button>
+    </view>
+
+  </view>
+</view>

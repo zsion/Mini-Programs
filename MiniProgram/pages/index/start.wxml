@@ -1,0 +1,18 @@
+<!--pages/index/start.wxml-->
+<view>
+
+  <view class='start-title'>
+    <text>欢迎使用药分享Plus小程序</text>
+  </view>
+
+  <view class='rotate-wrap'>
+    <view class='rotate'>
+      <image src='/image/start.png' mode='widthFix'></image>
+    </view>
+  </view>
+
+  <view class="loading-img">
+    <image src='/image/loading.gif' mode='widthFix'></image>
+  </view>
+
+</view>

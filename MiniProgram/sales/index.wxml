@@ -1,0 +1,45 @@
+<!--/sales/index.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<import src="/common/modal.wxml" />
+<view class="zgxs">
+  <view wx:if="{{hidden != true}}">
+    <template is="modal" />
+  </view>
+
+  <view class='zgxs-head'>
+    
+    <view class='search-wrap'>
+      <input type="text" maxlength="100" placeholder="输入药品/企业名称查询" name='search_Con' bindinput ="search_Con_Input" confirm-type="search" bindconfirm="to_list"/>
+      <view bindtap="to_list" ><image src='/image/white.png' mode='widthFix'></image></view>
+    </view>
+    <view class='hot-part'>
+      <navigator url="/sales/dic?search_Type=-1&search_Con={{tools.encodeURI(item)}}" hover-class="navigator-hover" wx:key='index' wx:for="{{Keywords}}">{{item}}</navigator>
+      <navigator url="/sales/field" hover-class="navigator-hover">领域检索</navigator>
+    </view>
+
+    <view class='explain'>
+      <text>该模块数据来源于药物综合数据库PDB</text>
+    </view>
+
+    <view class="sub-head">
+      <view>
+        <image src='/image/trophy.png' mode='widthFix'></image><text>{{data_title}}</text><text>TOP50</text>
+      </view>
+      <view bindtap='show_modal'>
+        <image src='/image/eye.png' mode='widthFix'></image> <text>查看详细数据>></text>
+      </view>
+    </view>
+    <view class='sub-second'>
+      <view>样本医院用药<text>{{last_date}}</text>商品名销售额排行榜</view>
+    </view>
+  </view>
+  
+  <scroll-view scroll-y style="height: {{windowHeight}}" class="zgxs-body" scroll-top="150">
+    <view class='list-con' wx:key='index' wx:for="{{data_list}}">
+      <view><text>{{index+1}}</text></view>
+      <view><text>{{item.yptongyongming}}</text></view>
+      <view><text>{{item.qymingcheng}}</text></view>
+    </view>
+  </scroll-view>
+
+</view>

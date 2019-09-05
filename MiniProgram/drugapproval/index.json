@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "中国申报药品",
+  "usingComponents": {
+    "ec-canvas": "../components/ec-canvas/ec-canvas"
+  }
+}

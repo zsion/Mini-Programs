@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "仿制药一致性评价",
+  "usingComponents": {
+    "modal": "/components/modal/modal"
+  }
+}

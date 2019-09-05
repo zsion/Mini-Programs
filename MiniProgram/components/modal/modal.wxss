@@ -1,0 +1,16 @@
+.tel{
+  display: flex;
+  justify-content: space-around;
+  color:#00BEEE;
+}
+.apply view{
+  width:300rpx;
+  height:70rpx;
+  line-height:70rpx;
+  margin:auto;
+  margin-top:30rpx;
+  text-align:center;
+  background:#00BEEE;
+  font-size:30rpx;
+  color:#fff;
+}

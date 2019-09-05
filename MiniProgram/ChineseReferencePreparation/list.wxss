@@ -1,0 +1,14 @@
+/* ChineseReferencePreparation//list.wxss */
+@import "/common/list.wxss";
+@import "/common/list_more_detail.wxss";
+Page{
+  margin:0;
+  padding:0;
+}
+.data-body{
+  width:100%;
+  position: absolute;
+  top:80rpx;
+  left:0;
+  z-index: 1;
+}

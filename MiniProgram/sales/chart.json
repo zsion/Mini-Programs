@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "中国销售",
+  "usingComponents": {
+    "ec-canvas": "/components/ec-canvas/ec-canvas",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  }
+}

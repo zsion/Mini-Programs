@@ -1,0 +1,92 @@
+/* page/pages/DingyueTs/DingyueTs.wxss */
+.DingyueTs-head{
+  width:100%;
+  height:35px;
+  line-height: 35px;
+  background: #fff;
+  border-bottom: 1px solid #E1EDEE;
+  display: flex;
+  justify-content: space-between;
+}
+.DingyueTs-head view:nth-child(1){
+  width:35%;
+}
+.DingyueTs-head view:nth-child(2){
+  width:35%;
+  font-size: 26rpx;
+  color: #81878C;
+}
+.DingyueTs-head view:nth-child(3){
+  width:30%;
+  font-size: 26rpx;
+  color: #81878C;
+  text-align: center;
+}
+.DingyueTs-head view:nth-child(1) text:first-child{
+  background: #00B1E0;
+  color:#00B1E0;
+  margin:0 25rpx 0 25rpx;
+}
+.DingyueTs-head view:nth-child(1) text:last-child{
+  font-size: 30rpx;
+  color:#31363B;
+}
+.DingyueTs-head view:nth-child(2) text{
+  color: #00BEEE;
+}
+
+.add-fixed{
+  position: fixed;
+  top:0;
+  left:0;
+}
+.DingyueTs-body{
+  padding:35px 0 90rpx;
+}
+.list-con{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding:10rpx 0 25rpx;
+  margin-bottom: 15rpx;
+}
+.list-con view:nth-child(1){
+  width:8%;
+  text-align: center;
+}
+.con-left text{
+  font-size: 32rpx;
+  color: #CECED3;
+}
+.con-right view text{
+  font-size: 28rpx;
+  color: #31363B;
+}
+.con-right view:nth-child(1) text{
+  color: #00BEEE;
+}
+.list-con view:nth-child(2){
+  width:92%;
+}
+.go-home{
+  position: fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:90rpx;
+  line-height: 90rpx;
+  background: #00BEEE;
+  text-align: center;
+  font-size: 32rpx;
+  color:#fff;
+}
+.go-home image{
+  width:26rpx;
+  margin:0 5rpx -1rpx;
+}
+.noget{
+  text-align: center;
+  font-size: 28rpx;
+  color: #81878C;
+}

@@ -1,0 +1,386 @@
+<!--ConsistencyProgress//index.wxml-->
+<modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+<view class="header">
+  <view class="input-wrap auto-width end-layout">
+    <view class="put {{Unfocus == true ? '' : 'puts'}}">
+      <input type="text" maxlength="100" placeholder="药品名称/企业名称" name='' value="{{Name}}" bindfocus="Get_focus" bindblur="Lose_focus" bindinput ="input_Name" bindconfirm="Search_navigator" confirm-type="search"/>
+      <image wx:if="{{Unfocus}}" src='/image/cha.png' mode='widthFix'></image>
+    </view>
+    <navigator wx:if="{{Unfocus}}" class="btn" url="/ConsistencyProgress/high_search" hover-class="navigator-hover">
+      <image src='/image/Advanced.png' mode='widthFix'></image>
+      <text>高级检索</text>
+    </navigator>
+  </view>
+  <view class="hot-keys auto-width start-layout">
+    <block wx:for="{{Keywords}}" wx:key='index'>
+      <view hover-class="navigator-hover" data-name="{{item}}" bindtap="Key_navigator">{{item}}</view>
+    </block>
+  </view>
+</view>
+
+<template name="ChineseReferencePreparation">
+  <view class="left-con">
+    <view><label>参比制剂目录</label></view>
+    <view><text>{{CategoryTotal.cbzjml}}</text></view>
+  </view>
+  <view class="right-con">
+    <image src='/image/ConsistencyProgress/cbzj.png' mode='widthFix'></image>
+  </view>
+</template>
+
+<template name="ClinicalRegistration">
+  <view class="left-con">
+    <view><label>BE试验备案</label></view>
+    <view><text>{{CategoryTotal.besyba}}</text></view>
+  </view>
+  <view class="right-con">
+    <image src='/image/ConsistencyProgress/be.png' mode='widthFix'></image>
+  </view>
+</template>
+
+<template name="DrugApproval">
+  <view class="left-con">
+    <view><label>提交评审受理号</label></view>
+    <view><text>{{CategoryTotal.tjpsslh}}</text></view>
+  </view>
+  <view class="right-con">
+    <image src='/image/ConsistencyProgress/slh.png' mode='widthFix'></image>
+  </view>
+</template>
+
+<template name="ListedDrugs">
+  <view class="left-con">
+    <view><label>已通过批文</label></view>
+    <view><text>{{CategoryTotal.ytgpw}}</text></view>
+  </view>
+  <view class="right-con">
+    <image src='/image/ConsistencyProgress/pzwh.png' mode='widthFix'></image>
+  </view>
+</template>
+
+<view class="auto-width between-layout">
+  <block wx:if="{{Target_ChineseReferencePreparation == true}}">
+    <navigator url="/ChineseReferencePreparation/high_search" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ChineseReferencePreparation" data="{{CategoryTotal}}"></template>
+    </navigator>
+  </block>
+  <block wx:else>
+    <view bindtap="Show_modal" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ChineseReferencePreparation" data="{{CategoryTotal}}"></template>
+    </view>
+  </block>
+  
+  <block wx:if="{{Target_ClinicalRegistration == true}}">
+    <navigator url="/ClinicalRegistration/list?O_ConsistencyDump=0" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ClinicalRegistration" data="{{CategoryTotal}}"></template>
+    </navigator>
+  </block>
+  <block wx:else>
+    <view bindtap="Show_modal" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ClinicalRegistration" data="{{CategoryTotal}}"></template>
+    </view>
+  </block>
+
+</view>
+
+<view class="auto-width between-layout">
+  
+  <block wx:if="{{Target_DrugApproval == true}}">
+    <navigator url="/drugapproval/list?O_ConsistencyDump=0" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="DrugApproval" data="{{CategoryTotal}}"></template>
+    </navigator>
+  </block>
+  <block wx:else>
+    <view bindtap="Show_modal" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="DrugApproval" data="{{CategoryTotal}}"></template>
+    </view>
+  </block>
+  
+  <block wx:if="{{Target_ListedDrugs == true}}">
+    <navigator url="/ListedDrugs/list?O_ConsistencyDump=0" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ListedDrugs" data="{{CategoryTotal}}"></template>
+    </navigator>
+  </block>
+  <block wx:else>
+    <view bindtap="Show_modal" class="public-width between-layout" hover-class="navigator-hover">
+      <template is="ListedDrugs" data="{{CategoryTotal}}"></template>
+    </view>
+  </block>
+  
+</view>
+
+<view class="tab-nav around-layout">
+  <view class="nav-tab {{currentsTab==0 ? 'on' : ''}}" data-current="0" bindtap="TabNavs">
+    <view><image src="/image/ConsistencyProgress/{{currentsTab==0 ? 'zxdt2' : 'zxdt1'}}.png" mode='widthFix'></image></view>
+    <view><text>最新动态</text></view>
+  </view>
+  <view class="nav-tab {{currentsTab==1 ? 'on' : ''}}" data-current="1" bindtap="TabNavs">
+    <view><image src="/image/ConsistencyProgress/{{currentsTab==1 ? 'pzjd2' : 'pzjd1'}}.png" mode='widthFix'></image></view>
+    <view><text>品种进度</text></view>
+  </view>
+  <view class="nav-tab {{currentsTab==2 ? 'on' : ''}}" data-current="2" bindtap="TabNavs">
+    <view><image src="/image/ConsistencyProgress/{{currentsTab==2 ? 'qyjd2' : 'qyjd1'}}.png" mode='widthFix'></image></view>
+    <view><text>企业进度</text></view>
+  </view>
+</view>
+
+<view class="add-gap">
+  <!-- 最新动态 -->
+  <block wx:if="{{currentsTab==0 ? true : false}}">
+    <block wx:for="{{News}}" wx:key='index'>
+      <view class="auto-width between-layout news-head">
+        <view>{{News[index].title}}</view>
+        <block wx:if="{{News[index].type == 0}}">
+          <block wx:if="{{Target_DrugApproval == true}}">
+            <navigator url="/drugapproval/list?O_ConsistencyDump=0" hover-class="navigator-hover">更多</navigator>
+          </block>
+          <block wx:else>
+            <label bindtap="Show_modal">更多</label>
+          </block>
+        </block>
+        <block wx:if="{{News[index].type == 1}}">
+          <block wx:if="{{Target_ListedDrugs == true}}">
+            <navigator url="/ListedDrugs/list?O_ConsistencyDump=0" hover-class="navigator-hover">更多</navigator>
+          </block>
+          <block wx:else>
+            <label bindtap="Show_modal">更多</label>
+          </block>
+        </block>
+        <block wx:if="{{News[index].type == 2}}">
+          <block wx:if="{{Target_ClinicalRegistration == true}}">
+            <navigator url="/ClinicalRegistration/list?O_ConsistencyDump=0" hover-class="navigator-hover">更多</navigator>
+          </block>
+          <block wx:else>
+            <label bindtap="Show_modal">更多</label>
+          </block>
+        </block>
+      </view>
+
+      <!-- 最新受理 -->
+      <block wx:if="{{News[index].type == 0}}">
+        <block wx:for="{{News[index].list}}" wx:for-item="cell" wx:key='index'>
+          <block wx:if="{{Target_DrugApproval == true}}">
+            <navigator url="/drugapproval/info?AcceptanceNo={{cell.AcceptanceNo}}" class="auto-width news-body" hover-class="navigator-hover">
+              <view class="news-I">{{cell.ProductName}}</view>
+              <view class="news-II">申报企业：{{cell.CompanyName_CDE}}</view>
+              <view class="between-layout news-III">
+                <view>受理号：{{cell.AcceptanceNo}}</view>
+                <view>承办日期：{{cell.UndertakeDate}}</view>
+              </view>
+            </navigator>
+          </block>
+          <block wx:else>
+            <view bindtap="Show_modal" class="auto-width news-body" hover-class="navigator-hover">
+              <view class="news-I">{{cell.ProductName}}</view>
+              <view class="news-II">申报企业：{{cell.CompanyName_CDE}}</view>
+              <view class="between-layout news-III">
+                <view>受理号：{{cell.AcceptanceNo}}</view>
+                <view>承办日期：{{cell.UndertakeDate}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </block>
+
+      <!-- 最新通过 -->
+      <block wx:if="{{News[index].type == 1}}">
+        <block wx:for="{{News[index].list}}" wx:for-item="cell" wx:key='index'>
+          <view class="auto-width news-body">
+            <view class="news-I between-layout">
+              <view>{{cell.DrugName}}</view>
+              <view class="news-I-I" wx:if="{{cell.CollectionCategory == '通过质量和疗效一致性评价的药品'}}">新3/4类</view>
+              <view class="news-I-pub news-I-II" wx:if="{{cell.CollectionCategory == '按化学药品新注册分类批准的仿制药'}}">再评价</view>
+            </view>
+            <view class="news-II">申报企业：{{cell.ManufactureCompanyName}}</view>
+            <view class="between-layout news-III">
+              <view>受理号：{{cell.ApprovalNo}}</view>
+              <view>承办日期：{{cell.ApprovalDate}}</view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <!-- 最新公告BE备案 -->
+      <block wx:if="{{News[index].type == 2}}">
+        <block wx:for="{{News[index].list}}" wx:for-item="cell" wx:key='index'>
+          <block wx:if="{{Target_ClinicalRegistration == true}}">
+            <navigator url="/ClinicalRegistration/detail?RegistrationNo={{cell.RegistrationNo}}" hover-class="navigator-hover" class="auto-width news-body">
+              <view class="news-I between-layout">
+                <view>{{cell.ProductName}}</view>
+                <view wx:if="{{cell.TestState == '招募中'}}" class="news-I-pub news-I-III">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '主动暂停'}}" class="news-I-pub news-I-IV">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '招募完成'}}" class="news-I-pub news-I-V">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '尚未招募'}}" class="news-I-pub news-I-VI">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '已完成'}}" class="news-I-pub news-I-VII">{{cell.TestState}}</view>
+              </view>
+              <view class="news-II">申报企业：{{cell.ApplicantName}}</view>
+              <view class="between-layout news-III">
+                <view>受理号：{{cell.RegistrationNo}}</view>
+                <view>承办日期：{{cell.DateTestPublictiy}}</view>
+              </view>
+            </navigator>
+          </block>
+          <block wx:else>
+            <view bindtap="Show_modal" class="auto-width news-body" hover-class="navigator-hover">
+              <view class="news-I between-layout">
+                <view>{{cell.ProductName}}</view>
+                <view wx:if="{{cell.TestState == '招募中'}}" class="news-I-pub news-I-III">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '主动暂停'}}" class="news-I-pub news-I-IV">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '招募完成'}}" class="news-I-pub news-I-V">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '尚未招募'}}" class="news-I-pub news-I-VI">{{cell.TestState}}</view>
+                <view wx:if="{{cell.TestState == '已完成'}}" class="news-I-pub news-I-VII">{{cell.TestState}}</view>
+              </view>
+              <view class="news-II">申报企业：{{cell.ApplicantName}}</view>
+              <view class="between-layout news-III">
+                <view>受理号：{{cell.RegistrationNo}}</view>
+                <view>承办日期：{{cell.DateTestPublictiy}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </block>
+
+    </block>
+  </block>
+
+  <!-- 品种进度 -->
+  <block wx:if="{{currentsTab==1 ? true : false}}">
+    <block wx:for="{{DrugProgress}}" wx:key='index'>
+      <view class="auto-width progress-part">
+        <view class="progress-head">{{item.DrugName}}</view>
+        <view class="between-layout progress-body">
+          <view>
+            <label>待评价企业</label>
+            <block wx:if="{{Power.ConsistencyProgress == true}}">
+              <block wx:if="{{item.NeedEvaluate == 0}}">
+                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Drug_ToBeEvaluated?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+            </block>
+          </view>
+          
+          <view>
+            <label>BE备案企业</label>
+            <block wx:if="{{Power.ConsistencyProgress == true}}">
+              <block wx:if="{{item.BE == 0}}">
+                <view class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Drug_BE?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.BE}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+            </block>
+          </view>
+
+          <view>
+            <label>申报企业</label>
+            <block wx:if="{{Power.ConsistencyProgress == true}}">
+              <block wx:if="{{item.Approval == 0}}">
+                <view class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Drug_Approval?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+            </block>
+          </view>
+          
+          <view>
+            <label>通过企业</label>
+            <block wx:if="{{Power.ConsistencyProgress == true}}">
+              <block wx:if="{{item.Pass == 0}}">
+                <view class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Drug_Pass?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <!-- 企业进度 -->
+  <block wx:if="{{currentsTab==2 ? true : false}}">
+    <block wx:for="{{CompanyProgress}}" wx:key='index'>
+      <view class="auto-width progress-part">
+        <view class="progress-head">{{item.CompanyName}}</view>
+        <view class="between-layout progress-body">
+          <view>
+            <label>待评价品种</label>
+            <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
+              <block wx:if="{{item.NeedEvaluate == 0}}">
+                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Company_ToBeEvaluated?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>          
+            </block>
+          </view>
+
+          <view>
+            <label>BE备案品种</label>
+            <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
+              <block wx:if="{{item.BE == 0}}">
+                <view class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Company_BE?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.BE}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+            </block>
+          </view>
+
+          <view>
+            <label>申报品种</label>
+            <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
+              <block wx:if="{{item.Approval == 0}}">
+                <view class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Company_Approval?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+            </block>
+          </view>
+          
+          <view>
+            <label>通过品种</label>
+            <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
+              <block wx:if="{{item.Pass == 0}}">
+                <view class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+              </block>
+              <block wx:else>
+                <navigator url="/ConsistencyProgress/detail_Company_Pass?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
+              </block>
+            </block>
+            <block wx:else>
+              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

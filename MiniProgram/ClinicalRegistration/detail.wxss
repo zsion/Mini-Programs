@@ -1,0 +1,323 @@
+/* ClinicalRegistration//detail.wxss */
+@import "/common/navtab.wxss";
+.detail-title-wrap{
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+}
+.detail-title{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width:94%;
+  margin:auto;
+  margin-top: 3%;
+  padding:15rpx 0 15rpx;
+  font-size: 24rpx;
+  color: #31363B;
+  background: #FFF4F0;
+}
+.detail-title label{
+  padding:0 15rpx 0 15rpx;
+  margin-right:15rpx;
+  background: #FF957F;
+  border-radius: 20rpx;
+  color:#fff;
+}
+.title-icon{
+  margin:0 15rpx 0 15rpx;
+}
+.title-icon image{
+  width:45rpx;
+  height:44rpx;
+}
+
+.nav-wrap{
+  width:100%;
+  background: #fff;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /*初始状态 透明度为0*/
+  }
+  50% {
+    opacity: .5; /*中间状态 透明度为.5*/
+  }
+  100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; /*初始状态 透明度为0*/
+  }
+  50% {
+    opacity: .5; /*中间状态 透明度为.5*/
+  }
+  100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+
+.fixed{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 3;
+  border-bottom: 1rpx solid #F6F6F7;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+}
+
+.nav-tabs{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:94%;
+  margin: auto;
+}
+.nav-tabs view{
+  padding:0 15rpx 0 15rpx;
+  font-weight:bold;
+}
+
+.content-wrap{
+  margin-top: 15rpx;
+  background: #fff;
+}
+.add-distance{
+  margin-top: 120rpx;
+}
+.content{
+  width:94%;
+  margin: auto;
+}
+
+.toggle-wrap{
+  border-bottom:1rpx solid #ECEEF2;
+}
+
+.toggle-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height:100rpx;
+  line-height: 100rpx;
+}
+
+.toggle-title text{
+  font-size: 28rpx;
+  color: #31363B;
+}
+
+.toggle-content{
+  font-size: 26rpx;
+  color: #5C6376;
+  padding:0 15rpx 15rpx 15rpx;
+  animation-name: fadeIn;
+  animation-duration: .5s;
+}
+
+.icon-close{
+  width: 0;
+  height: 0;
+  border: 15rpx solid;
+  border-color:  transparent transparent transparent #5C6376;
+  border-radius:7rpx;
+  position: relative;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+
+.icon-close::after{
+  content: '';
+  position: absolute;
+  top: -15rpx;
+  left: -20rpx;
+  border: 15rpx solid;
+  border-color: transparent transparent transparent #fff;
+}
+
+.icon-open{
+  top:-7.5rpx;
+  left:-7.5rpx;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+
+.icon-close-toggle{
+  width: 0;
+  height: 0;
+  border: 15rpx solid;
+  border-color:  #5C6376 transparent transparent transparent;
+  border-radius:7rpx;
+  position: relative;
+  bottom:-7.5rpx;
+  left:-7.5rpx;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+
+.icon-close-toggle::after{
+  content: '';
+  position: absolute;
+  top: -20rpx;
+  left: -15rpx;
+  border: 15rpx solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.list-row{
+  display: flex;
+  justify-content: start;
+  align-items:top;
+  font-size: 26rpx;
+  color: #5C6376;
+  padding:20rpx 0 20rpx 0;
+}
+
+.list-row view:first-child{
+  width:200rpx;
+  color:#0F0F0F;
+}
+
+.list-row view:last-child{
+  width:70%;
+  display: flex;
+}
+
+.list-row view:last-child image{
+  width:60rpx;
+  height:40rpx;
+  background:#F6F6F7;
+  border-radius:5rpx;
+  margin-left: 5rpx;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+
+.rorates{
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+
+.other-more{
+  background: rgba(0,190,238,0.05);
+  border-top: 1rpx solid #94DCEE;
+  border-bottom: 1rpx solid #94DCEE;
+  font-size: 26rpx;
+  padding:0 15rpx 15rpx 15rpx;
+}
+.more-label{
+  font-size: 26rpx;
+  color: #5C6376;
+}
+.more-content{
+  font-size: 24rpx;
+  color: #5C6376;
+}
+.size-ctrl text{
+  font-size:26rpx;
+}
+.size-ctrl text:not(:first-child){
+  color:#5C6376;
+}
+
+.time-status{
+  width:100%;
+  height:100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-status-title{
+  background:#FFF3EA;
+  line-height: 60rpx;
+  color:#E96D45;
+  font-size: 26rpx;
+  padding:0 20rpx 0 20rpx;
+  border-radius:30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-status-title image{
+  width:23rpx;
+  height:23rpx;
+  margin-right: 5rpx;
+}
+.time-content{
+  padding-bottom: 30rpx;
+}
+.slip{
+  display: flex;
+  justify-content: start;
+  align-items: top;
+}
+.slip-date{
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color:#5C6376;
+  width:157rpx;
+}
+.slip-content{
+  line-height: 50rpx;
+  min-height: 100rpx;
+  font-size: 28rpx;
+  padding:0 0 25rpx 25rpx;
+}
+.slip-line{
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  position: relative;
+  width:20rpx;
+  padding-top: 25rpx;
+  margin-bottom: -25rpx;
+}
+.slip-line image{
+  width:20rpx;
+  height:20rpx;
+  position: absolute;
+  top:17.5rpx;
+  left:0;
+  right:0;
+  margin:auto;
+}
+.slip-line view{
+  width:5rpx;
+  height:100%;
+  background: #00BEEE;
+}
+.slip-line view.end{
+  height:0;
+}

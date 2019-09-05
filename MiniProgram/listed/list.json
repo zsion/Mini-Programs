@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "中国上市",
+  "onReachBottomDistance": 0,
+  "usingComponents": {
+    "WarningCode": "/components/WarningCode/WarningCode"
+  }
+}

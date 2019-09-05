@@ -1,0 +1,40 @@
+<!--ChineseReferencePreparation//high_search.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view bindtap="Close_NameTip" style="min-height:95%;">
+
+  <view class='public-simple'>
+
+    <view class='list-row prompt-wrap'>
+      <view>药品名称</view>
+      <view><input type="text" placeholder="请输入产品名称或中/英文通用名" name='' value="{{DrugName}}" bindinput="input_DrugName" /></view>
+    </view>
+    <nameTip id="nameTip_DrugName" address="{{address_DrugName}}" PublicName="{{DrugName}}" bind:PublicName="Get_DrugName" />
+
+    <view class='list-row'>
+      <view>剂型</view>
+      <view><input type="text" placeholder="请输入剂型" name='' value="{{Dosage}}" bindinput="input_Dosage" disabled="{{!Power}}"/></view>
+    </view>
+
+    <view class='list-row'>
+      <view>参比制剂持证商</view>
+      <view><input type="text" placeholder="请输入持证商名称" name='' value="{{CertificateHolder}}" bindinput="input_CertificateHolder" disabled="{{!Power}}"/></view>
+    </view>
+
+    <!-- 参比制剂来源 --> 
+    <custompicker id="CustomPicker_PreparationSourceId" Power="{{Power}}" address="{{picker_address}}" type="0" name="参比制剂来源" bind:Public_value="Get_PreparationSourceId" />
+
+    <!-- 发布时间 -->
+    <datepicker id="ReleaseTime" Power="{{Power}}" Name="发布时间" bind:Date_Start="Get_ReleaseTime_Start" bind:Date_End="Get_ReleaseTime_End"/>
+
+  </view>
+
+  <area id="area_picker" Power="{{Power}}" address="{{address}}" dbtype="{{dbtype}}" bind:ATC="Get_ATC" bind:PHIIC="Get_PHIIC"/>
+  
+  <text class='auto-high'>\n</text>
+  <view class='pub-btn-con'>
+    <button bindtap='Reset_all'>重置</button>
+    <button bindtap='Next_navigator'>确定</button>
+  </view>
+  
+
+</view>

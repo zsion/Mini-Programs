@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "仿制药一致性评价进展",
+  "usingComponents": {
+    "sort": "/components/sort/sort",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

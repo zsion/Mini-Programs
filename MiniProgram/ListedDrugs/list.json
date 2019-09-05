@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "中国橙皮书",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

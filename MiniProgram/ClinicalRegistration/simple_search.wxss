@@ -1,0 +1,5 @@
+/* ClinicalRegistration//simple_search.wxss */
+@import "/common/simple_search.wxss";
+Page{
+  background: #fff;
+}

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "CDE临床试验",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode":"/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

@@ -1,0 +1,103 @@
+<!--pages/index/index.wxml--> 
+<wxs src="../../common/tools.wxs" module="tools" />
+<import src="/common/islock.wxml" />
+<view class="home">
+
+  <template is="islock" wx:if="{{Islock == true}}"/>
+  
+  <modal hidden="{{hidden}}" title="{{modal_title[title_index]}}" confirm-text="取消" no-cancel="true" bindconfirm="confirm">
+    <view>{{modal_content[content_index]}}</view>
+    <view><text>您可直接点击下方按钮申请试用，我们会尽快联系您</text></view>
+    <view class='apply'><view bindtap='to_wjx'>申请试用</view></view>
+  </modal>
+
+  <view class="home-hd"><image src='{{imgUrl.bg}}' mode='widthFix'></image></view>
+  <view class='logo'><image src='{{imgUrl.logo}}' mode='widthFix'></image></view>
+
+  <view class='tab-wrap'>
+    <view class="tab-head">
+      <view class="nav-tab {{tabArr.curHdIndex=='0'? 'on' : ''}}" data-id="0" bindtap="tab">
+        药品
+      </view>
+      <view class="nav-tab {{tabArr.curHdIndex=='1'? 'on' : ''}}" data-id="1" bindtap="tab">
+        企业
+      </view>
+      <view class="nav-tab">
+        <navigator url="/pages/index/field" hover-class="navigator-hover">
+          领域检索
+        </navigator>
+      </view> 
+    </view>
+    <view class="tab-body">
+      <view class="body-item {{tabArr.curBdIndex=='0'? 'active' : ''}}">
+        <view class='search-wrap'>
+          <input type="text" maxlength="100" placeholder="输入药品名称查询" name='search_Con0' bindinput ="search_Con0_Input" confirm-type="search" bindconfirm="to_search0"/>
+          <view bindtap="to_search0" ><image src='/image/search.png' mode='widthFix'></image></view>
+        </view>
+        <view class='hot-part'>
+          <navigator wx:key='index' wx:for="{{Keywords}}" url="/pages/all/list?search_Type=0&search_Con={{tools.encodeURI(item)}}" hover-class="navigator-hover">{{item}}</navigator>
+        </view>
+      </view> 
+      <view class="body-item {{tabArr.curBdIndex=='1'? 'active' : ''}}">
+        <view class='search-wrap'>
+          <input type="text" maxlength="100" placeholder="输入企业名称查询" name='search_Con1' bindinput ="search_Con1_Input" confirm-type="search" bindconfirm="to_search1"/>
+          <view bindtap="to_search1" ><image src='/image/search.png' mode='widthFix'></image></view>
+        </view>
+        <view class='hot-part'>
+          <navigator wx:key='index' wx:for="{{Keywords_Company}}" url="/pages/all/list?search_Type=1&search_Con={{tools.encodeURI(item)}}" hover-class="navigator-hover">{{item}}</navigator>
+        </view>
+      </view> 
+    </view> 
+  </view>
+  
+  <view class="home-bd">
+    
+    <home-list bind:show_modal="show_modal" />
+
+    <view>
+      <view class='tabs-wrap'>
+        <view class="swiper-tabs">
+          <view class="swiper-tab-lists diff1 {{currentsTab==0 ? 'ons' : ''}}" data-current="0" bindtap="tabNavs">CDE最新受理</view>
+          <view class="swiper-tab-lists diff2 {{currentsTab==1 ? 'ons' : ''}}" data-current="1" bindtap="tabNavs">NMPA最新生产批件</view>
+          <view class="swiper-tab-lists diff3 {{currentsTab==2 ? 'ons' : ''}}" data-current="2" bindtap="tabNavs">国内销售TOP20</view>
+        </view>
+        
+        <swiper class="tabs-con-wrap" current="{{currentsTab}}" duration="500" bindchange="swiperTabs">
+          <swiper-item>
+            <navigator url="/drugapproval/index" hover-class="navigator-hover" class='care'>
+              <image src='/image/care.png' mode='widthFix'></image><text>点这里，查看更多最新数据 >></text>
+            </navigator>
+            <view>
+              <view class='tabs-con' wx:key='index' wx:for="{{CDE_List}}">
+                <view>{{item.date}}</view><view>{{item.name}}</view>
+              </view>
+            </view>
+          </swiper-item>
+          <swiper-item>
+            <navigator url="/listed/list" hover-class="navigator-hover" class='care'>
+              <image src='/image/care.png' mode='widthFix'></image><text>点这里，查看更多最新数据 >></text>
+            </navigator>
+            <view>
+              <view class='tabs-con' wx:key='index' wx:for="{{CFDA_List}}">
+                <view>{{item.date}}</view><view>{{item.name}}</view>
+              </view>
+            </view>
+          </swiper-item>
+          <swiper-item>
+            <navigator url="/sales/index" hover-class="navigator-hover" class='care'>
+              <image src='/image/care.png' mode='widthFix'></image><text>样本医院用药{{last_date}}通用名销售额排行榜,查看更多>></text>
+            </navigator>
+            <view>
+              <view class='tabs-con tabs-add' wx:key='index' wx:for="{{TOP_List}}">
+                <view>{{index+1}}</view><view>{{item.yptongyongming}}</view>
+              </view>
+            </view>
+            
+          </swiper-item>
+        </swiper>
+      </view>  
+    </view>
+
+  </view>
+  <text> \n </text>
+</view>

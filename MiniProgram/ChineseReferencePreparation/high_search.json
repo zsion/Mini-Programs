@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "仿制药参比制剂目录",
+  "backgroundColor": "#F6F6F7",
+  "usingComponents": {
+    "area": "/components/area/area",
+    "nameTip": "/components/nameTip/nameTip",
+    "custompicker": "/components/custompicker/custompicker",
+    "datepicker": "/components/datepicker/datepicker"
+  }
+}

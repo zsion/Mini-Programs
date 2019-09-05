@@ -1,0 +1,128 @@
+<!--ConsistencyProgress//DrugList.wxml-->
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+
+<view bindtap="Item_toggle">
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+  
+  <sort id="sort_DrugList" Address="{{address_sort}}" Total="{{Total}}" options_object="{{options_object}}" bind:Show_WarningCode="Get_Show_WarningCode" bind:Change_item="Get_Change_item"/>
+  
+  <!-- 列表 -->
+  <scroll-view scroll-y="{{According == true}}" scroll-top="{{topNum}}" scroll-with-animation class="list-wrap" style='height:{{content_height}}px;' enable-back-to-top="true" bindscrolltolower="Load_more">
+
+    <block wx:for="{{return_list}}" wx:key='index'>
+      <view class="auto-width progress-part">
+        <view class="progress-head">{{item.SubstanceDrug}}</view>
+        <view class="between-layout progress-body">
+          <view>
+            <label>待评价</label>
+            <block wx:if="{{item.NeedEvaluate == 0}}">
+              <view class="zero" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+            </block>
+            <block wx:else>
+              <navigator url="/ConsistencyProgress/detail_Drug_ToBeEvaluated?SubstanceDrug={{item.SubstanceDrug}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
+            </block>
+          </view>
+          <view>
+            <label>BE备案</label>
+            <block wx:if="{{item.BE == 0}}">
+              <view class="zero" hover-class="navigator-hover">{{item.BE}}</view>
+            </block>
+            <block wx:else>
+              <navigator url="/ConsistencyProgress/detail_Drug_BE?SubstanceDrug={{item.SubstanceDrug}}" hover-class="navigator-hover">{{item.BE}}</navigator>
+            </block>  
+          </view>
+
+          <view>
+            <label>申报</label>
+            <block wx:if="{{item.Approval == 0}}">
+              <view class="zero" hover-class="navigator-hover">{{item.Approval}}</view>
+            </block>
+            <block wx:else>
+              <navigator url="/ConsistencyProgress/detail_Drug_Approval?SubstanceDrug={{item.SubstanceDrug}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
+            </block>  
+          </view>
+          
+          <view>
+            <label>通过</label>
+            <block wx:if="{{item.Pass == 0}}">
+              <view class="zero" hover-class="navigator-hover">{{item.Pass}}</view>
+            </block>
+            <block wx:else>
+              <navigator url="/ConsistencyProgress/detail_Drug_Pass?SubstanceDrug={{item.SubstanceDrug}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
+            </block>
+          </view>
+        </view>
+        <view class="progress-toogle">
+          <view class="between-layout toogle-head" catchtap="Dosage_toogle" data-index="{{index}}">
+            <view>{{item.open == true ? '收起剂型' : '查看剂型'}}</view>
+            <view>
+              <icon class="icon-close-toggle {{item.open == true ? 'icon-open' : ''}}"></icon>
+            </view>
+          </view>
+          <view class="toogle-body" wx:if="{{item.open}}">
+            <view class="toogle-dosage">
+              <view class="between-layout dosage-con">
+                <view><text decode="{{true}}"></text></view>
+                <view><label>待评价企业</label></view>
+                <view><label>BE备案企业</label></view>
+                <view><label>申报企业</label></view>
+                <view><label>通过企业</label></view>
+              </view>
+              <block wx:for="{{item.ListDosage}}" wx:for-item="cell" wx:key='index'>
+                <view class="between-layout dosage-con">
+                  <view>{{cell.Dosage}}</view>
+                  <view>
+                    <block wx:if="{{cell.NeedEvaluate == 0}}">
+                      <label class="zero" hover-class="navigator-hover">{{cell.NeedEvaluate}}</label>
+                    </block>
+                    <block wx:else>
+                      <navigator url="/ConsistencyProgress/detail_Drug_ToBeEvaluated?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{cell.Dosage}}" hover-class="navigator-hover">
+                        {{cell.NeedEvaluate}}
+                      </navigator>
+                    </block>
+                  </view>
+                  <view>
+                    <block wx:if="{{cell.BE == 0}}">
+                      <label class="zero" hover-class="navigator-hover">{{cell.BE}}</label>
+                    </block>
+                    <block wx:else>
+                      <navigator url="/ConsistencyProgress/detail_Drug_BE?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{cell.Dosage}}" hover-class="navigator-hover">
+                        {{cell.BE}}
+                      </navigator>
+                    </block>  
+                  </view>
+                  <view>
+                    <block wx:if="{{cell.Approval == 0}}">
+                      <label class="zero" hover-class="navigator-hover">{{cell.Approval}}</label>
+                    </block>
+                    <block wx:else>
+                      <navigator url="/ConsistencyProgress/detail_Drug_Approval?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{cell.Dosage}}" hover-class="navigator-hover">
+                        {{cell.Approval}}
+                      </navigator>
+                    </block>  
+                  </view>
+                  <view>
+                    <block wx:if="{{cell.Pass == 0}}">
+                      <label class="zero" hover-class="navigator-hover">{{cell.Pass}}</label>
+                    </block>
+                    <block wx:else>
+                      <navigator url="/ConsistencyProgress/detail_Drug_Pass?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{cell.Dosage}}" hover-class="navigator-hover">
+                        {{cell.Pass}}
+                      </navigator>
+                    </block>  
+                  </view>
+                </view>
+              </block>
+            </view> 
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <template is="null" wx:if="{{con_null==true}}"/>
+    
+    <template is="nomore" hidden='{{con_null}}' wx:if="{{!have_more}}"/>
+
+  </scroll-view>
+</view>

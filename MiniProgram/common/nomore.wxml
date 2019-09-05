@@ -1,0 +1,7 @@
+<template name="nomore">
+  <view style='width: 90%;margin: auto;height: 100rpx;line-height: 100rpx;text-align:center;color:#A2A8A8;font-size:24rpx;'>
+    <text style='display: inline-block;width: 30%;margin:0 10rpx 0 10rpx;border-top: 1rpx solid #A2A8A8;vertical-align: middle;'></text>
+    <text>没有更多了</text>
+    <text style='display: inline-block;width: 30%;margin:0 10rpx 0 10rpx;border-top: 1rpx solid #A2A8A8;vertical-align: middle;'></text>
+  </view>
+</template>

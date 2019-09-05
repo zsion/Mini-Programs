@@ -1,0 +1,29 @@
+<!--pages/subscribe/pushlist.wxml-->
+<import src="/common/foot.wxml" />
+<view class='DingyueTs'>
+  <view class="DingyueTs-head add-fixed">
+    <view><text>|</text><text>{{search_Con}}</text></view>
+    <view>共<text>{{count}}</text>条</view>
+    <view><text>{{date}}</text></view>
+  </view>
+  <view class='DingyueTs-body'>
+    <navigator class='list-con' hover-class="navigator-hover" wx:key='index' wx:for="{{data_list}}" url="/drugapproval/info?AcceptanceNo={{item.slh}}">
+      <view class='con-left'>
+        <text>{{index+1}}</text>
+      </view>
+      <view class='con-right'>
+        <view><text>{{item.slh}}</text></view>
+        <view><text>{{item.ypmc}}</text></view>
+        <view><text>{{item.scqy}}</text></view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class='noget' wx:if="{{count == '' ? true : false}}">数据加载中...</view>
+  
+  <view>
+    <template is="foot" />
+  </view>
+  
+</view>
+

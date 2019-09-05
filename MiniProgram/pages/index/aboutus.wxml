@@ -1,0 +1,31 @@
+<!--pages/index/aboutus -->
+
+<view class="gywm">
+  
+  <view class="gywm-body">
+
+    <view class="gywm-section">
+      <view class='ptjj-title'><image src='/image/1.png'></image> <text>平台简介</text></view>
+      <view>
+        <text>药分享是一个整合了研发、生产、市场等多环节的医药综合性数据平台。</text>
+      </view>
+      <view>
+        <text>在这里，您可以便捷的找到各种规范化信息，随时随地为您的工作助力。</text>
+      </view>
+
+      <view class='lxwm-title'><image src='/image/2.png'></image> <text>联系我们</text></view>
+
+      <view class='apply'><view bindtap='to_wjx'>申请试用</view></view>
+
+      <view class='lxwm-con'>
+        <text>查看更多数据，请联系</text>
+      </view>
+
+      <view class='call-btn'><button bindtap="PhoneCall1">021-62477965</button></view>
+
+      <view class='call-btn'><button bindtap="PhoneCall2">021-62474272</button></view>
+
+    </view>
+  </view>
+  
+</view>

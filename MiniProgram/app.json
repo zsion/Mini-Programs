@@ -1,0 +1,151 @@
+{
+  "pages": [
+    "pages/index/start",
+    "pages/index/index",
+    "pages/index/field",
+    "pages/index/aboutus",
+    "pages/PDB/index",
+    "pages/subscribe/index",
+    "pages/subscribe/pushlist",
+    "pages/subscribe/history",
+    "pages/subscribe/binding",
+    "pages/all/list"
+  ],
+  "subPackages": [
+    {
+      "root": "sales/",
+      "pages": [
+        "index",
+        "field",
+        "dic",
+        "chart"
+      ]
+    },
+    {
+      "root": "listed/",
+      "pages": [
+        "list",
+        "list_all",
+        "info"
+      ]
+    },
+    {
+      "root": "ChineseReferencePreparation/",
+      "pages": [
+        "high_search",
+        "list"
+      ]
+    },
+    {
+      "root": "department/",
+      "pages": [
+        "index"
+      ]
+    },
+    {
+      "root": "yield/",
+      "pages": [
+        "index"
+      ]
+    },
+    {
+      "root": "drugapproval/",
+      "pages": [
+        "index",
+        "info",
+        "list",
+        "search"
+      ]
+    },
+    {
+      "root": "ListedDrugs/",
+      "pages": [
+        "simple_search",
+        "high_search",
+        "list"
+      ]
+    },
+    {
+      "root": "ClinicalRegistration/",
+      "pages": [
+        "simple_search",
+        "high_search",
+        "list",
+        "detail",
+        "Test_drug",
+        "Control_drug",
+        "Subject_info",
+        "Main_endpoint",
+        "Second_endpoint",
+        "Trial_development"
+      ]
+    },
+    {
+      "root": "ConsistencyProgress/",
+      "pages": [
+        "index",
+        "high_search",
+        "DrugList",
+        "CompanyList",
+        "detail_Drug_ToBeEvaluated",
+        "detail_Drug_BE",
+        "detail_Drug_Approval",
+        "detail_Drug_Pass",
+        "detail_Company_ToBeEvaluated",
+        "detail_Company_BE",
+        "detail_Company_Approval",
+        "detail_Company_Pass"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "药分享",
+    "navigationBarBackgroundColor": "#00BEEE",
+    "backgroundColor": "#F6F6F7"
+  },
+  "tabBar": {
+    "color": "#A9B0BD",
+    "selectedColor": "#606D78",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tabbar/index.png",
+        "selectedIconPath": "image/tabbar/index_HL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/PDB/index",
+        "iconPath": "image/tabbar/PDB.png",
+        "selectedIconPath": "image/tabbar/PDB_HL.png",
+        "text": "PDB"
+      },
+      {
+        "pagePath": "pages/index/aboutus",
+        "iconPath": "image/tabbar/aboutus.png",
+        "selectedIconPath": "image/tabbar/aboutus_HL.png",
+        "text": "申请试用"
+      },
+      {
+        "pagePath": "pages/subscribe/index",
+        "iconPath": "image/tabbar/center.png",
+        "selectedIconPath": "image/tabbar/center_HL.png",
+        "text": "用户中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 90000,
+    "connectSocket": 90000,
+    "uploadFile": 90000,
+    "downloadFile": 90000
+  },
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [
+    "wx59827abee0291a0e",
+    "wxd947200f82267e58"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

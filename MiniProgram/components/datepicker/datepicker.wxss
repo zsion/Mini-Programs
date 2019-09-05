@@ -1,0 +1,4 @@
+@import "/common/simple_search.wxss";
+.weui-input{
+  color:#AAADB5;
+}

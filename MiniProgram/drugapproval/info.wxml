@@ -1,0 +1,446 @@
+<wxs src="../common/tools.wxs" module="tools" />
+
+<view class='tabs-wrap'>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+    <view class="swiper-tabs TitleSwitch" style='background:#fff' >
+        <view class="swiper-tab-list {{Declaration==0 ? 'on' : ''}}"  data-current="0" data-name='Declaration' bindtap="swiperNav">
+          <text>品种详情</text>
+        </view>
+        <text class='fen'></text>
+        <view class="swiper-tab-list {{Declaration==1 ? 'on' : ''}}" data-current="1" data-name='Declaration' bindtap="swiperNav">
+          <text >审评时间轴</text>
+        </view>
+    </view>
+    <swiper class="swiper-wrap" style='height:{{windowHeight}};background:#fff;' current="{{Declaration}}" duration="500" data-name='Declaration' bindchange="swiperTerm" >
+        <swiper-item >
+          <scroll-view class='Info'  style='height:{{windowHeight}};' scroll-y="true" scroll-top="0" >
+               <view class="BaseInfo ">
+                    <view class="ModuleContent">
+                        <view class="td td1">受理号</view>
+                        <view class="td td2">{{item.AcceptanceNo}}</view>
+                    </view>
+                     <view class="ModuleContent">
+                        <view class="td td1">药品名称</view>
+                        <view class="td td2">{{item.ProductName}}</view>
+                    </view>
+                     <view class="ModuleContent">
+                        <view class="td td1">剂型</view>
+                        <view class="td td2">{{item.Dosage}}</view>
+                    </view>
+                     <view class="ModuleContent">
+                        <view class="td td1">CDE源企业名称</view>
+                        <view class="td td2">{{item.CompanyName_CDE}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">NMPA源企业名称</view>
+                        <view class="td td2">{{item.CompanyName_CFDA}}</view>
+                    </view>
+                     <view class="ModuleContent">
+                        <view class="td td1">承办日期</view>
+                        <view class="td td2">{{item.UndertakeDate}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">申请类型</view>
+                        <view class="td td2">{{item.ApplyType_New}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">注册分类</view>
+                        <view class="td td2">{{item.RegisterType}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">办理状态</view>
+                        <view class="td td2">{{item.HandleState_CFDA}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">状态开始时间</view>
+                        <view class="td td2">{{item.HandleStartDate_CFDA}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">审批结论</view>
+                        <view class="td td2" style='color: #FFA30F;'>{{item.Conclusion}}</view>
+                    </view>
+                    <view class="ModuleContent">
+                        <view class="td td1">相关批准文号/注册证号</view>
+                          
+                        <view class="td td2">
+                        
+                             <block wx:if="{{Power}}" >
+                              <block wx:if="{{item.ApprovalOrRegistrationNo!=''&&item.total!=null}}">（{{item.ApprovalOrRegistrationNo}}）</block>
+                            </block>
+                             <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                        </view>
+                    </view>
+               </view>
+                <view class="ExtendInfo">
+                  <view class='ModuleTitle'>
+                      扩展信息
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">治疗类别</view>
+                      <view class="td td2">
+                        <block wx:if="{{Power}}">
+                          {{item.Category}}<text>\n></text>{{item.SubCategory}}
+                        </block>
+                         <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">ATC分类</view>
+                      <view class="td td2">
+                      <block wx:if="{{Power}}">
+                         {{item.ATCCategory01}}<text>\n></text>{{item.ATCCategory02}}<text>\n></text>{{item.ATCCategory03}}<text>\n></text>{{item.ATCCategory04}}
+                       </block>
+                       <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">特殊审评通道</view>
+                      <view class="td td2"> 
+                       <block wx:if="{{Power}}">
+                          <block wx:if="{{item.FirstProject}}"><text class='Project'>优先审评</text></block>
+                          <block wx:if="{{item.SpecialProject}}" class='Project'><text>特殊审评</text></block>
+                          <block wx:if="{{item.MajorProject}}" class='Project'><text>重大专项</text></block>
+                          <block wx:if="{{(item.MajorProject||item.FirstProject||item.FirstProject)&&item.PriorityReviewReasons!=''}}" ><text>\n></text></block>
+                          <text>{{item.PriorityReviewReasons}}</text>
+                        </block>
+                        <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">通用名国内最高进度</view>
+                      <view class="td td2">
+                       <block wx:if="{{Power}}">
+                      {{item.HighestProgress_GenericName}}
+                      </block>
+                      <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                    
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">品种国内最高进度
+                      <view class='Tips' bindtap='ShowTip'>
+                         <image src="/image/tips.png" ></image>
+                         <view class="Pediatric" hidden='{{TipShow.hidden}}'>品种含义: 同一药品通用名和剂型视为一个品种.
+                         </view>
+                      </view>
+                      </view>
+                      <view class="td td2">
+                       <block wx:if="{{Power}}">
+                         {{item.HighestProgress_Variety}}
+                       </block>
+                        <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">品种批准国产企业数</view>
+                      <view class="td td2">
+                       <block wx:if="{{Power}}">
+                          {{item.NumberApprovedDmEnterprise}}
+                       </block>
+                        <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">品种申报企业数</view>
+                      <view class="td td2">
+                       <block wx:if="{{Power}}">
+                           {{item.ApprovalCompanyNum}}
+                       </block>
+                        <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+                  <view class="ModuleContent">
+                      <view class="td td1">品种申报上市企业数</view>
+                      <view class="td td2">
+                       <block wx:if="{{Power}}">
+                          {{item.NumberDeclareListingEnterprise}}
+                      </block>
+                      <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                      </view>
+                  </view>
+               </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view class='Info'  style='height:{{windowHeight}};' scroll-y="true" scroll-top="0">
+             <view class='distance'>
+              <view class='HandStatus'>
+                  <label><image src="/image/tips.png" ></image>当前办理状态：</label>
+                  <text>{{item.HandleState_CFDA}}</text>
+              </view>  
+             </view>
+              
+             <!-- 时光轴模块开始 -->
+            <view class="timeline-box"> 
+                <block wx:for="{{item.TimeLine}}" wx:key="key"  wx:for-item='TimeLine'>    
+                   <!--承办日期--> <!--CDE送达通知-->                                         
+                   <block wx:if="{{TimeLine.Type == 'UndertakeDate'||TimeLine.Type == 'OnsiteInspection'||TimeLine.Type == 'ThreeInOneDate'||TimeLine.Type == 'SendNotification'||TimeLine.Type == 'SelfCheckDate'||TimeLine.Type == 'PublishDate'}}">
+                      <block wx:if="{{TimeLine.Type == 'OnsiteInspection'&&TimeLine.TypeAdd=='triangle'}}">
+                          <view class="timeline-list">
+                              <view class="month TimeMonth"></view>
+                              <view class="Stick timelist">
+                                  <image src="/image/timeline_04.png"></image>
+                              </view>
+                              <view class='TimeContent'>
+                                  <view class="timelinebox-tit NewTimeContent">
+                                      <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">三合一审评</label>
+                                  </view>
+                              </view>
+                          </view>
+                      </block>
+                      <view class="timeline-list">
+                          <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                          <view class="Stick timelist">
+                              <image src="/image/timeline_04.png"></image>
+                              
+                          </view>
+                          <view class='TimeContent'>
+                              <view class="timelinebox-tit NewTimeContent">
+                                  <label class='{{Power||TimeLine.Type == "UndertakeDate"?"":"fuzzy"}}' style="display:inline-block;">{{TimeLine.Name}}</label>
+                              </view>
+                          </view>
+                      </view>
+                   </block>
+                   <!--新报任务-->   <!--补充任务--> <!--一致性评价任务--><!--一致性评价补充任务-->
+                   <block wx:if="{{TimeLine.Type == 'NewEnter'||TimeLine.Type == 'SupplementEnter'||TimeLine.Type == 'ConsistencyNewEnter'||TimeLine.Type == 'ConsistencySupplementEnter'}}">
+                      <view class="timeline-list">
+                            <view class="month TimeMonth"></view>
+                            <view class="Stick timelist" >
+                            </view>
+                            <view class='TimeContent'>
+                                <view class="timelinebox-tit NewTimeContent Noafter">
+                                    <text class='{{Power?"":"fuzzy"}}'>{{TimeLine.Name}}</text>
+                                    <view class='TimeDetail'>
+                                      <block wx:if="{{TimeLine.Content.TaskStatus!= null}}">
+                                          <text class='examine {{Power?"":"fuzzy"}}'>{{TimeLine.Content.TaskStatus}}</text>
+                                      </block>
+                                      <text class='TimeWord {{Power?"":"fuzzy"}}' style="font-size:14px;">+{{TimeLine.Content.Days}}天</text>
+                                    </view>
+                                </view>
+                            </view>
+                      </view>
+                      <view class="timeline-list">
+                          <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                          <view class="Stick timelist" >
+                              <image src="/image/timeline_04.png"></image>
+                              
+                          </view>
+                          <view class='TimeContent'>
+                              <view class="timelinebox-tit NewTimeContent">
+                                  <label  class='{{Power?"":"fuzzy"}}' style="display:inline-block;">{{TimeLine.NameType}}</label>
+                                  <view >
+                                      <view  class='TimeWord {{Power?"":"fuzzy"}}' wx:for="{{TimeLine.Content.EnterQueues}}" wx:key="key"  wx:for-item='TimeEnterQueues' >
+                                          {{TimeEnterQueues.DrugType}} {{TimeEnterQueues.TaskType}}<block wx:if="{{TimeLine.Type== 'SupplementEnter'}}">({{TimeEnterQueues.Branch}})</block> 序号：{{TimeEnterQueues.SerialNumber}}
+                                      </view>
+                                  </view>
+                                  <view style=''>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>药理毒理</view>
+                                          <view  wx:for="{{TimeLine.Content.PT}}" wx:key="key"  class='ContentBlock {{Power?"":"fuzzy"}}'>
+                                              <text class='TimeFormat {{Power?"":"fuzzy"}}'>{{item.Date}}</text>
+                                              {{item.Describe}}
+                                          </view>
+                                      </view>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>临床</view>
+                                          <view  wx:for="{{TimeLine.Content.CP}}" wx:key="key"  class='ContentBlock {{Power?"":"fuzzy"}}'>
+                                              <text class='TimeFormat {{Power?"":"fuzzy"}}'>{{item.Date}}</text>
+                                              {{item.Describe}}
+                                          </view>
+                                      </view>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>药学</view>
+                                          <view  wx:for="{{TimeLine.Content.Pharmacy}}" wx:key="key"  class='ContentBlock {{Power?"":"fuzzy"}}'>
+                                              <text class='TimeFormat {{Power?"":"fuzzy"}}'>{{item.Date}}</text>
+                                              {{item.Describe}}
+                                          </view>
+                                      </view>
+                                      
+                                    <block wx:if="{{(TimeLine.Type == 'ConsistencyNewEnter'||TimeLine.Type == 'ConsistencySupplementEnter')&& TimeLine.Content.Statistic!=null}}">
+                                       <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>统计</view>
+                                          <view  wx:for="{{TimeLine.Content.Statistic}}" wx:key="key"  class='ContentBlock {{Power?"":"fuzzy"}}'>
+                                              <text class='TimeFormat {{Power?"":"fuzzy"}}'>{{item.Date}}</text>
+                                              {{item.Describe}}
+                                          </view>
+                                      </view>
+                                     </block>
+                                  </view>
+                              </view>                     
+                              <block wx:if="{{TimeLine.Content.Remarks!= ''&&TimeLine.Content.Remarks!= null&&TimeLine.Content.Remarks!= undefined}}">
+                                  <view class="timelinebox-tit NewTimeContent Noafter">
+                                      <text class='{{Power?"":"fuzzy"}}' style="">备注情况</text>
+                                      <view class="TimeBaseInfo">
+                                          <block wx:for="{{TimeLine.Content.Remarks}}" wx:key="key"  wx:for-item='TimeRemarks'>
+                                              <block wx:if="{{TimeRemarks.Remark!= ''}}">
+                                                  <view class="TimeWord">
+                                                    <span class='TimeFormat {{Power?"":"fuzzy"}}'>{{TimeRemarks.ChangeTime}}</span>
+                                                    <span class='TimeFormat {{Power?"":"fuzzy"}}'>{{TimeRemarks.Remark}}</span>
+                                                  </view>
+                                              </block>
+                                          </block> 
+                                      </view>
+                                  </view>
+                              </block>
+
+                              <block wx:if="{{TimeLine.Content.NowQueues!= ''&&TimeLine.Content.NowQueues!= null&&TimeLine.Content.NowQueues!= undefined}}">
+                                  <view class="timelinebox-tit NewTimeContent Noafter">
+                                      <text class='{{Power?"":"fuzzy"}}' style="">当前状态</text>
+                                      <view class="TimeBaseInfo">
+                                          <block wx:if="{{TimeLine.Type == 'NewEnter'||TimeLine.Type == 'SupplementEnter'}}">
+                                              <view class='TimeWord {{Power?"":"fuzzy"}}' wx:for="{{TimeLine.Content.NowQueues}}" wx:key="key"  wx:for-item='NowQueues' >
+                                                    {{NowQueues.DrugType}}/{{NowQueues.TaskType}}
+                                                    <block wx:if="{{NowQueues.Branch != ''&&NowQueues.Branch != null}}">
+                                                        ({{NowQueues.Branch}})
+                                                    </block> 序号：{{NowQueues.SerialNumber}}
+                                              </view>
+                                          </block> 
+                                          <block wx:if="{{TimeLine.Type == 'ConsistencyNewEnter'||TimeLine.Type == 'ConsistencySupplementEnter'}}">
+                                                  <view wx:for="{{TimeLine.Content.NowQueues}}" wx:key="key"  wx:for-item='NowQueues'  class='TimeWord {{Power?"":"fuzzy"}}'>
+                                                    {{NowQueues.TaskType}} 序号：{{NowQueues.SerialNumber}}
+                                                  </view>
+                                          </block>
+                                      </view>
+                                  </view>
+                              </block>
+                          </view>
+                      </view>
+                   </block>  
+                   <!--离开的通用模板-->
+                  <block wx:if="{{TimeLine.Type == 'NewExit'||TimeLine.Type == 'SupplementExit'||TimeLine.Type == 'ConsistencyNewExit'||TimeLine.Type == 'ConsistencySupplementExit'}}">
+                      <view class="timeline-list">
+                          <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                          <view class="Stick timelist">
+                              <image src="/image/timeline_04.png"></image>
+                              
+                          </view>
+                          <view class='TimeContent'>
+                              <view class="timelinebox-tit NewTimeContent">
+                                  <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">{{TimeLine.Name}}</label>
+                                  
+                                  <view class="TimeBaseInfo">
+                                      <view class='TimeWord {{Power?"":"fuzzy"}}' wx:for="{{TimeLine.Content.ExitQueues}}" wx:key="key"  wx:for-item='Exit'>
+                                      
+                                       <block wx:if="{{TimeLine.Type == 'ConsistencyNewExit'}}" >
+                                            <block wx:if="{{Exit.DrugType != null}}" >
+                                                {{Exit.TaskType}}
+                                            </block>
+                                          
+                                        </block>
+                                         <block wx:if="{{TimeLine.Type != 'ConsistencyNewExit'}}" >
+                                            <block wx:if="{{Exit.DrugType != null}}">{{Exit.DrugType}}/</block><block wx:if="{{Exit.TaskType != null}}">{{Exit.TaskType}}</block>
+                                        </block>
+                                          <block wx:if="{{TimeLine.Type == 'SupplementExit'}}" >
+                                              ({{Exit.Branch}})
+                                          </block> 序号：{{Exit.SerialNumber}}
+                                      </view>
+                                  </view>
+                              </view>
+                          </view>
+                      </view>
+                   </block>
+
+                  <!--受理企业现场检查申请-->
+                  <block wx:if="{{TimeLine.Type == 'SiteInspectionApplication'}}"> 
+                      <block wx:if="{{TimeLine.TypeAdd=='triangle'}}">
+                          <view class="timeline-list">
+                              <view class="month TimeMonth"></view>
+                              <view class="Stick timelist">
+                                  <image src="/image/timeline_04.png"></image>
+                                  
+                              </view>
+                              <view class='TimeContent'>
+                                  <view class="timelinebox-tit NewTimeContent">
+                                      <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">三合一审评</label>
+                                  </view>
+                              </view>
+                          </view>
+                      </block>
+                      <view class="timeline-list">
+                          <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                          <view class="Stick timelist">
+                              <image src="/image/timeline_04.png"></image>
+                              
+                          </view>
+                          <view class='TimeContent'>
+                              <view class="timelinebox-tit NewTimeContent">
+                                  <text class='{{Power?"":"fuzzy"}}'>受理企业现场检查申请</text>
+                                  <view style=''>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}' >检查日期</view>
+                                          <view class='ContentBlock {{Power?"":"fuzzy"}}'>{{TimeLine.Content.ProductionSiteInspection}}</view>
+                                      </view>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>现场检查机构</view>
+                                          <view class='ContentBlock {{Power?"":"fuzzy"}}'>{{TimeLine.Content.Organization}}</view>
+                                      </view>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>检查员</view>
+                                          <view class='ContentBlock {{Power?"":"fuzzy"}}'>{{TimeLine.Content.Inspector}}</view>                                        
+                                      </view>
+                                      <view class='TimeBaseInfo TimeBlock {{Power?"":"fuzzy"}}'>
+                                          <view class='TitleBlock {{Power?"":"fuzzy"}}'>经办人</view>
+                                          <view class='ContentBlock {{Power?"":"fuzzy"}}'>{{TimeLine.Content.Manager}}</view>
+                                      </view>
+                                  </view>
+                              </view>
+                          </view>
+                      </view>
+                   </block>
+                  
+                </block>
+                 <block wx:for="{{item.TimeLine}}" wx:key="key"  wx:for-item='TimeLine'>    
+                  <!--开始审批-->
+                  <block wx:if="{{TimeLine.Type == 'Approval'}}"> 
+                      <view class="timeline-list">
+                          <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                          <view class="Stick timelist">
+                              <image src="/image/timeline_04.png"></image>
+                              
+                          </view>
+                          <view class='TimeContent'>
+                              <view class="timelinebox-tit NewTimeContent">
+                                  <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">NMPA开始审批</label>
+                              </view>
+                          </view>
+                      </view>
+                   </block>
+                    <!--完成审批，开始制证-->
+                    <block wx:if="{{TimeLine.Type == 'ForCertificate'}}"> 
+                        <view class="timeline-list">
+                            <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                            <view class="Stick timelist">
+                                <image src="/image/timeline_04.png"></image>
+                            </view>
+                            <view class='TimeContent'>
+                                <view class="timelinebox-tit NewTimeContent">
+                                    <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">NMPA完成审批，开始制证</label>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                    <!--制证完毕，已发批件-->
+                    <block wx:if="{{TimeLine.Type == 'ApprovalForm'}}"> 
+                        <view class="timeline-list">
+                            <view class="month TimeMonth">{{TimeLine.Mark}}</view>
+                            <view class="Stick timelist" style="background:#fff;">
+                                <image src="/image/timeline_04.png"></image>
+                            </view>
+                            <view class='TimeContent'>
+                                <view class="timelinebox-tit NewTimeContent">
+                                    <label class='{{Power?"":"fuzzy"}}' style="display:inline-block;">NMPA制证完毕，已发批件                                           </label>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                 </block>
+            </view>
+          <!-- 时光轴模块结束 -->          
+          </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

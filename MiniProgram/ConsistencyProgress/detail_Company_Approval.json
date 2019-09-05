@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "企业申报一致性评价受理号列表",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

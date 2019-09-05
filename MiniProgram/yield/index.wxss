@@ -1,0 +1,38 @@
+.con-title{
+  text-align: center;
+  font-size: 32rpx;
+  color:#3B3B3B;
+  padding:30rpx 0 30rpx;
+}
+.con-tp{
+  width:100%;
+  text-align: center;
+}
+.con-tp image{
+  margin:auto;
+}
+.con-text{
+  width:90%;
+  margin:auto;
+  padding:30rpx 0 30rpx;
+  font-size: 26rpx;
+  color:#3B3B3B;
+}
+.con-tip{
+  text-align: center;
+  font-size: 24rpx;
+  color:#9F9F9F;
+}
+.con-btn{
+  padding:30rpx 0 30rpx;
+}
+.con-btn view{
+  width:300rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  margin:auto;
+  text-align: center;
+  background: #00BEEE;
+  font-size: 30rpx;
+  color:#fff;
+}

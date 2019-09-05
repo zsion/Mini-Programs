@@ -1,0 +1,46 @@
+<import src="/common/nomore.wxml" />
+<view class='body-wrap'>
+  <block wx:if="{{Type == 0}}">
+    <view class='list-wrap' wx:for="{{DataList}}" wx:key="index">
+      <label class='list-tip {{color_array[index%3]}}'>{{item.No}}</label>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/location.png' mode='widthFix'></image><text>名称</text>
+      </view>
+      <view class='list-content'>
+        {{item.Name}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/book.png' mode='widthFix'></image><text>用法</text>
+      </view>
+      <view class='list-content'>
+        {{item.Usage}}
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='list-wrap' wx:for="{{DataList}}" wx:key="index">
+      <label class='list-tip {{color_array[index%3]}}'>{{item.No}}</label>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/zblx.png' mode='widthFix'></image><text>指标类型</text>
+      </view>
+      <view class='list-content'>
+        {{item.IndicatorsType}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/zb.png' mode='widthFix'></image><text>指标</text>
+      </view>
+      <view class='list-content'>
+        {{item.Indicators}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/pjsj.png' mode='widthFix'></image><text>评价时间</text>
+      </view>
+      <view class='list-content'>
+        {{item.EvaluationTime}}
+      </view>
+    </view>
+  </block>
+  <view wx:if="{{!have_more}}">
+    <template is="nomore" />
+  </view>
+</view>

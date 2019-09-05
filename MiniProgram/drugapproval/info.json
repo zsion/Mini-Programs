@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "中国申报药品",
+  "usingComponents": {
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  }
+}

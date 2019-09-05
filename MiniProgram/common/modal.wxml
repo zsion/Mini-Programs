@@ -1,0 +1,8 @@
+<template name="modal">
+  <modal hidden="{{hidden}}" title="提示" confirm-text="取消" no-cancel="true" bindconfirm="confirm">
+    <view><text>查看更多数据，请联系</text></view>
+    <view class='tel'><text bindtap="PhoneCall1">021-62477965</text><text bindtap="PhoneCall2">021-62474272</text></view>
+    <view><text>或直接点击下方按钮申请试用，我们会尽快联系您</text></view>
+    <view class='apply'><view bindtap='to_wjx'>申请试用</view></view>
+  </modal>
+</template>

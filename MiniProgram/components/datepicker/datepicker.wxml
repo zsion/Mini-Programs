@@ -1,0 +1,16 @@
+<view class='list-row'>
+  <view>{{Name}}</view>
+  <view class='date-picker'>
+    <view>
+      <picker mode="date" value="{{Date_Start}}" end="{{Date_End}}" bindchange="Date_Start_Change" disabled="{{!Power}}">
+        <view>{{Date_Start == '' ? '请选择开始时间' : Date_Start}}</view>
+      </picker>
+    </view>
+    <view>~</view>
+    <view>
+      <picker mode="date" value="{{Date_End}}" start="{{Date_Start}}" bindchange="Date_End_Change" disabled="{{!Power}}">
+        <view>{{Date_End == '' ? '请选择结束时间' : Date_End}}</view>
+      </picker>
+    </view>
+  </view>
+</view>

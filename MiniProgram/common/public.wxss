@@ -1,0 +1,29 @@
+.auto-width{
+  width: 94%;
+  margin: auto;
+}
+.between-layout{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.around-layout{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.evenly-layout{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.start-layout{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.end-layout{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

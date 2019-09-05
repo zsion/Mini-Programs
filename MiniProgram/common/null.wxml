@@ -1,0 +1,6 @@
+<template name="null">
+  <view style="width:500rpx;height:300rpx;position: absolute;top:-300rpx;right:0;bottom:0;left:0;margin:auto;text-align:center;">
+    <view><image src='/image/none.png' mode='widthFix' style="width:175rpx;"></image></view>
+    <text style="color: #B0B8C8;font-size:28rpx;">暂未找到相关内容</text>
+  </view>
+</template>

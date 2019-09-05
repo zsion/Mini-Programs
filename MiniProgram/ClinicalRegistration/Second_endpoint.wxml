@@ -1,0 +1,4 @@
+<!--ClinicalRegistration//Second_endpoint.wxml-->
+<view>
+  <detaillist id="detaillist" Address="{{Address}}" RegistrationNo="{{RegistrationNo}}" Type="{{Type}}" />
+</view>

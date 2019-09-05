@@ -1,0 +1,80 @@
+@import "/common/lib/weui.wxss";
+page{
+  background: #fff;
+}
+/* 搜索栏切换 */
+.tab-wrap{
+  width:100%;
+  height:auto;
+}
+/* 下面是tobar */ 
+.swiper-tab {
+  width: 100%;
+  margin:auto;
+  text-align: center;
+  height:70rpx;
+  background-color:white;
+  display: flex;
+  justify-content:space-between;
+} 
+.swiper-tab-list {
+  width:50%;
+  font-size: 32rpx;
+  height:66rpx;
+  line-height: 66rpx;
+  font-weight:bold;
+} 
+.on {
+  color: #00B9E7;
+  border-bottom: 5rpx solid #00B9E7;
+  height:66rpx;
+  line-height: 66rpx;
+}
+.swiper-wrap{
+  height:1000rpx;
+}
+.swiper-box {
+  display: block;
+  height: 1000rpx;
+  width: 100%;
+  overflow: hidden;
+} 
+.swiper-box view {
+  height: 1000rpx;
+  text-align: center;
+}
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+.weui-label{
+  font-size: 26rpx;
+  color: #494949;
+}
+.weui-input{
+  font-size: 26rpx;
+  color: #494949;
+  background: #F2F3F5;
+}
+
+.area-btn-con{
+  width:100%;
+  margin-top:100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.area-btn-con button{
+  margin: 0;
+  padding: 0 100rpx 0 100rpx;
+  font-size: 30rpx;
+}
+.area-btn-con button:first-child{
+  background: #fff;
+  border: 1px solid #F2F2F4;
+  color: #33363A;
+}
+.area-btn-con button:last-child{
+  background: #00ABD6;
+  color: #fff;
+}

@@ -1,0 +1,59 @@
+<view class="swiper-tab" style="top:{{Top}}rpx;">
+  <block wx:for="{{Name_Array}}" wx:key="index" wx:if="{{item.type != Special_SubCategoryId}}">
+    <view style="width:{{item.Width}}%;" class="swiper-tab-list {{item.Open == true ? 'on' : ''}}" data-current="{{index}}" bindtap="tabNav">
+      {{item.title}}<label class="arrow {{item.Open == true ? 'rorate' : ''}}"></label>
+    </view>
+  </block>
+</view>
+
+<block wx:for="{{Name_Array}}" wx:key="indexs">
+  <scroll-view scroll-y scroll-top="0" wx:if='{{item.Open}}' class="content {{item.control_type == 2 ? 'changebg': ''}}" style='height:{{content_height}}px;'>
+    
+    <!---治疗领域--->
+    <block wx:if="{{item.type == Special_CategoryId}}">
+      <view class='select-list-add'>
+        <view wx:for="{{item.items}}" wx:for-item="cell" wx:key='index' data-index="{{index}}" data-name="{{cell.item_title}}" data-control_type="{{item.control_type}}" data-field="{{item.field}}" data-type="{{item.type}}" data-item_val="{{cell.item_val}}" bindtap="{{Power == true ? 'Choice_CategoryId' : 'Show_modal'}}">
+          <view class='big-list'>
+            <label class="{{cell.open == true ? 'choice-color' : ''}}">{{cell.item_title}}({{cell.total}})</label>
+            <icon wx:if='{{cell.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+          <view class='small-list' wx:if="{{cell.open == true}}">
+            <view wx:for="{{SubCategoryId}}" wx:for-item="Subcell" wx:key='index' data-index="{{index}}" data-name="{{Subcell.item_title}}" data-control_type="{{item.control_type}}" catchtap='Choice_SubCategoryId'>
+              <label class="{{Subcell.open == true ? 'choice-color' : ''}}">{{Subcell.item_title}}{{Subcell.total}}</label>
+              <icon wx:if='{{Subcell.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!---其它--->
+    <block wx:else>
+      <view class='select-list'>
+        <view wx:for="{{item.items}}" wx:for-item="cell" wx:key='index' data-index="{{index}}" data-name="{{cell.item_title}}" data-control_type="{{item.control_type}}" data-field="{{item.field}}" data-type="{{item.type}}" bindtap="{{Power == true ? 'Choice' : 'Show_modal'}}">
+          <block wx:if='{{item.control_type != Special_SubCategoryId}}'>
+            <label class="{{cell.open == true ? 'choice-color' : ''}}">{{cell.item_title}}({{cell.total}})</label>
+            <icon wx:if='{{cell.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </block>
+          <block wx:else>
+            <label class="{{cell.open == true ? 'choice-color' : ''}}">{{cell.item_title}}</label>
+            <block wx:if="{{cell.icon == 1}}">
+              <image hidden="{{cell.open}}" mode="widthFix" src="/image/sort.png" class="cell-sort"></image>
+              <image hidden="{{!cell.open}}" mode="widthFix" src="/image/sorts.png" class="cell-sort"></image>
+            </block>
+            <block wx:else>
+              <image hidden="{{cell.open}}" mode="widthFix" src="/image/sorth.png" class="cell-sort"></image>
+              <image hidden="{{!cell.open}}" mode="widthFix" src="/image/sorths.png" class="cell-sort"></image>
+            </block>
+          </block>  
+        </view>
+      </view>
+    </block>
+    
+    <text class='auto-high'>\n</text>
+    <view class='pub-btn-con' wx:if="{{item.control_type != 2}}">
+      <button bindtap="{{Power == true ? 'Reset' : 'Show_modal'}}" data-control_type="{{item.control_type}}" data-field="{{item.field}}" data-type="{{item.type}}">重置</button>
+      <button bindtap="{{Power == true ? 'Sure' : 'Show_modal'}}" data-control_type="{{item.control_type}}" data-field="{{item.field}}" data-type="{{item.type}}">确定</button>
+    </view>
+  </scroll-view>
+</block>

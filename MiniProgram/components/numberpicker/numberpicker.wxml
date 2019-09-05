@@ -1,0 +1,12 @@
+<view class='list-row'>
+  <view>{{Name}}</view>
+  <view class='number-picker'>
+    <view>
+      <input type="number" cursor="15" maxlength="10" placeholder="" value="{{Number_Start}}" bindinput="Input_Number_Start" disabled="{{!Power}}"/>
+    </view>
+    <view>~</view>
+    <view>
+      <input type="number" cursor="15" maxlength="10" placeholder="" value="{{Number_End}}" bindinput="Input_Number_End" disabled="{{!Power}}"/>
+    </view>
+  </view>
+</view>

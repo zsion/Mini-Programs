@@ -1,0 +1,58 @@
+<!--/sales/dic -->
+<import src="/common/null.wxml" />
+<wxs src="../common/tools.wxs" module="tools" />
+<view class="list">
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+
+  <view class='list-head'>
+    <view>关键词“<text>{{search_Con}}</text></view>
+    <view>”，共 <text>{{total}}</text> 条结果</view>
+  </view>
+  <view>
+    <view class='list-tab' wx:if="{{search_Type == 0 || search_Type == 1}}">
+      <view wx:if="{{show0}}" class="{{search_Type == 0 ? 'high-light' : ''}}"><text>药品</text></view>
+      <view wx:if="{{show1}}" class="{{search_Type == 1 ? 'high-light' : ''}}"><text>企业</text></view>
+    </view>
+    <view wx:if="{{search_Type == -1}}">
+      <view class='list-tab' wx:if="{{data_length == 1}}">
+        <view wx:if="{{show3}}" class="{{show3 == true ? 'high-light' : ''}}"><text>药品</text></view>
+        <view wx:if="{{show4}}" class="{{show4 == true ? 'high-light' : ''}}"><text>企业</text></view>
+      </view>
+      <view class='list-tab' wx:if="{{data_length == 2}}">
+        <view class="{{show_Type0 == true ? 'high-light' : ''}}" bindtap='tab_touch0'><text>药品</text></view>
+        <view class="{{show_Type1 == true ? 'high-light' : ''}}" bindtap='tab_touch1'><text>企业</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="list-body">
+    <scroll-view scroll-y style="height: {{windowHeight}}" scroll-into-view="{{alpha}}">
+      <view class="alphabet">
+        <view class="alphabet-list">
+          <view wx:for="{{list}}" wx:key="unique" id="{{item.first}}" class="section-item">
+            <view class="section-item-header">
+              {{item.first}}
+            </view>
+            <view wx:for="{{item.list}}" wx:key="unique" wx:for-item="cell" wx:for-index="cellIndex" class="section-item-cells">
+              <navigator url="/sales/chart?search_Type={{send_search_Type}}&search_Con={{tools.encodeURI(cell)}}" hover-class="navigator-hover">
+                <view class="section-item-cell {{cellIndex != (item.list.length-1) ? 'border-bottom':''}}">
+                  <text>{{cell}}</text>
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view data-id="selector" catchtouchstart="handlerAlphaTap" catchtouchmove="handlerMove" class="alphanet-selector">
+      <view data-ap="{{item.first}}" wx:for="{{list}}" wx:key="unique" class="selector-one">
+        {{item.first}}
+      </view>
+    </view>
+  </view>
+  
+</view>

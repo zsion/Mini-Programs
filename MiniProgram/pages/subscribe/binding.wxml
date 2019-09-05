@@ -1,0 +1,33 @@
+<!--pages/subscribe/binding.wxml-->
+<view class='binding-body'>
+  <view class='subs-title'><text>欢迎绑定为正式用户</text></view>
+  <view class='part part-I'>
+    <view><image src='/image/binding/1.png' mode='widthFix'></image></view>
+    <view class='part-input'><input type="text" cursor="15" maxlength="25" placeholder="请输入用户名" name='user_name' bindinput ="user_name_input" bindblur="user_name_blur" /></view>
+  </view>
+  <view class='part part-II'>
+    <view><image src='/image/binding/2.png' mode='widthFix'></image></view>
+    <view class='part-input'><input type="password" cursor="15" maxlength="15" placeholder="请输入密码" name='user_password' bindinput ="user_password_input" bindblur="user_password_blur" /></view>
+  </view>
+  <view class='part part-III'>
+    <view><image src='/image/binding/3.png' mode='widthFix'></image></view>
+    <view class='part-input'><input type="number" cursor="15" maxlength="11" placeholder="请输入手机号" name='user_mobile' bindinput ="user_mobile_input" /></view>
+  </view>
+  <view class='part part-IIII'>
+    <view><image src='/image/binding/4.png' mode='widthFix'></image></view>
+    <view class='part-input'><input type="number" cursor="15" maxlength="4" placeholder="请输入验证码" name='identify_code' bindinput ="identify_code_input" /></view>
+    <view class="{{change_color == false ? 'identify' : 'grey'}}"><button disabled="{{not_use}}" bindtap='Send_VerifyCode'>{{identify_text}}</button></view>
+  </view>
+
+  <view class='make-sure'>
+    <view bindtap="make_sure">确定</view>
+  </view>
+
+  <view class='make-call'>
+    <view><text>如您有疑问，请联系</text></view>
+    <view class='call-image'><image src='/image/binding/5.png' mode='widthFix'></image></view>
+    <view class='tel'>021-62477965</view>
+    <view class='tel'>021-62474272</view>
+  </view>
+</view>
+

@@ -1,0 +1,179 @@
+  <view>
+  
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{arrow.arrow0 == true ? 'on' : ''}}" data-current="0" bindtap="tabNav">
+        综合排序<label class="arrow {{arrow.arrow0 == true ? 'rorate' : ''}}"></label>
+      </view>
+      <view class="swiper-tab-list {{arrow.arrow1 == true ? 'on' : ''}}" data-current="1" bindtap="tabNav">
+        剂型<label class="arrow {{arrow.arrow1 == true ? 'rorate' : ''}}"></label>
+      </view>
+      <view class="swiper-tab-list {{arrow.arrow2 == true ? 'on' : ''}}" data-current="2" bindtap="tabNav">
+        上市情况<label class="arrow {{arrow.arrow2 == true ? 'rorate' : ''}}"></label>
+      </view>
+      <view class="swiper-tab-list {{arrow.arrow3 == true ? 'on' : ''}}" data-current="3" bindtap="tabNav">
+        更多<label class="arrow {{arrow.arrow3 == true ? 'rorate' : ''}}"></label>
+      </view>
+    </view>
+    <!-- 综合排序 -->
+    <scroll-view scroll-y="false" scroll-top="0" hidden='{{!arrow.arrow0}}' class='content add-bg' style='height:{{content_height}}px;'>
+      <view class='add-bg-bg'>
+        <view class='select-list'>
+          <view wx:key='index' wx:for="{{sort}}" data-index="{{item.value}}" bindtap="{{Power == true ? 'choice_sort' : 'Show_modal'}}">
+            <label class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <image style='width:30rpx;' src='{{item.img_address}}' mode='widthFix'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 剂型 -->
+    <scroll-view scroll-y scroll-top="0" hidden='{{!arrow.arrow1}}' class='content' style='height:{{content_height}}px;'>
+      <view class='select-list'>
+        <view wx:key='index' wx:for="{{DosageId}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_DosageId' : 'Show_modal'}}">
+          <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+          <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+          <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+        </view>
+      </view>
+      <text class='auto-high'>\n</text>
+      <view class='pub-btn-con'>
+        <button bindtap="{{Power == true ? 'cancel_all_arrow1' : 'Show_modal'}}">重置</button>
+        <button bindtap="{{Power == true ? 'make_sure_arrow1' : 'Show_modal'}}">确定</button>
+      </view>
+    </scroll-view>
+    
+
+    <!-- 上市情况  -->
+    <scroll-view scroll-y scroll-top="0" hidden='{{!arrow.arrow2}}' class='content' style='height:{{content_height}}px;'>
+      <view class='select-list'>
+        <view wx:key='index' wx:for="{{ListingSituation}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_ListingSituation' : 'Show_modal'}}">
+          <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+          <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+          <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+        </view>
+      </view>
+      <text class='auto-high'>\n</text>
+      <view class='pub-btn-con'>
+        <button bindtap="{{Power == true ? 'cancel_all_arrow2' : 'Show_modal'}}">重置</button>
+        <button bindtap="{{Power == true ? 'make_sure_arrow2' : 'Show_modal'}}">确定</button>
+      </view>
+    </scroll-view>
+    
+
+    <!-- 更多 -->
+    <scroll-view scroll-y scroll-top="0" hidden='{{!arrow.arrow3}}' class='content add-bg-bg' style='height:{{content_height}}px;'>
+      <view class='slide-bar' style='height:{{content_height}}px;'>
+        <view wx:key='index' wx:for="{{Close_item}}" data-type="{{item.type}}" bindtap='change_item' class="{{item.open == true ? 'active' : ''}}">
+        {{item.title}}
+        </view>
+      </view>
+      <!-- 药品类型 -->
+      <block wx:if="{{Close_item[0].open == true}}">
+        <view class='select-list' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view wx:key='index' wx:for="{{DrugTypeId}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_DrugTypeId' : 'Show_modal'}}">
+            <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+            <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+        </view>
+        <!-- 药品类型 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_DrugTypeId' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_DrugTypeId' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+      <!-- 申请类型 -->
+      <block wx:if="{{Close_item[1].open == true}}">
+        <view class='select-list' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view wx:key='index' wx:for="{{ApplyType_NewId}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_ApplyType_NewId' : 'Show_modal'}}">
+            <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+            <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+        </view>
+        <!-- 申请类型 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_ApplyType_NewId' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_ApplyType_NewId' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+      <!-- 办理状态 -->
+      <block wx:if="{{Close_item[2].open == true}}">
+        <view class='select-list' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view wx:key='index' wx:for="{{HandleState_CFDAId}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_HandleState_CFDAId' : 'Show_modal'}}">
+            <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+            <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+        </view>
+        <!-- 办理状态 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_HandleState_CFDAId' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_HandleState_CFDAId' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+      <!-- 治疗大类 -->
+      <block wx:if="{{Close_item[3].open == true}}">
+        <view class='select-list-add' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view class='small-tips'>
+            <image src="/image/tips.png" mode='widthFix'></image>
+            <text>不支持跨大类选择</text>
+          </view>
+          <view wx:key='index' wx:for="{{CategoryId}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_CategoryId' : 'Show_modal'}}">
+            <view class='big-list'>
+              <label class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+              <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+            </view>
+            <view class='small-list' wx:if="{{item.open == true}}">
+              <view wx:key='index' wx:for="{{Use_SubCategoryId}}" data-index="{{index}}" data-name="{{item.item_title}}" catchtap="{{Power == true ? 'choice_SubCategoryId' : 'Show_modal'}}">
+                <label class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}{{item.total}}</label>
+                <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 治疗大类 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_CategoryId' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_CategoryId' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+      <!-- 审评结论 -->
+      <block wx:if="{{Close_item[4].open == true}}">
+        <view class='select-list' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view wx:key='index' wx:for="{{Conclusion}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_Conclusion' : 'Show_modal'}}">
+            <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+            <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+        </view>
+        <!-- 审评结论 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_Conclusion' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_Conclusion' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+      <!-- 特殊通道 -->
+      <block wx:if="{{Close_item[5].open == true}}">
+        <view class='select-list' style='width:{{content_width-125}}px;padding-left:210rpx;'>
+          <view wx:key='index' wx:for="{{ProjectType}}" data-index="{{index}}" data-name="{{item.item_title}}" bindtap="{{Power == true ? 'choice_ProjectType' : 'Show_modal'}}">
+            <label wx:if="{{item.total != 0}}" class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}({{item.total}})</label>
+            <label wx:else class="{{item.open == true ? 'choice-color' : ''}}">{{item.item_title}}</label>
+            <icon hidden='{{!item.open}}' type="success_no_circle" size="15" color="#00BEEE"></icon>
+          </view>
+        </view>
+        <!-- 特殊通道 -->
+        <text class='auto-high'>\n</text>
+        <view class='pub-btn-con'>
+          <button bindtap="{{Power == true ? 'cancel_all_ProjectType' : 'Show_modal'}}">重置</button>
+          <button bindtap="{{Power == true ? 'make_sure_ProjectType' : 'Show_modal'}}">确定</button>
+        </view>
+      </block>
+
+    </scroll-view>
+
+  </view>

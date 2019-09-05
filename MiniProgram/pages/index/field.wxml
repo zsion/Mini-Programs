@@ -1,0 +1,4 @@
+<!--pages/index/field -->
+<view class="homepicker">
+  <field address="{{address}}" dbtype="{{dbtype}}" address_ATC="{{address_ATC}}" address_PHIIC="{{address_PHIIC}}"/>
+</view>

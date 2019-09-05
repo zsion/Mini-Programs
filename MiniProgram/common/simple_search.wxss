@@ -1,0 +1,106 @@
+.public-simple{
+  width:94%;
+  margin:auto;
+}
+.list-title{
+  font-family:PingFangSC-Medium;
+  font-weight:bold;
+  font-size:30rpx;
+  color:#0F0F0F;
+  padding:20rpx 0 20rpx 0;
+  border-bottom:1rpx solid #DEDEDE;
+}
+.list-row{
+  display: flex;
+  justify-content: start;
+  align-items:center;
+  font-size: 26rpx;
+  color: #5C6376;
+  border-bottom:1rpx solid #DEDEDE;
+  padding:20rpx 0 20rpx 0;
+}
+.side-top{
+  display: flex;
+  justify-content: start;
+  align-items:top;
+  font-size: 26rpx;
+  color: #5C6376;
+  border-bottom:1rpx solid #DEDEDE;
+  padding:20rpx 0 20rpx 0;
+}
+.list-row view:first-child,.side-top view:first-child{
+  width:200rpx;
+}
+.add-width view:first-child{
+  width:300rpx;
+}
+.list-row view:last-child,.side-top view:last-child{
+  width:70%;
+}
+.list-row view:last-child input{
+  width:100%;
+}
+.side-top view:first-child{
+  padding-top:20rpx;
+}
+.checkbox{
+  width:100%;
+  display: flex;
+  align-items: center;
+  padding:20rpx 0 20rpx 0;
+}
+checkbox .wx-checkbox-input{
+  width:20rpx;
+  height:20rpx;
+  margin:0;
+  padding:0;
+  margin: -5rpx 10rpx 0 0;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #00BEEE;
+  margin:0;
+  padding:0;
+  margin: -5rpx 10rpx 0 0;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width:20rpx;
+  height:20rpx;
+  margin:0;
+  padding:0;
+  line-height: 20rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fff;
+  background: transparent;
+}
+
+.date-picker{
+  display: flex;
+  justify-content: space-between;
+}
+.date-picker view:nth-child(1),.date-picker view:nth-child(3){
+  width:200rpx;
+  text-align: center;
+}
+
+.more-wrap{
+  text-align: center;
+  font-size: 26rpx;
+  color: #5C6376;
+  margin-top:50rpx;
+}
+
+.number-picker{
+  display: flex;
+  justify-content: space-between;
+}
+.number-picker view:nth-child(1),.number-picker view:nth-child(3){
+  width:190rpx;
+  text-align: left;
+}
+.number-picker view input{
+  padding-left: 10rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  border:1rpx solid #CACACA;
+}

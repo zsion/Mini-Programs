@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "中国上市",
+  "usingComponents": {
+    "WarningCode": "/components/WarningCode/WarningCode"
+  }
+}

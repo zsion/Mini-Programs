@@ -1,0 +1,17 @@
+<view class="sort-fixed">
+  <view class="sort-wrap">
+    <view class="sort-total">共<text>{{Total}}</text>条结果</view>
+    <view class="sort-content" catchtap='Item_toggle'>
+      <view class="sort-content-image"><image src='/image/shaixuan.png' mode='widthFix'></image></view>
+      <view class="sort-content-selected">
+        <view>{{Item_default}}</view>
+      </view>
+      <view class="sort-content-icon {{Toggle_hide == true ? 'rotate' : ''}}"></view>
+    </view>
+    <view class="sort-item" hidden='{{Toggle_hide}}'>
+      <block wx:for="{{Sort_item}}" wx:key='index'>
+        <view catchtap='Change_item' data-value="{{item.item_val}}" data-name="{{item.item_title}}" class="{{Item_default == item.item_title ? 'light' : ''}}">{{item.item_title}}</view>
+      </block>
+    </view>
+  </view>
+</view>

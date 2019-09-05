@@ -1,0 +1,64 @@
+<!--ListedDrugs/simple_search.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view bindtap="Close_NameTip" style="min-height:95%;">
+  <view class='sub-title'><text>本模块数据来自《中国上市药品目录集》</text></view>
+  <view class='public-simple'>
+
+    <view>
+
+      <view class='list-row'>
+        <view>药品通用名</view>
+        <view><input type="text" placeholder="请输入产品名称" name='' value="{{GenericName}}" bindinput="input_GenericName" /></view>
+      </view>
+      <nameTip id="NameTip" address="{{address}}" PublicName="{{GenericName}}" bind:PublicName="Get_GenericName" />
+
+      <view class='list-row'>
+        <view>
+          上市许可持有人<text>\n</text>
+          或生产厂商
+        </view>
+        <view><input type="text" placeholder="请输入企业名称" name='' value="{{ApprovalHolderCompanyName_ManufactureCompanyName}}" bindinput ="input_ApprovalHolderCompanyName_ManufactureCompanyName"/></view>
+      </view>
+      <view class='side-top'>
+        <view>收录类别</view>
+        <view>
+          <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox" wx:key='{{item.item_val}}' wx:for="{{items}}">
+              <checkbox value="{{item.item_val}}" checked="{{Unchecked}}" disabled="{{!Power}}"/>
+              {{item.item_title}}
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+      
+      <view class='list-row'>
+        <view>批准时间</view>
+        <view class='date-picker'>
+          <view>
+            <picker mode="date" value="{{ApprovalDate_Start}}" end="{{ApprovalDate_End}}" bindchange="DateChange_Start" disabled="{{!Power}}">
+              <view>{{ApprovalDate_Start == '' ? '请选择开始时间' : ApprovalDate_Start}}</view>
+            </picker>
+          </view>
+          <view>~</view>
+          <view>
+            <picker mode="date" value="{{ApprovalDate_End}}" start="{{ApprovalDate_Start}}" bindchange="DateChange_End" disabled="{{!Power}}">
+              <view>{{ApprovalDate_End == '' ? '请选择结束时间' : ApprovalDate_End}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class='more-wrap'>
+      <navigator url="/ListedDrugs/high_search" hover-class="navigator-hover" hidden='{{!Power}}'>更多检索条件>></navigator>
+    </view>
+
+    <text class='auto-high'>\n</text>
+    <view class='pub-btn-con'>
+      <button bindtap='Reset_all'>重置</button>
+      <button bindtap='Next_navigator'>确定</button>
+    </view>
+
+  </view>
+</view>

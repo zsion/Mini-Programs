@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "品种BE备案企业列表",
+  "usingComponents": {
+    "condition": "/components/condition/condition",
+    "modal": "/components/modal/modal",
+    "WarningCode": "/components/WarningCode/WarningCode"
+  },
+  "disableScroll": true
+}

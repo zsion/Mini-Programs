@@ -1,0 +1,61 @@
+<!--ConsistencyProgress//detail_Drug_Approval.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+
+<view>
+  <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <!-- 二次筛选组件 -->
+  <condition id="condition" Power="{{Power}}" Special_CategoryId="null" Special_SubCategoryId="null" Name_Array="{{Name_Array}}" Tool_Name_Array="{{Tool_Name_Array}}" SubCategoryId ="{{SubCategoryId}}" bind:SubCategoryId="Get_SubCategoryId" bind:Name_Array="Get_Name_Array" bind:Field="Get_Field" bind:Reset="Get_Reset" bind:Show_modal="Show_modal"/>
+
+  <!-- 列表 -->
+  <scroll-view scroll-y="{{According == true}}" scroll-top="{{topNum}}" scroll-with-animation class="data-body" style='height:{{content_height}}px;' enable-back-to-top="true" bindscrolltolower="Load_more">
+
+    <view hidden='{{con_null}}' class='total'>
+      共<text>{{total}}</text>条结果
+    </view>
+    
+    <block wx:for="{{return_list}}" wx:key='index'>
+      
+      <navigator url="/drugapproval/info?AcceptanceNo={{item.AcceptanceNo}}" hover-class="navigator-hover">
+        <view class='list-wrap'>
+          <view class='list-header'>
+            <view>
+              <label class='oblong'></label>
+              <text>{{item.ProductName}}</text>
+            </view>
+            <view>
+              <text class="{{item.Status == '1' ? 'ispass':''}}">{{item.Status == '1' ? '已通过一致性评价':''}}</text>
+            </view>
+          </view>
+          <view class='list-body'>
+            <view class="between-layout">
+              <label>受理号：<text>{{item.AcceptanceNo}}</text></label>
+              <label>申请类型：<text>{{item.ApplyType_New}}</text></label>
+            </view>
+            <view class="between-layout">
+              <label>承办日期：<text>{{item.UndertakeDate}}</text></label>
+              <label>办理状态：<text>{{item.HandleState_CFDA}}</text></label>
+            </view>
+            <label>企业名称：<text>{{item.CompanyName_CDE}}</text></label>
+          </view>
+        </view>
+      </navigator>
+      
+    </block>
+ 
+    <view wx:if="{{con_null==true}}">
+      <template is="null" />
+    </view>
+
+    <view hidden='{{con_null}}' wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+
+  </scroll-view>
+
+</view>
+

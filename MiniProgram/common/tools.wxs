@@ -1,0 +1,19 @@
+var encodeURI = function(content) {
+  content = encodeURIComponent(content);
+  return content;
+}
+var includeStr = function (str, key) {
+  return str.indexOf(key) != -1;
+}
+var emptyStr = function (contents) {
+  if (contents == ''){
+    return '-';
+  }else{
+    return contents;
+  }
+}
+
+module.exports.encodeURI = encodeURI;
+module.exports.includeStr = includeStr;
+module.exports.emptyStr = emptyStr;
+

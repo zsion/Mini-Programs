@@ -1,0 +1,92 @@
+.sort-fixed{
+  position:fixed;
+  top:0;
+  z-index:3;
+  width: 100%;
+  height:80rpx;
+  margin:auto;
+  background: #fff;
+  border-bottom:1rpx solid #F6F6F7;
+}
+.sort-wrap{
+  position: relative;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  width:94%;
+  height:80rpx;
+  margin:auto;
+}
+.sort-total{
+  font-size: 24rpx;
+  color: #B6BABE;
+}
+.sort-total text{
+  color: #00B1E0;
+  padding:0 5rpx 0 5rpx;
+}
+.sort-content{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.sort-content-image{
+  width:26rpx;
+}
+.sort-content-image image{
+  width:26rpx;
+  height:26rpx;
+}
+.sort-content-selected{
+  font-size: 24rpx;
+  color: #868686;
+  padding:0 25rpx 0 10rpx;
+}
+.sort-content-icon{
+  position: absolute;
+  right:0;
+  top:35rpx;
+  width:0;
+  height:0;
+  border-left:10rpx solid transparent;
+  border-right:10rpx solid transparent;
+  border-bottom:12rpx solid #FF877A;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+.rotate{
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+.sort-item{
+  position: absolute;
+  top:80rpx;
+  right:0;
+  z-index:3;
+  background: #FFFFFF;
+  box-shadow: 0 0 7px 0 rgba(0,0,0,0.14);
+  animation-name: fadeIn;
+  animation-duration: .5s;
+}
+@keyframes fadeIn {
+  0%   {opacity:0;}
+  100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+  0%   {opacity:0;}
+  100% {opacity:1;}
+}
+.sort-item view{
+  font-size: 24rpx;
+  color: #666666;
+  border-bottom: 1rpx solid #ECEEF2;
+  padding: 10rpx 15rpx 10rpx 15rpx;
+}
+.sort-item view.light{
+  color: #FF877A;
+}

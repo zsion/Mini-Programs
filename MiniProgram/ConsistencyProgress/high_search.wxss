@@ -1,0 +1,20 @@
+/* ConsistencyProgress//high_search.wxss */
+@import "/common/public.wxss";
+@import "/common/navtab.wxss";
+@import "/common/simple_search.wxss";
+Page{
+  background: #fff;
+}
+.nav-tabs{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  margin: auto;
+  background: #fff;
+  border-bottom: 1rpx solid #F6F6F7;
+}
+.nav-tabs view{
+  padding:0 15rpx 0 15rpx;
+  font-weight:bold;
+}

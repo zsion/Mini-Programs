@@ -1,0 +1,78 @@
+<!--ClinicalRegistration//high_search.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view bindtap="Close_NameTip" style="min-height:95%;">
+
+  <view class='public-simple'>
+    <view class='list-title'>试验药</view>
+    <view class='list-row'>
+      <view>药品名称</view>
+      <view><input type="text" placeholder="请输入药品名称" name='' value="{{DrugName}}" bindinput="input_DrugName" /></view>
+    </view>
+    <nameTip id="nameTip_DrugName" address="{{address_DrugName}}" PublicName="{{DrugName}}" bind:PublicName="Get_DrugName" />
+
+    <view class='list-row'>
+      <view>剂型</view>
+      <view><input type="text" placeholder="请输入剂型" name='' value="{{Dosage}}" bindinput="input_Dosage" /></view>
+    </view>
+
+    <view class='list-row'>
+      <view>适应症</view>
+      <view><input type="text" placeholder="请输入适应症" name='' value="{{Indications}}" bindinput="input_Indications" /></view>
+    </view>
+    
+    <!-- 试验药类别 -->
+    <custompicker id="CustomPicker_DrugTypeId" Power="{{Power}}" address="{{picker_address}}" type="0" name="试验药类别" bind:Public_value="Get_DrugTypeId" />
+
+    <!-- 试验药最高研发阶段 -->
+    <custompicker id="CustomPicker_DrugHighestPhase" Power="{{Power}}" address="{{picker_address}}" type="1" name="试验药最高研发阶段" addwidth="{{addwidth}}" bind:Public_value="Get_DrugHighestPhase" />
+
+  </view>
+
+  <area id="area_picker" Power="{{Power}}" address="{{address}}" dbtype="{{dbtype}}" bind:ATC="Get_ATC" bind:PHIIC="Get_PHIIC"/>
+
+  <view class='public-simple'>
+    <view class='list-title'>申办者</view>
+    <view class='list-row'>
+      <view>申办者名称</view>
+      <view><input type="text" placeholder="请输入申办者名称" name='' value="{{ApplicantName}}" bindinput="input_ApplicantName" /></view>
+    </view>
+    <nameTip id="nameTip_ApplicantName" address="{{address_ApplicantName}}" PublicName="{{ApplicantName}}" bind:PublicName="Get_ApplicantName" />
+
+    <view class='list-title'>试验开展情况</view>
+
+    <!-- 试验状态 -->
+    <custompicker id="CustomPicker_TestState" Power="{{Power}}" address="{{picker_address}}" type="2" name="试验状态" bind:Public_value="Get_TestState" />
+
+    <!-- 试验分期 -->
+    <custompicker id="CustomPicker_TestStaging" Power="{{Power}}" address="{{picker_address}}" type="3" name="试验分期" bind:Public_value="Get_TestStaging" />
+
+    <!-- BE试验备案 -->
+    <custompicker id="CustomPicker_IsBeTestRecord" Power="{{Power}}" address="{{picker_address}}" type="4" name="BE试验备案" bind:Public_value="Get_IsBeTestRecord" />
+
+    <!-- 试验分类 -->
+    <custompicker id="CustomPicker_TestType" Power="{{Power}}" address="{{picker_address}}" type="5" name="试验分类" bind:Public_value="Get_TestType" />
+
+    <!-- 试验范围 -->
+    <custompicker id="CustomPicker_TestRange" Power="{{Power}}" address="{{picker_address}}" type="6" name="试验范围" bind:Public_value="Get_TestRange" />
+
+    <!-- 经费来源 -->
+    <custompicker id="CustomPicker_FundsSource" Power="{{Power}}" address="{{picker_address}}" type="7" name="经费来源" bind:Public_value="Get_FundsSource" />
+
+    <!-- 公示时间 -->
+    <datepicker id="DateTestPublictiy" Power="{{Power}}" Name="公示时间" bind:Date_Start="Get_DateTestPublictiy_Start" bind:Date_End="Get_DateTestPublictiy_End"/>
+
+    <!-- 首例入组时间 -->
+    <datepicker id="DateFirstCaseEnrollment" Power="{{Power}}" Name="首例入组时间" bind:Date_Start="Get_DateFirstCaseEnrollment_Start" bind:Date_End="Get_DateFirstCaseEnrollment_End"/>
+
+    <!-- 试验结束时间 -->
+    <datepicker id="DateTestEnd" Power="{{Power}}" Name="试验结束时间" bind:Date_Start="Get_DateTestEnd_Start" bind:Date_End="Get_DateTestEnd_End"/>
+
+  </view>
+
+  <text class='auto-high'>\n</text>
+  <view class='pub-btn-con'>
+    <button bindtap='Reset_all'>重置</button>
+    <button bindtap='Next_navigator'>确定</button>
+  </view>
+  
+</view>

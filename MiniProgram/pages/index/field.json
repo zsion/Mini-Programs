@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "治疗领域检索",
+  "usingComponents": {
+    "field": "/components/field/field"
+  },
+  "disableScroll": true
+}

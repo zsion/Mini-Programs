@@ -1,0 +1,135 @@
+<!--/area -->
+
+<view class="zgxspicker" bindtap="item_toggle_wrap">
+  
+  <view class="zgxspicker-body">
+
+    <view class='pub-area-tool'>
+      <view class='tool-wrap'>
+        <view class='tool-header'>
+          <view class='header-title'>治疗类别</view>
+          <view class='header-choice'>
+            <view class='choice' catchtap='item_toggle'>
+              <view class='icon1'><image src='/image/shaixuan.png' mode='widthFix'></image></view>
+              <view class='text1'><text>{{item_name}}</text></view>
+              <view class="icon2 {{toggle_hide == true ? 'rotate' : ''}}"></view>
+            </view>
+            <view class='item' hidden='{{toggle_hide}}'>
+              <view catchtap='change_item' data-name="ATC" class="{{item_name == 'ATC' ? 'high-light' : ''}}">{{item_list[0]}}</view>
+              <view catchtap='change_item' data-name="CPHIIC" class="{{item_name == 'CPHIIC' ? 'high-light' : ''}}">{{item_list[1]}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='tool-body'>
+
+          <!-- ATC部分 -->
+          <view hidden="{{item_name == 'ATC' ? false : true}}">
+            <!-- ATC一级 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">ATC一级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange1" value="{{index1}}" range="{{ATC_List1_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{ATC_List1_use[index1].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <!-- ATC二级 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">ATC二级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange2" value="{{index2}}" range="{{ATC_List2_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{ATC_List2_use[index2].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <!-- ATC三级 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">ATC三级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange3" value="{{index3}}" range="{{ATC_List3_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{ATC_List3_use[index3].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <!-- ATC四级 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">ATC四级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange4" value="{{index4}}" range="{{ATC_List4_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{ATC_List4_use[index4].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <!-- CPHIIC部分 -->
+          <view hidden="{{item_name == 'CPHIIC' ? false : true}}">
+            <!-- CPHIIC治疗大类 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">治疗大类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange5" value="{{index5}}" range="{{PHIIC_List1_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{PHIIC_List1_use[index5].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <!-- CPHIIC治疗小类 -->
+            <view>
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">治疗小类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker disabled="{{!Power}}" bindchange="PickerChange6" value="{{index6}}" range="{{PHIIC_List2_use}}" range-key="{{'item_title'}}">
+                      <view class="weui-input">{{PHIIC_List2_use[index6].item_title}}</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    
+
+  </view>
+  
+</view>

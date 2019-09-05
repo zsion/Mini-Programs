@@ -1,0 +1,109 @@
+page {
+  background-color: #F6F6F7;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+  min-height:100%;
+}
+/** zsion添加 **/
+/*swtich样式-start*/
+/*swtich整体大小*/
+.wx-switch-input{
+width:80rpx !important;
+height:42rpx !important;
+background: #00B9E7 !important;
+border: #00B9E7 !important;
+}
+/*白色样式（false的样式）*/
+.wx-switch-input::before{
+width:82rpx !important;
+height:42rpx !important;
+background: #F6F6F7 !important;
+border: #F6F6F7 !important;
+}
+/*绿色样式（true的样式）*/
+.wx-switch-input::after{
+width:42rpx !important;
+height:42rpx !important;
+}
+/*swtich样式end*/
+.add-switch{
+  text-align: right;
+}
+
+.sub-title{
+  width: 100%;
+  height: 50rpx;
+  line-height: 45rpx;
+  background: #FFF6F1;
+  text-align: center;
+}
+.sub-title text{
+  font-size: 24rpx;
+  color: #A99090;
+}
+.pub-btn-con{
+  position: fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:90rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index:9;
+  animation-name: slideup;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+@keyframes slideup {
+  0%   {bottom:-90rpx;}
+  100% {bottom:0;}
+}
+@-webkit-keyframes slideup {
+  0%   {bottom:-90rpx;}
+  100% {bottom:0;}
+}
+/**中国橙皮书**/
+.pub-btn-con button{
+  margin: 0;
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  border-radius:0;
+}
+
+.pub-btn-con button::after{
+  border: none;
+}
+.pub-btn-con button:first-child{
+  background: #F0F0F0;
+  color: #31363B;
+}
+.pub-btn-con button:last-child{
+  background: #00BEEE;
+  color: #fff;
+}
+.pub-btn-con navigator{
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  border-radius:0;
+  text-align: center;
+  background: #00BEEE;
+  color: #fff;
+}
+.auto-high{
+  line-height: 100rpx;
+}
+
+@keyframes fadeIn {
+  0%   {opacity:0;}
+  100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+  0%   {opacity:0;}
+  100% {opacity:1;}
+}

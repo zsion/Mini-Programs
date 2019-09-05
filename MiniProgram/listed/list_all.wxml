@@ -1,0 +1,45 @@
+<!--/listed/list_all -->
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+<view class="searchzgss">
+
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}"/>
+  
+  <view class="searchzgss-head add-fixed">
+    <view class='add-head'><text>|</text><text>{{search_Con}}</text></view>
+    <view class='list-tab'>
+      <view bindtap='tab_touch0' class="{{type == 0 ? 'high-light' : ''}}"><text>国产药品</text></view>
+      <view bindtap='tab_touch1' class="{{type == 1 ? 'high-light' : ''}}"><text>进口药品</text></view>
+    </view>
+  </view>
+  
+  <view class="searchzgss-body">
+    <view class="for-list" wx:key='index' wx:for="{{moment_list}}">
+      <view>{{item.ypmc != null ? item.ypmc : ''}}</view>
+      <view>规格：{{item.guige != null ? item.guige : ''}}</view>
+      <view>持证商：{{item.czgs != null ? item.czgs : ''}}</view>
+      <view>治疗小类：{{item.zlxl != null ? item.zlxl : ''}}</view>
+      <view wx:if="{{type == 0}}">批准日期：{{item.pzrq != null ? item.pzrq : ''}}</view>
+      <view wx:if="{{type == 1}}">发证日期：{{item.fzrq != null ? item.fzrq : ''}}</view>
+      <view wx:if="{{type == 0}}">批准文号：{{item.pzwh != null ? item.pzwh : ''}} 
+      <navigator url="/listed/info?type={{type}}&pzwh={{item.pzwh}}" hover-class="navigator-hover">详情</navigator>
+      </view>
+      <view wx:if="{{type == 1}}">注册证号：{{item.zczh != null ? item.zczh : ''}} 
+      <navigator url="/listed/info?type={{type}}&zczh={{item.zczh}}" hover-class="navigator-hover">详情</navigator>
+      </view>
+    </view>
+
+
+    <view wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+
+  </view>
+
+  
+  
+</view>

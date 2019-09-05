@@ -1,0 +1,102 @@
+<!--ListedDrugs/high_search.wxml-->
+<wxs src="../common/tools.wxs" module="tools" />
+<view bindtap="Close_NameTip" style="min-height:95%;">
+  <view class='sub-title'><text>本模块数据来自《中国上市药品目录集》</text></view>
+
+  <view class='public-simple'>
+
+    <view class='list-row prompt-wrap'>
+      <view>药品名称</view>
+      <view><input type="text" placeholder="请输入产品名称或中/英文通用名" name='' value="{{DrugName}}" bindinput="input_DrugName" /></view>
+    </view>
+    <nameTip id="NameTip" address="{{address2}}" PublicName="{{DrugName}}" bind:PublicName="Get_DrugName" />
+
+    <view class='list-row'>
+      <view>剂型</view>
+      <view><input type="text" placeholder="请输入剂型" name='' value="{{Dosage}}" bindinput="input_Dosage" /></view>
+    </view>
+
+    <view class='list-row'>
+      <view>上市许可持有人</view>
+      <view><input type="text" placeholder="请输入上市许可持有人名称" name='' value="{{ApprovalHolderCompanyName}}" bindinput="input_ApprovalHolderCompanyName" /></view>
+    </view>
+
+    <view class='list-row'>
+      <view>
+        批准文号<text>\n</text>
+        或注册证号
+      </view>
+      <view><input type="text" placeholder="请输入批准文号或注册证号" name='' value="{{ApprovalNo}}" bindinput="input_ApprovalNo" /></view>
+    </view>
+
+    <view class='list-row'>
+      <view>生产厂商</view>
+      <view><input type="text" placeholder="请输入生产厂商名称" name='' value="{{ManufactureCompanyName}}" bindinput="input_ManufactureCompanyName" /></view>
+    </view>
+
+    <view class='side-top'>
+      <view>收录类别</view>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:key='{{item.item_val}}' wx:for="{{items}}">
+            <checkbox value="{{item.item_val}}" checked="{{Unchecked}}"/>
+            {{item.item_title}}
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view class='list-row'>
+      <view>参比制剂</view>
+      <view class='add-switch'>
+        <switch checked="{{Unchecked}}" bindchange="bind_ReferencePreparation" data-name=""/>
+      </view>
+    </view>
+
+    <view class='list-row'>
+      <view>标准制剂</view>
+      <view class='add-switch'>
+        <switch checked="{{Unchecked}}" bindchange="bind_StandardPreparation" data-name=""/>
+      </view>
+    </view>
+
+    <view class='list-row'>
+      <view>上市状况</view>
+      <view>
+        <picker bindchange="bind_SalesStatus" value="{{index}}" range="{{array}}" range-key="item_title">
+          <view class="weui-input">{{array[index].item_title}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='list-row'>
+      <view>批准时间</view>
+      <view class='date-picker'>
+        <view>
+          <picker mode="date" value="{{ApprovalDate_Start}}" end="{{ApprovalDate_End}}" bindchange="DateChange_Start">
+            <view>{{ApprovalDate_Start == '' ? '请选择开始时间' : ApprovalDate_Start}}</view>
+          </picker>
+        </view>
+        <view>~</view>
+        <view>
+          <picker mode="date" value="{{ApprovalDate_End}}" start="{{ApprovalDate_Start}}" bindchange="DateChange_End">
+            <view>{{ApprovalDate_End == '' ? '请选择结束时间' : ApprovalDate_End}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  
+  <area id="area_picker" Power="{{Power}}" address="{{address}}" dbtype="{{dbtype}}" bind:ATC="Get_ATC" bind:PHIIC="Get_PHIIC"/>
+  
+  
+  <text class='auto-high'>\n</text>
+  <view class='pub-btn-con'>
+    <button bindtap='Reset_all'>重置</button>
+    <button bindtap='Next_navigator'>确定</button>
+  </view>
+  
+
+</view>

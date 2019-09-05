@@ -1,0 +1,52 @@
+<!--/listed/list --> 
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+<view class="zgss">
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+
+  <view class="zgss-head add-fixed">
+    <view class='search-wrap'>
+      <input type="text" maxlength="100" placeholder="输入药品/企业名称查询" name='search_Con' bindinput ="search_Con_Input" confirm-type="search" bindconfirm="search_data"/>
+      <view bindtap="search_data" ><image src='{{imgUrl[0]}}' mode='widthFix'></image></view>
+    </view>
+    <view class='explain'>
+      <text>该模块数据来源于新药研发监测数据库CPM</text>
+    </view>
+    <view class='list-tab'>
+      <view bindtap='tab_touch0' class="nav-tab {{type == 0 ? 'on' : ''}}"><text>国产药品</text></view>
+      <view bindtap='tab_touch1' class="nav-tab {{type == 1 ? 'on' : ''}}"><text>进口药品</text></view>
+    </view>
+  </view>
+  
+  <view class="zgss-body">
+    
+    <view class="for-list" wx:key='index' wx:for="{{moment_list}}">
+      <view>{{item.ypmc != null ? item.ypmc : ''}}</view>
+      <view>规格：{{item.guige != null ? item.guige : ''}}</view>
+      <view>持证商：{{item.czgs != null ? item.czgs : ''}}</view>
+      <view>治疗小类：{{item.zlxl != null ? item.zlxl : ''}}</view>
+      <view wx:if="{{type == 0}}">批准日期：{{item.pzrq != null ? item.pzrq : ''}}</view>
+      <view wx:if="{{type == 1}}">发证日期：{{item.fzrq != null ? item.fzrq : ''}}</view>
+      <view wx:if="{{type == 0}}">批准文号：{{item.pzwh != null ? item.pzwh : ''}} 
+      <navigator url="/listed/info?type={{type}}&pzwh={{item.pzwh}}" hover-class="navigator-hover">详情</navigator>
+      </view>
+      <view wx:if="{{type == 1}}">注册证号：{{item.zczh != null ? item.zczh : ''}} 
+      <navigator url="/listed/info?type={{type}}&zczh={{item.zczh}}" hover-class="navigator-hover">详情</navigator>
+      </view>
+    </view>
+    
+    
+
+    <view wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+
+  </view>
+
+  
+  
+</view>

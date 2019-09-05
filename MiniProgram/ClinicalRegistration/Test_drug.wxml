@@ -1,0 +1,4 @@
+<!--ClinicalRegistration//Test_drug.wxml-->
+<view>
+  <detaillist id="detaillist" Address="{{Address}}" RegistrationNo="{{RegistrationNo}}" Type="{{Type}}" />
+</view>

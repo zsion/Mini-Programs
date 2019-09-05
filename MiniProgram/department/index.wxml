@@ -1,0 +1,15 @@
+<!--/department/index -->
+
+<view class="ksfb">
+  
+  <view class="ksfb-body">
+    <view class='con-title'><text>氨溴索常用科室排名</text></view>
+    <view class='con-tp'><image src='{{imgUrl[0]}}' mode='widthFix'></image></view>
+    <view class='con-text'><text>该模块涵盖了上海地区80%医院的处方信息，包括科室、适应证、患者等的处方张数和处方金额</text></view>
+    <view class='con-tip'>您可直接点击下方按钮申请试用，我们会尽快联系您</view>
+    <view class='con-btn'>
+      <view bindtap='to_wjx'>申请试用</view>
+    </view>
+  </view>
+  
+</view>

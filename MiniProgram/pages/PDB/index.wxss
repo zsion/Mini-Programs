@@ -1,0 +1,51 @@
+/* pages/PDB/index.wxss */
+Page{
+  background: #fff;
+}
+.part1{
+  width:100%;
+  text-align: center;
+  padding-top: 150rpx;
+}
+.part1 view image{
+  width:260rpx;
+  height:260rpx;
+}
+.part1 view text{
+  font-size: 40rpx;
+  color: #4A4A4A;
+}
+.part2{
+  width:100%;
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #9D9D9D;
+}
+.part2 view text{
+  color: #000000;
+}
+
+.part2 view text{
+  color: #000000;
+}
+.part2 view:nth-child(3){
+  margin-top: 30rpx;
+}
+
+.part3{
+  width:100%;
+  margin-top: 100rpx;
+}
+.part3 view{
+  width:500rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  margin:auto;
+  text-align: center;
+  background: #29B2FE;
+  border-radius: 100rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+

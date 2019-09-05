@@ -1,0 +1,107 @@
+/* pages/subscribe/binding.wxss */
+page{
+  background: #fff;
+}
+.binding-body{
+  width:90%;
+  margin:auto;
+}
+.subs-title{
+  margin-top:50rpx;
+}
+.subs-title text{
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #31363B;
+}
+.part{
+  padding-top:50rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2rpx solid #F2F2F2;
+}
+.part view image{
+  width:29rpx;
+  /* margin-bottom: -2rpx; */
+}
+.part-input{
+  width:100%;
+}
+.part-IIII .part-input{
+  width:60%;
+}
+
+.identify button{
+  background: transparent!important;
+  font-size: 26rpx;
+  color: #00BEEE!important;
+  padding:0;
+  margin:0;
+}
+.identify button::after{
+  border: none;
+}
+.grey button{
+  background: transparent!important;
+  font-size: 26rpx;
+  color: #81878C!important;
+  padding:0;
+  margin:0;
+}
+.grey button::after{
+  border: none;
+}
+.part view input{
+  padding:15rpx;
+  font-size: 26rpx;
+}
+.make-sure{
+  margin-top: 50rpx;
+}
+.make-sure view{
+  width:90%;
+  height:80rpx;
+  line-height: 80rpx;
+  margin:auto;
+  text-align: center;
+  color:#fff;
+  background: #00BEEE;
+  border-radius:50rpx;
+}
+.make-call{
+  color: #81878C;
+  text-align: center;
+  margin-top: 100rpx;
+  font-size: 24rpx;
+}
+
+.call-image{
+  width:34rpx;
+  height:34rpx;
+  margin:auto;
+  text-align: center;
+  background: #EEEEEE;
+  border: 2rpx solid #D4D4D4;
+  border-radius:34rpx;
+  margin-top:25rpx;
+  margin-bottom: 15rpx;
+  position: relative;
+}
+
+.call-image image{
+  width:20rpx;
+  height:20rpx;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+}
+.tel{
+  height:50rpx;
+  line-height: 50rpx;
+  color: #81878C;
+}
+

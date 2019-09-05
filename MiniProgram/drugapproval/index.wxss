@@ -1,0 +1,595 @@
+/* page/component/declare/Declare.wxss */
+.dic{
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    background: #fff;
+    z-index: 9998;
+    font-size:12px;
+    padding-top:50rpx;  
+}
+.sousuo .cancel{ 
+  width:70px;
+  text-align:center;
+  float:right;
+  line-height:70rpx;
+  margin-right:35rpx;
+  font-size: 28rpx;
+  color: #fff;
+  position:relative;
+  top:16rpx;
+  border:1rpx solid #fff;
+  border-radius:100rpx;
+}
+.hot,.History_box{
+  padding-left:23rpx;
+  padding-right:23rpx;
+}
+.hot label,.History_box label{
+  font-size: 28rpx;
+  color: #101010;
+  font-weight: bold;
+}
+.hot view navigator{
+  padding: 12rpx 23rpx;
+  font-size: 26rpx;
+  color: #868686;
+  border:1rpx solid #D8D8D8;
+  margin-right: 20rpx;
+  margin-top: 26rpx;
+  margin-bottom: 30rpx;
+  display: inline-block;
+}
+.History_box .History_list{
+  display: block;
+  border-bottom:1rpx solid #DEDEDE;
+  line-height: 37rpx;
+  font-size: 26rpx;
+  color: #868686;
+  padding-top:29rpx;
+  padding-bottom: 28rpx;
+  padding-left:14rpx;
+}
+scroll-view {
+  width: 100%;
+}
+.sousuo{
+  height:126rpx;
+  line-height: 126rpx;
+  background: #00BEEE;
+  width:100%;
+  position: relative;
+  overflow: hidden;
+}
+.sousuo input{
+  background: #fff;
+  width:490rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  border-radius: 70rpx;
+  margin:0 auto;
+  margin-left:23rpx;
+  padding-left:35rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #B6BABE;
+  display: inline-block;
+  position: absolute;
+  top: 16rpx;
+}
+.sousuo input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+   color:#B6BABE;
+}
+.sousuo input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:#B6BABE;
+}
+.sousuo input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:#B6BABE;
+}
+.sousuo input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:#B6BABE;
+}
+
+.sousuo .SousuoImg{
+  width:41rpx;
+  height: 41rpx;
+  position: absolute;
+  right: 215rpx;
+  top:29rpx;
+  z-index: 9999;
+}
+.sousuo navigator{
+  width:190rpx;
+  text-align: center;
+  float: right;
+  height: 70rpx;
+  line-height: 50rpx;
+  margin-right: 10rpx;
+}
+.gaoji{
+  background: #FF8773;
+  border-radius: 100rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  margin-top: 16rpx;
+  color:#fff;
+}
+.sousuo  navigator.gaoji view{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.sousuo  navigator image{
+   width:28rpx;
+   height: 28rpx;
+   z-index: 9999;
+}
+.sousuo  navigator label{
+  font-size: 28rpx;
+  color: #FFFFFF;
+  display: blcok;
+  text-align: center;
+  margin-left: 7rpx;
+}
+.hotKeywords{
+  position: absolute;
+  bottom: 25rpx;
+  height: 25rpx;
+  line-height: 25rpx;
+  left: 50rpx;
+}
+
+.hotKeywords navigator{
+  display: block;
+  font-size: 22rpx;
+  color: #B4F0FF;
+  height: 24rpx;
+  width:auto;
+  margin-right: 20rpx;
+ float:left;
+}
+.explain{
+  width:100%;
+  height:25px;
+  line-height: 25px;
+  background:#FFF6F1;
+  text-align: center;
+  font-size: 24rpx;
+  color:#A99090;
+}
+.swiper-tabs{
+  display: flex;
+  justify-content: space-around;
+}
+.Category{
+  /*width:250rpx;*/
+  display: inline-block;
+  text-align: center;
+  padding-top:18rpx;
+}
+.Category image{
+  display: block;
+  margin: 0 auto;
+}
+.Category text{
+  font-size: 28rpx;
+  color: #0F0F0F;
+  display: block;
+  margin-top:6rpx;
+  font-weight: bold;
+}
+.active text{
+  color: #00BEEE;
+  border-bottom:5rpx solid #00BEEE;
+}
+.Category .ChangeImageh{
+ display: none;
+}
+.active .ChangeImage{
+  display: none;
+}
+.active .ChangeImageh{
+  display: block;
+}
+canvas {
+  height: 200rpx;
+}
+.swiper-wrap{
+  height: 1000rpx;
+}
+/* 承办审批趋势 */
+.SwitchContent{
+   padding-top:10rpx;
+   padding-bottom: 6rpx;
+   background: #fff;
+   padding-left:26rpx;
+   padding-right:26rpx;
+   font-family: PingFangSC-Medium;
+}
+.SwitchContent view{
+  font-size: 28rpx;
+  color: #868686;
+  display: inline-block;
+  /* width:133rpx; */
+  text-align: center;
+  margin-right:48rpx;
+}
+.SwitchContent .active{
+  color: #0F0F0F;
+}
+.SwitchContent .active label{
+  width:59rpx;
+  height:5rpx;
+  background: #00BEEE;
+  display: block;
+  margin:0 auto;
+}
+
+.ChartsMode{
+  border-radius: 5px;
+  height: auto;
+  margin-left:26rpx;
+  margin-right:26rpx;
+  margin-bottom: 26rpx;
+  margin-top:18rpx;
+  background: #fff;
+  box-shadow: 0 4px 14px 0 rgba(0,0,0,0.07);
+}
+
+.ChartsMode .ModeTitle{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #31363B;
+  letter-spacing: 0;
+  height: 69rpx;
+  line-height: 69rpx;
+  padding-left:16rpx;
+  /* border-left:4rpx solid #4A90E2; */
+  
+  border-bottom: 1rpx solid #f6f6f7;
+}
+
+
+.ModeTitle navigator,.ModeTitle label{
+  display: block;
+  width:240rpx;
+  float:right;
+  text-align: right;
+  height: 69rpx;
+  line-height: 69rpx;
+  font-size: 24rpx;
+  color: #B2B2B2;
+  margin-right: 25rpx;
+  font-family: PingFangSC-Medium;
+}
+.TermSwitch {
+  text-align: center;
+  border:1rpx solid #DEE1E7;
+  border-right: none;
+  display: inline-block;
+  margin-top:15rpx;
+  box-sizing: content-box;
+  height: 46rpx;
+}
+.ModeTitle label{
+  display: block;
+  width:240rpx;
+  float:right;
+  text-align: right;
+  height: 69rpx;
+  line-height: 69rpx;
+  font-size: 24rpx;
+  color: #B2B2B2;
+  margin-right: 25rpx;
+  font-family: PingFangSC-Medium;
+}
+.TermSwitch {
+  text-align: center;
+  border:1rpx solid #DEE1E7;
+  border-right: none;
+  display: inline-block;
+  margin-top:15rpx;
+  box-sizing: content-box;
+  height: 46rpx;
+}
+.TermSwitch .swiper-tab-list{
+  position: relative;
+  top:-4rpx;
+  padding-left:26rpx;
+  padding-right: 26rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border-right:1rpx solid #DEE1E7;
+  font-size: 26rpx;
+  color: #31363B;
+  display: inline-block;
+}
+.TermSwitch .active{
+  color: #4A90E2;
+}
+/* TOP榜的切换 */
+.titleChange{
+  display: block;
+  float:right;
+  position: relative;
+  margin-right:30rpx;
+}
+.titleChange label{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #868686;
+}
+.titleChange .Title-text{
+  position: absolute;
+ padding:6rpx 10rpx 0 6rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 7px 0 rgba(0,0,0,0.14);
+  right: 24rpx;
+  top:55rpx;
+}
+.titleChange .Title-text text{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #666666;
+  display: block;
+  font-weight: normal;
+  height: 50rpx;
+  padding-left:8rpx;
+  line-height: 50rpx;
+  white-space:nowrap;
+}
+.Down{
+  transform: rotate(180deg);
+}
+.Choice{
+  display: inline-block; 
+  color: #868686;
+  font-weight: normal;
+  margin-left:6rpx;
+  margin-right:6px;
+}
+.titleChange .Title-text .title1{
+  border-bottom:1rpx solid #ECEEF2;
+}
+.titleChange  .Title-text .active{
+  color: #FF877A;
+}
+.EnterContent{
+  /* height: 119rpx; */
+  padding-left:20rpx;
+  padding-right:30rpx;
+  vertical-align: middle;
+  display: flex;
+}
+.EnterContent view{
+  font-size: 28rpx;
+  line-height: 30rpx;
+  color: #31363B;
+  margin-top:44rpx;
+  width:590rpx;
+  vertical-align: middle;
+  border-bottom: 1rpx solid #ECEEF2;
+  padding-bottom: 5rpx;
+}
+.EnterContent text{
+  font-size: 40rpx;
+  color: #FF761F;
+  width:60rpx;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 119rpx;
+}
+.EnterMode .EnterContent:first-child .Num{
+  color:#FF3F1F;
+  text-decoration:underline;
+}
+.EnterMode .EnterContent:nth-child(2) .Num{
+  color:#FF8A6B;
+  text-decoration:underline;
+}
+.EnterMode .EnterContent:nth-child(3) .Num{
+  color:#5974EC;
+  text-decoration:underline;
+}
+.EnterContent .Num{
+  font-size: 30rpx;
+  color: #BEBEBE;
+  vertical-align: middle;
+  position: relative;
+  left:-4rpx;
+  top:-1rpx;
+  font-family: PingFangSC-Semibold;
+  width:80rpx;
+}
+.EnterContent .total{
+  width:56rpx;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1rpx solid #ECEEF2;
+  font-family: PingFangSC-Semibold;
+}
+.tag{
+  background:#EDEDF0;
+  font-size: 26rpx;
+  color: #31363B;
+  padding:6rpx 18rpx 6rpx 18rpx;
+  border-radius: 100rpx;
+  display: inline-block;
+  margin-right:16rpx;
+  margin-bottom: 20rpx;
+}
+/* 为注册类型做一个横向柱状图 */
+.Regist{
+  display: flex;
+}
+.Regist .DrugName{
+  width:80rpx;
+  font-size: 26rpx;
+  color: #666666;
+  writing-mode:tb-rl;
+}
+.TermContent .Regist:first-child .DrugDetails{
+  border-top: 1rpx solid #D8D8D8;
+}
+.Regist .DrugDetails{
+  width:550rpx;
+  border-bottom: 1rpx solid  #D8D8D8;
+}
+.Histogram {
+   display: flex;
+   height: 52rpx;
+   line-height: 52rpx;
+}
+
+
+.Histogram .code{
+  width:110rpx;
+  text-align: right;
+  padding-right: 8rpx;
+  border-right: 1rpx solid #868686;
+  font-size: 24rpx;
+}
+.Histogram .count{
+  padding-left: 8rpx;
+  font-size: 24rpx;
+}
+.Histogram label{
+  background: #00B8FF;
+  height: 20rpx;
+  margin-top:15rpx;
+}
+.Histogram navigator{
+  background: #00B8FF;
+  height: 20rpx;
+  margin-top:15rpx;
+}
+.Histogram1{
+   height: 124rpx;
+   line-height: 124rpx;
+}
+.Histogram1 label{
+  margin-top:54rpx;
+}
+.Histogram1 navigator{
+  margin-top:54rpx;
+}
+
+.ToggleMore{
+  height:85rpx;
+  line-height:85rpx;
+  text-align:center;
+  font-size:26rpx;
+  color:#00ABD6;
+}
+.ToggleMore image{
+  width:60rpx;
+  height:34rpx;
+  margin:0 0 -5rpx 5rpx;
+}
+.ToggleActive image{
+   transform: rotate(180deg);
+}
+
+/* 为注册类型做一个纵向柱状图 */
+.VerticalHistogram{
+  display: flex;
+  padding-bottom:20rpx;
+  width:92%;
+  margin:0 auto;
+}
+/* .VerticalModel{
+  width:20%;
+} */
+.VerticalHistogram .HeadTitle{
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #7F7F7F;
+  letter-spacing: 0.24rpx;
+  text-align: center;
+  display: block;
+  width:104rpx;
+ margin:0 auto;
+}
+.VerticalHistogram .HeadTitleTrue{
+    width:110rpx;
+}
+.VerticalHistogram .VerticalContent{
+  height: 480rpx;
+  border-bottom:1rpx solid #D8D8D8;
+   width:100%;
+}
+.VerticalHistogram .VerticalContent view{
+  width:28rpx;
+  text-align: center;
+  height:480rpx;
+  position: relative;
+  display: inline-block;
+}
+.VerticalHistogram .zhu{
+  display: block;
+  background: #55BEC1;
+  height: 460rpx;
+  width: 26rpx;
+  margin:0 auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.VerticalHistogram  .zhu0{
+  background: #55BEC1;
+  
+}
+.VerticalHistogram  .zhu1{
+  background: #4A90E2;
+}
+
+.VerticalHistogram  .zhu0 .count{
+ float: right;
+  
+}
+.VerticalHistogram  .zhu1 .count{
+   float: left;
+}
+
+.VerticalHistogram  .count{
+  position: relative;
+  top:-40rpx;
+ font-size:24rpx;
+ display:inline-block;
+ min-width: 26rpx;
+text-align: center;
+}
+
+/* 柱状图的点点 */
+.circle{
+  text-align: center;
+  height:24rpx;
+  line-height: 24rpx;
+  padding-top:10rpx;
+  padding-bottom: 6rpx;
+}
+.circle .circlecontent{
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #666666;
+  margin-right:16rpx;
+  height:24rpx;
+  line-height: 24rpx;
+}
+.circle .circlecontent text{
+  display: inline-block;
+  height:12rpx;
+  width:12rpx;
+  border-radius: 12rpx;
+  background:#55BEC1;
+  margin-right:6rpx;
+  position: relative;
+  top:-3rpx;
+}
+.circle .circlecontent .yuan0{
+   background:#55BEC1;
+}
+.circle .circlecontent .yuan1{
+  background:#4A90E2;
+}

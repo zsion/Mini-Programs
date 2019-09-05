@@ -1,0 +1,13 @@
+<modal wx:if="{{WarningCode}}" title="温馨提示" confirm-text="确定" no-cancel="true" bindconfirm="WarningCode_Confirm">
+  <view class='waring-content'>{{Message}}</view>
+  <view class='waring-image' bindtap="Reset_WarningCode"><image src="data:image/jpg;base64,{{Img}}" mode='widthFix'></image></view>
+  <view class="waring-text">
+    <text bindtap="Get_Focus">{{Num1}}</text>
+    <text bindtap="Get_Focus">{{Num2}}</text>
+    <text bindtap="Get_Focus">{{Num3}}</text>
+    <text bindtap="Get_Focus">{{Num4}}</text>
+  </view>
+  <view class='waring-input'>
+    <input type="number" focus="{{IsFocus}}" cursor-spacing='{{space}}' cursor="15" maxlength="4" placeholder="请输入验证码" value="{{Code}}" bindinput="Input_WarningCode" bindblur="Get_Focus"/>
+  </view>
+</modal>

@@ -1,0 +1,81 @@
+<!--/home-list -->
+<view class="home-list">
+  <view class="{{toggle == false ? 'tab_toggle_show':'tab_toggle_hide'}}">
+    <view class="list-con">
+      <navigator url="/sales/index" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.hzgxs}}' mode='widthFix'></image></view>
+        <text>中国销售</text>
+      </navigator>
+      <navigator url="/drugapproval/index" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.lzgsb}}' mode='widthFix'></image></view>
+        <text>中国申报</text>
+      </navigator>
+      <navigator url="/listed/list" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.hzgss}}' mode='widthFix'></image></view>
+        <text>中国上市</text>
+      </navigator>
+      <navigator url="/ConsistencyProgress/index" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.lyzxpj}}' mode='widthFix'></image></view>
+        <text>一致性评价</text>
+      </navigator>
+      <navigator url="/ChineseReferencePreparation/high_search" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.lcbzjml}}' mode='widthFix'></image></view>
+        <text>参比制剂目录</text>
+      </navigator>
+      <navigator url="/ListedDrugs/simple_search" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.hzgcps}}' mode='widthFix'></image></view>
+        <text>中国橙皮书</text>
+      </navigator>
+      <navigator url="/ClinicalRegistration/simple_search" class='item' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.lzglc}}' mode='widthFix'></image></view>
+        <text>CDE临床试验</text>
+      </navigator>
+      <view bindtap='show_modal' data-title="0" data-content="0" class='item add-opacity'>
+        <view><image src='{{imgUrl.hqqzy}}' mode='widthFix'></image></view>
+        <text>全球在研</text>
+      </view>
+      <view bindtap='show_modal' data-title="1" data-content="1" class='item add-opacity'>
+        <view><image src='{{imgUrl.hqqss}}' mode='widthFix'></image></view>
+        <text>全球上市</text>
+      </view>
+      <view bindtap='show_modal' data-title="3" data-content="3" class='item add-opacity'>
+        <view><image src='{{imgUrl.lqqlc}}' mode='widthFix'></image></view>
+        <text>全球临床</text>
+      </view>
+      <navigator url="/department/index" class='item add-opacity' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.hksfb}}' mode='widthFix'></image></view>
+        <text>科室分布</text>
+      </navigator>
+      <view bindtap='show_modal' data-title="5" data-content="5" class='item add-opacity'>
+        <view><image src='{{imgUrl.lgmprz}}' mode='widthFix'></image></view>
+        <text>GMP认证</text>
+      </view>
+      <view bindtap='show_modal' data-title="6" data-content="6" class='item add-opacity'>
+        <view><image src='{{imgUrl.lypzb}}' mode='widthFix'></image></view>
+        <text>药品中标</text>
+      </view>
+      <view bindtap='show_modal' data-title="7" data-content="7" class='item add-opacity'>
+        <view><image src='{{imgUrl.hybml}}' mode='widthFix'></image></view>
+        <text>医保目录</text>
+      </view>
+      <navigator url="/yield/index" class='item add-opacity' hover-class="navigator-hover">
+        <view><image src='{{imgUrl.lclxx}}' mode='widthFix'></image></view>
+        <text>产量信息</text>
+      </navigator>
+      <view bindtap='show_modal' data-title="4" data-content="4" class='item add-opacity'>
+        <view><image src='{{imgUrl.hqqxs}}' mode='widthFix'></image></view>
+        <text>全球销售</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="tab_toggle_box">
+
+    <view bindtap="click_toggle">
+      <text>{{(toggle == true) ? "展开更多":"收起"}}</text>
+      <image src="/image/zk.png" mode='widthFix' class="{{(toggle == true) ? '':'rorate'}}"></image>
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "主要终点指标",
+  "usingComponents": {
+    "detaillist": "/components/detaillist/detaillist"
+  },
+  "onReachBottomDistance": 0
+}

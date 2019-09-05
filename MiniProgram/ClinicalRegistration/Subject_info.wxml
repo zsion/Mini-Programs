@@ -1,0 +1,45 @@
+<!--ClinicalRegistration//Subject_info.wxml-->
+<import src="/common/nomore.wxml" />
+<view>
+  <view class='info-body'>
+    <view class='part-I'>
+      <view class='info'>
+        <view>年龄</view>
+        <view>{{AgeDistribution}}</view>
+      </view>
+      <view class='info info-sex'>
+        <view>
+          <label>健康受试者</label>
+          <text>{{HealthySubjects}}</text>
+        </view>
+        <view>
+          <label>性别</label>
+          <text>{{Gender}}</text>
+        </view>
+      </view>
+      <view class='info'>
+        <view>目标入组人数</view>
+        <view>{{TargetEntry}}</view>
+      </view>
+      <view class='info'>
+        <view>实际入组人数</view>
+        <view>{{ActualEntry}}</view>
+      </view>
+    </view>
+    <view class='part-II'>
+      <view class='pip-title'>
+        <view bindtap='tab_touch' data-current="0" class="{{Type == 0 ? 'on' : ''}}">入选标准</view>
+        <view bindtap='tab_touch' data-current="1" class="{{Type == 1 ? 'on' : ''}}">排除标准</view>
+      </view>
+      <view class='pip-content'>
+        <block wx:for="{{DataList}}" wx:key="index">
+          <view><text>{{item.No}}.</text>{{item.Content}}</view>
+        </block>
+      </view>
+    </view>
+    <view wx:if="{{!have_more}}">
+      <template is="nomore" />
+    </view>
+  </view>
+</view>
+

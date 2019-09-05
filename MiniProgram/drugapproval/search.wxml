@@ -1,0 +1,341 @@
+<wxs src="../common/tools.wxs" module="tools" />
+
+<view class="{{ctrldic.hidden == false ? 'noscroll' : ''}}" bindtap="Close_NameTip" style="min-height:95%;">
+    <modal Isbind="{{Isbind}}" Modal_hidden="{{Modal_hidden}}"/>
+    
+    <view class='content'>
+      <view class="{{ShowMore?'ShowTag':'HideTag'}}">
+        <!-- 基本信息 -->
+        <view class='ContentInput'>
+            <view class='title'>基本信息</view>
+            <view class='InputBox' style='position:relative;'>
+                <label class='Info'><text>药品名称</text></label>
+                <input bindinput="bindKeyInput" style='width:380rpx;'  type="text" data-name='DrugName'  placeholder='输入产品名药品通用名或英文名' value='{{InputValue.DrugName}}' />
+                
+            </view>
+            <nameTip id="NameTip" address="{{address}}" PublicName="{{InputValue.DrugName}}" bind:PublicName="Get_DrugName" />
+
+             <view class='InputBox'>
+                <label class='Info'><text>企业名称</text></label>
+                <input  bindinput="bindKeyInput" type="text" data-name='CompanyName' placeholder='输入企业名称' value='{{InputValue.CompanyName}}' />
+            </view>
+
+            <view class='InputBox'>
+                <label class='Info'><text>受理号</text></label>
+                <input  bindinput="bindKeyInput" type="text" data-name='AcceptanceNo' placeholder='输入受理号' value='{{InputValue.AcceptanceNo}}' />
+            </view>
+           
+            <view class='InputBox'>
+                <label class='Info'><text>药品类型</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre8_index}}" range="{{Genre8}}" range-key="{{'item_title'}}" data-name="Genre8" data-param="DrugTypeId" data-type="9" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre8[Genre8_index].item_title?Genre8[Genre8_index].item_title:"不限"}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>注册分类</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre9_index}}" range="{{Genre9}}" range-key="{{'item_title'}}" data-name="Genre9" data-param="RegisterTypeId" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre9[Genre9_index].item_title?Genre9[Genre9_index].item_title:"不限"}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>原料/制剂</text></label>
+                <picker bindchange="bindPickerChange" value="{{RawMaterialOrPreparation_index}}" range="{{RawMaterialOrPreparation}}" range-key="{{'item_title'}}" data-name="RawMaterialOrPreparation" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{RawMaterialOrPreparation[RawMaterialOrPreparation_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>剂型</text></label>
+                <input  bindinput="bindKeyInput" disabled='{{!Jurisdiction}}' type="text" data-name='Dosage' placeholder='输入剂型' value='{{InputValue.Dosage}}' />
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>国产/进口</text></label>
+                <picker bindchange="bindPickerChange" value="{{DomesticOrImport_index}}" range="{{DomesticOrImport}}" range-key="{{'item_title'}}" data-name="DomesticOrImport" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{DomesticOrImport[DomesticOrImport_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+
+            <view class='InputBox'>
+                <label class='Info'><text>申请类型</text></label>
+                <picker bindchange="bindPickerChange" value="{{ApplyType_New_index}}" range="{{ApplyType_New}}" range-key="{{'item_title'}}" data-name="ApplyType_New" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{ApplyType_New[ApplyType_New_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+
+            <view class='InputBox'>
+                <label class='Info'><text>承办时间</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.UndertakeTime.MinDate}}"  bindchange="bindDateChange" data-name="UndertakeDate" data-time="MinDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                    {{ctrlTime.UndertakeDate.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.UndertakeDate.MaxDate}}" bindchange="bindDateChange" data-name="UndertakeDate"  data-time="MaxDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                      {{ctrlTime.UndertakeDate.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>当前办理状态</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre1_index}}" range="{{Genre1}}" range-key="{{'item_title'}}" data-name="Genre1" data-param="HandleState_CFDAId" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre1[Genre1_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+
+            <view class='InputBox'>
+                <label class='Info'><text>状态开始时间</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.HandleStartDate_CFDA.MinDate}}" bindchange="bindDateChange" data-name="HandleStartDate_CFDA" data-time="MinDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                    {{ctrlTime.HandleStartDate_CFDA.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.HandleStartDate_CFDA.MaxDate}}" bindchange="bindDateChange" data-name="HandleStartDate_CFDA" data-time="MaxDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                      {{ctrlTime.HandleStartDate_CFDA.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>审评结论</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre0_index}}" range="{{Genre0}}" range-key="{{'item_title'}}" data-name="Genre0" data-param="Conclusion" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre0[Genre0_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+        </view>
+        <!-- 治疗类别 -->
+        <view class='ContentInput'>
+           <view class='title'>
+               治疗类别
+              <view class="titleChange">
+                  <label bindtap="btnCondOpen">
+                    <image src='/image/shaixuan.png' style='width:26rpx;height:26rpx;position:relative;top:4rpx;' mode='widthFix'></image>
+                       <text class='Choice'>{{Therapeutic.data}} </text>
+                      <image class='Down' src='/image/downh.png' style='width:13rpx;height:10rpx;position:relative;top:-4rpx;' mode='widthFix'></image>
+                  </label>
+                  <view class="Title-text" hidden='{{Therapeutic.hidden}}'>
+                    <text class="title1 {{Therapeutic.curHdIndex=='0'?'active':''}}" bindtap="btnCategory" data-current="0" data-name='ATC'>ATC</text>
+                    <text class="title2 {{Therapeutic.curHdIndex=='1'?'active':''}}" bindtap="btnCategory" data-current="1" data-name='CPHIIC'>CPHIIC</text>
+                  </view>
+              </view>
+           </view>
+         
+          <view class="ShowItem  {{Therapeutic.curHdIndex=='0'?'ShowIndex':''}}">
+              <view class='InputBox'>
+                  <label class='Info'><text>ATC一级分类</text></label>
+                  <picker bindchange="bindPickerChange" value="{{Genre4_index}}" range="{{Genre4}}" range-key="{{'item_title'}}" data-name="Genre4" data-type="5" data-param="ATCCategoryId01" disabled='{{!Jurisdiction}}'> 
+                      <view class="picker">
+                        {{Genre4[Genre4_index].item_title}}
+                      </view> 
+                  </picker>
+              </view>
+              <view class='InputBox'>
+                  <label class='Info'><text>ATC二级分类</text></label>
+                  <picker bindchange="bindPickerChange" value="{{Genre5_index}}" range="{{Genre5}}" range-key="{{'item_title'}}" data-name="Genre5" data-type="6" data-param="ATCCategoryId02" disabled='{{!Jurisdiction}}'> 
+                      <view class="picker">
+                        {{Genre5[Genre5_index].item_title?Genre5[Genre5_index].item_title:"不限"}}
+                      </view> 
+                  </picker>
+              </view>
+              <view class='InputBox'>
+                  <label class='Info'><text>ATC三级分类</text></label>
+                  <picker bindchange="bindPickerChange"  value="{{Genre6_index}}" range="{{Genre6}}" range-key="{{'item_title'}}" data-name="Genre6" data-type="7" data-param="ATCCategoryId03" disabled='{{!Jurisdiction}}'> 
+                      <view class="picker">
+                        {{Genre6[Genre6_index].item_title?Genre6[Genre6_index].item_title:"不限"}}
+                      </view> 
+                  </picker>
+              </view>
+              <view class='InputBox'>
+                  <label class='Info'><text>ATC四级分类</text></label>
+                  <picker bindchange="bindPickerChange" value="{{Genre7_index}}" range="{{Genre7}}" range-key="{{'item_title'}}" data-name="Genre7" data-param="ATCCategoryId04" disabled='{{!Jurisdiction}}'> 
+                      <view class="picker">
+                        {{Genre7[Genre7_index].item_title?Genre7[Genre7_index].item_title:"不限"}}
+                      </view> 
+                  </picker>
+              </view>
+            </view>
+              
+           <view class="ShowItem {{Therapeutic.curHdIndex=='1'?'ShowIndex':''}}">
+              <view class='InputBox'>
+                <label class='Info'><text>治疗大类</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre2_index}}" range="{{Genre2}}" range-key="{{'item_title'}}" data-name="Genre2" data-type="3" data-param="CategoryId" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre2[Genre2_index].item_title}}
+                    </view> 
+                </picker>
+              </view>
+         
+              <view class='InputBox'>
+                <label class='Info'><text>治疗小类</text></label>
+                <picker bindchange="bindPickerChange" value="{{Genre3_index}}" range="{{Genre3}}" range-key="{{'item_title'}}" data-name="Genre3" data-param="SubCategoryId" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{Genre3[Genre3_index].item_title?Genre3[Genre3_index].item_title:"不限"}}
+                    </view> 
+                </picker>
+              </view>
+           </view>
+
+          </view>
+        <!-- 特殊审评通道 -->
+        <view class='ContentInput'>
+            <view class='title'>特殊审评通道</view>
+            <view class='InputBox'>
+                <label class='Info'><text>特殊审评</text></label>
+                <view class='add-switch'>
+                  <switch checked='{{open}}' data-switchInfo="1" disabled='{{!Jurisdiction}}' bindchange="bindPickerChange" data-name="SpecialProject"/>
+                </view>
+                
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>优先审评</text></label>
+                <view class='add-switch'>
+                  <switch checked='{{open}}' data-switchInfo="1" disabled='{{!Jurisdiction}}' bindchange="bindPickerChange" data-name="FirstProject"/>
+                </view>
+                
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>重大专项</text></label>
+                <view class='add-switch'>
+                  <switch checked='{{open}}' data-switchInfo="1" disabled='{{!Jurisdiction}}' bindchange="bindPickerChange" data-name="MajorProject"/>
+                </view>
+                
+            </view>
+        </view>
+        <!-- 审评进度 -->
+        <view class='ContentInput'>
+            <view class='title'>审评进度</view>
+            <view class='InputBox'>
+                <label class='Info'><text>CDE评审序列</text></label>
+                <picker bindchange="bindPickerChange" value="{{ReviewQueue01_index}}" range="{{ReviewQueue01}}" range-key="{{'item_title'}}" data-name="ReviewQueue01" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{ReviewQueue01[ReviewQueue01_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>进入序列时间</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.Date_EnterQueue.MinDate}}" bindchange="bindDateChange" data-name="Date_EnterQueue" data-time="MinDate" disabled='{{ctrlTime.IsReviewQueue.disabled}}' >
+                  <view class="picker">
+                    {{ctrlTime.Date_EnterQueue.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.Date_EnterQueue.MaxDate}}" bindchange="bindDateChange" data-name="Date_EnterQueue" data-time="MaxDate" disabled='{{ctrlTime.IsReviewQueue.disabled}}'>
+                  <view class="picker">
+                      {{ctrlTime.Date_EnterQueue.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>离开序列时间</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.Date_LeaveQueue.MinDate}}" bindchange="bindDateChange" data-name="Date_LeaveQueue" data-time="MinDate" disabled='{{ctrlTime.IsReviewQueue.disabled}}'>
+                  <view class="picker">
+                    {{ctrlTime.Date_LeaveQueue.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.Date_LeaveQueue.MaxDate}}" bindchange="bindDateChange" data-name="Date_LeaveQueue" data-time="MaxDate" disabled='{{ctrlTime.IsReviewQueue.disabled}}'>
+                  <view class="picker">
+                      {{ctrlTime.Date_LeaveQueue.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>NMPA开始审批</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.Date_CFDAStartReview.MinDate}}" bindchange="bindDateChange" data-name="Date_CFDAStartReview" data-time="MinDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                    {{ctrlTime.Date_CFDAStartReview.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.Date_CFDAStartReview.MaxDate}}" bindchange="bindDateChange" data-name="Date_CFDAStartReview" data-time="MaxDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                      {{ctrlTime.Date_CFDAStartReview.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info'><text>NMPA审批结束</text></label>
+                <picker class='MinDate' mode="date" value="{{ctrlTime.Date_CFDAEndReview.MinDate}}" bindchange="bindDateChange" data-name="Date_CFDAEndReview" data-time="MinDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                    {{ctrlTime.Date_CFDAEndReview.MinDate}}
+                  </view>
+                </picker>
+                <text class='zhi'>~</text>
+                <picker class='MaxDate' mode="date" value="{{ctrlTime.Date_CFDAEndReview.MaxDate}}" bindchange="bindDateChange" data-name="Date_CFDAEndReview" data-time="MaxDate" disabled='{{!Jurisdiction}}'>
+                  <view class="picker">
+                      {{ctrlTime.Date_CFDAEndReview.MaxDate}}
+                  </view>
+                </picker>
+            </view>
+        </view>
+        <!-- 研发竞争情况 -->
+        <view class='ContentInput'>
+            <view class='title'>研发竞争情况</view>
+            <view class='InputBox'>
+                <label class='Info Research'><text>通用名国内最高进度</text></label>
+                <picker bindchange="bindPickerChange" value="{{HighestProgress_GenericName_index}}" range="{{HighestProgress_GenericName}}" range-key="{{'item_title'}}" data-name="HighestProgress_GenericName" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{HighestProgress_GenericName[HighestProgress_GenericName_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info Research'><text>品种国内最高进度</text></label>
+                <picker bindchange="bindPickerChange" value="{{HighestProgress_Variety_index}}" range="{{HighestProgress_Variety}}" range-key="{{'item_title'}}" data-name="HighestProgress_Variety" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{HighestProgress_Variety[HighestProgress_Variety_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info Research'><text>品种批准国产企业数</text></label>
+                <picker bindchange="bindPickerChange" value="{{NumberApprovedDmEnterprise_index}}" range="{{NumberApprovedDmEnterprise}}" range-key="{{'item_title'}}" data-name="NumberApprovedDmEnterprise" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{NumberApprovedDmEnterprise[NumberApprovedDmEnterprise_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info Research'><text>品种申报企业数</text></label>
+                <picker bindchange="bindPickerChange" value="{{ApprovalCompanyNum_index}}" range="{{ApprovalCompanyNum}}" range-key="{{'item_title'}}" data-name="ApprovalCompanyNum" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{ApprovalCompanyNum[ApprovalCompanyNum_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+            <view class='InputBox'>
+                <label class='Info Research'><text>品种申报上市企业数</text></label>
+                <picker bindchange="bindPickerChange" value="{{NumberDeclareListingEnterprise_index}}" range="{{NumberDeclareListingEnterprise}}" range-key="{{'item_title'}}" data-name="NumberDeclareListingEnterprise" disabled='{{!Jurisdiction}}'> 
+                    <view class="picker">
+                      {{NumberDeclareListingEnterprise[NumberDeclareListingEnterprise_index].item_title}}
+                    </view> 
+                </picker>
+            </view>
+          </view>
+    </view>
+      <!-- 大于十条出展开更多 -->
+      <view bindtap="ToggleMore" class="ToggleMore {{ShowMore?'ToggleActive':''}}" hidden="{{Jurisdiction}}">
+          {{ShowMore?'收起':'展开更多'}}
+          <image src='/image/zk.png'></image>
+      </view>
+    </view>
+    <view class='pub-btn-con'>
+      <button bindtap="btnCondReset">重置</button>
+      <button bindtap="btnCondSubmit">确定</button>
+    </view>
+</view>

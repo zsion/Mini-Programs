@@ -1,0 +1,76 @@
+/* 列表部分 */
+.home-list{
+  width:94%;
+  margin: auto;
+  margin-top: 30rpx;
+  background: #fff;
+  box-shadow: 0 0 10rpx 5rpx rgba(0,0,0,0.1);
+}
+.list-con{
+  display: flex;
+  flex-wrap:wrap;
+  width:100%;
+}
+.item {
+  width: 25%;
+  height: 170rpx;
+  text-align: center;
+}
+.item view{
+  width:100rpx;
+  height:100rpx;
+  display: flex;
+  margin: auto;
+  align-items:center;
+}
+.item image{
+  display: flex;
+  width:70rpx;
+  height:70rpx;
+  margin:auto;
+  padding-top: 15rpx;
+}
+.item text{
+  color:#33363A;
+  font-size: 26rpx;
+}
+.add-opacity{
+  opacity:0.5;
+}
+/* 列表按钮部分 */
+.tab_toggle_box view{
+  height:85rpx;
+  line-height: 85rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color:#00ABD6;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.tab_toggle_box view image{
+  width:50rpx;
+  height:30rpx;
+  margin:0 0 0 5rpx;
+  transition-duration: .3s;
+  -moz-transition-duration: .3s; /* Firefox 4 */
+  -webkit-transition-duration: .3s; /* Safari 和 Chrome */
+  -o-transition-duration: .3s; /* Opera */
+}
+.rorate{
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+.tab_toggle_show{
+  max-height: 680rpx;
+  transition: max-height ease-in .2s;
+}
+.tab_toggle_hide{
+  max-height: 340rpx;
+  overflow: hidden;
+  transition: max-height ease-out .2s; 
+}
+

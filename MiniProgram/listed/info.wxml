@@ -1,0 +1,80 @@
+<!--/listed/info -->
+
+<view class="zgssDetail">
+
+  <WarningCode id="WarningCode" Message="{{Message}}" Type="{{Type}}" Img="{{Img}}" bind:WarningCode="Get_WarningCode"/>
+  
+  <view wx:if="{{type == 0}}">
+    <view class='wrapper'>
+      <view class='sub-titile'>{{detaildata1.ypmc}}</view>
+      <view><text>药品通用名：</text><text>{{detaildata1.yptym}}</text></view>
+      <view><text>英文通用名：</text><text>{{detaildata1.ywtym}}</text></view>
+      <view><text>剂型：</text><text>{{detaildata1.jixing}}</text></view>
+      <view><text>规格：</text><text>{{detaildata1.guige}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>商品名：</text><text>{{detaildata1.spm}}</text></view>
+      <view><text>持证商：</text><text>{{detaildata1.czgs}}</text></view>
+      <view><text>生产企业：</text><text>{{detaildata1.scqy}}</text></view>
+      <view><text>生产地址：</text><text>{{detaildata1.scdz}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>产品类别：</text><text>{{detaildata1.cplb}}</text></view>
+      <view><text>批文文号：</text><text>{{detaildata1.pzwh}}</text></view>
+      <view><text>批准日期：</text><text>{{detaildata1.pzrq}}</text></view>
+      <view><text>原批准文号：</text><text>{{detaildata1.ypzwh}}</text></view>
+      <view><text>药品本位码：</text><text>{{detaildata1.ypbwm}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>治疗大类：</text><text>{{detaildata1.zldl}}</text></view>
+      <view><text>治疗小类：</text><text>{{detaildata1.zlxl}}</text></view>
+      <view><text>ATC一级分类名称：</text><text>{{detaildata1.ATC1}}</text></view>
+      <view><text>ATC二级分类名称：</text><text>{{detaildata1.ATC2}}</text></view>
+      <view><text>ATC三级分类名称：</text><text>{{detaildata1.ATC3}}</text></view>
+      <view><text>ATC四级分类名称：</text><text>{{detaildata1.ATC4}}</text></view>
+    </view>
+  </view>
+
+  <view wx:if="{{type == 1}}">
+    <view class='wrapper'>
+      <view class='sub-titile'>{{detaildata2.ypmc}}</view>
+      <view><text>药品名称（英文）：</text><text>{{detaildata2.ypmcyw}}</text></view>
+      <view><text>药品通用名：</text><text>{{detaildata2.yptym}}</text></view>
+      <view><text>英文通用名：</text><text>{{detaildata2.ywtym}}</text></view>
+      <view><text>剂型：</text><text>{{detaildata2.jixing}}</text></view>
+      <view><text>规格：</text><text>{{detaildata2.guige}}</text></view>
+      <view><text>包装规格：</text><text>{{detaildata2.bzguige}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>商品名：</text><text>{{detaildata2.spm}}</text></view>
+      <view><text>商品名（英文）：</text><text>{{detaildata2.spmyw}}</text></view>
+      <view><text>持证商：</text><text>{{detaildata2.czgs}}</text></view>
+      <view><text>持证商所在国：</text><text>{{detaildata2.czgsgj}}</text></view>
+      <view><text>生产商：</text><text>{{detaildata2.scqy}}</text></view>
+      <view><text>生产商所在国：</text><text>{{detaildata2.scqygj}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>药品类别：</text><text>{{detaildata2.cplb}}</text></view>
+      <view><text>注册证号：</text><text>{{detaildata2.zczh}}</text></view>
+      <view><text>发证日期：</text><text>{{detaildata2.fzrq}}</text></view>
+      <view><text>有效截止日期：</text><text>{{detaildata2.yxq}}</text></view>
+      <view><text>原注册证号：</text><text>{{detaildata2.yzczh}}</text></view>
+      <view><text>药品本位码：</text><text>{{detaildata2.ypbwm}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>分包装企业名称：</text><text>{{detaildata2.cplb}}</text></view>
+      <view><text>分包装批准文号：</text><text>{{detaildata2.zczh}}</text></view>
+      <view><text>分包装批准文号批准日期：</text><text>{{detaildata2.fzrq}}</text></view>
+      <view><text>分包装批准文号有效截止日期：</text><text>{{detaildata2.yxq}}</text></view>
+    </view>
+    <view class='wrapper'>
+      <view><text>治疗大类：</text><text>{{detaildata2.zldl}}</text></view>
+      <view><text>治疗小类：</text><text>{{detaildata2.zlxl}}</text></view>
+      <view><text>ATC一级分类名称：</text><text>{{detaildata2.ATC1}}</text></view>
+      <view><text>ATC二级分类名称：</text><text>{{detaildata2.ATC2}}</text></view>
+      <view><text>ATC三级分类名称：</text><text>{{detaildata2.ATC3}}</text></view>
+      <view><text>ATC四级分类名称：</text><text>{{detaildata2.ATC4}}</text></view>
+    </view>
+  </view>
+  
+</view>

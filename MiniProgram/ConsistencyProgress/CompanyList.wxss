@@ -1,0 +1,187 @@
+/* ConsistencyProgress//CompanyList.wxss */
+@import "/common/public.wxss";
+Page{
+  margin:0;
+  padding:0;
+  background: #fff;
+}
+.list-wrap{
+  width:100%;
+  position: absolute;
+  top:80rpx;
+  left:0;
+  z-index: 1;
+}
+.progress-part{
+  font-family: PingFangSC-Medium;
+  background: #F5F5F8;
+  border-radius: 5rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.progress-head{
+  line-height: 40rpx;
+  padding:15rpx;
+  font-size: 28rpx;
+  color: #525E69;
+  font-weight:bold;
+}
+.progress-body{
+  padding:0 15rpx 0 15rpx;
+}
+.progress-body view label{
+  font-size: 24rpx;
+  color: #79828A;
+  line-height: 45rpx;
+  display: block;
+}
+.progress-body view navigator{
+  font-size: 32rpx;
+  color: #2E8EFF;
+  line-height: 45rpx;
+}
+.progress-body view view.zero {
+  color: #B5BFC8;
+}
+.toogle-head{
+  margin:15rpx 15rpx 0 15rpx;
+  border-top:1rpx solid #E7E7E7;
+}
+.toogle-head view{
+  line-height:70rpx;
+  font-size: 24rpx;
+  color: #525E69;
+}
+.icon-open{
+  top:-7.5rpx;
+  left:-7.5rpx;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg); /* Internet Explorer */
+  -moz-transform:rotate(180deg); /* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); /* Opera */
+}
+.icon-close-toggle{
+  width: 0;
+  height: 0;
+  border: 15rpx solid;
+  border-color:  #5C6376 transparent transparent transparent;
+  border-radius:7rpx;
+  position: relative;
+  bottom:-7.5rpx;
+  left:-7.5rpx;
+  transition-duration: .5s;
+  -moz-transition-duration: .5s; /* Firefox 4 */
+  -webkit-transition-duration: .5s; /* Safari 和 Chrome */
+  -o-transition-duration: .5s; /* Opera */
+}
+.icon-close-toggle::after{
+  content: '';
+  position: absolute;
+  top: -20rpx;
+  left: -15rpx;
+  border: 15rpx solid;
+  border-color: #F5F5F8 transparent transparent transparent;
+}
+.toogle-body{
+  background: #F5F5F8;
+  border-top:1rpx solid #E7E7E7;
+  border-radius: 5rpx;
+  padding-bottom: 30rpx;
+  animation-name: fadeIn;
+  animation-duration: .5s;
+}
+.toogle-body-head{
+  margin:0 45rpx 0 15rpx;
+  font-size: 24rpx;
+  color: #525E69;
+}
+.toogle-body-head view{
+  line-height:70rpx;
+  font-weight: bold;
+}
+.toogle-body-head view image{
+  width:26rpx;
+  height:26rpx;
+}
+
+.toogle-step{
+  margin: 0 45rpx 0 15rpx;
+  height:85rpx;
+}
+.toogle-step view{
+  width:23%;
+  height:30rpx;
+  margin-top: 40rpx;
+  text-align: center;
+  background: #B9E9EA;
+  border-radius: 15rpx;
+  position: relative;
+}
+.stage1 view:nth-child(1){
+  background: #55BEC1;
+}
+.stage2 view:nth-child(2),.stage2 view:nth-child(1){
+  background: #55BEC1;
+}
+.stage3 view:nth-child(3),.stage3 view:nth-child(2),.stage3 view:nth-child(1){
+  background: #55BEC1;
+}
+.stage4 view:nth-child(4),.stage4 view:nth-child(3),.stage4 view:nth-child(2),.stage4 view:nth-child(1){
+  background: #55BEC1;
+}
+.toogle-step view label{
+  font-size: 24rpx;
+  color: #79828A;
+  position: absolute;
+  top:-40rpx;
+  right:0;
+  bottom:0;
+  left:0;
+}
+.ctrl-default{
+  width:82%;
+  margin-top: 15rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #E7E7E7;
+  animation-name: fadeIn;
+  animation-duration: .5s;
+}
+.default{
+  height:75rpx;
+}
+.default view{
+  width:16%;
+  height:30rpx;
+  background: #FFE3C6;
+}
+.detail1 view:nth-child(2){
+  background: #FFC192;
+}
+.detail2 view:nth-child(3),.detail2 view:nth-child(2){
+  background: #FFC192;
+}
+.detail3 view:nth-child(4),.detail3 view:nth-child(3),.detail3 view:nth-child(2){
+  background: #FFC192;
+}
+.detail4 view:nth-child(5),.detail4 view:nth-child(4),.detail4 view:nth-child(3),.detail4 view:nth-child(2){
+  background: #FFC192;
+}
+
+.default view label{
+  font-size: 22rpx;
+}
+.default view:first-child{
+  width:150rpx;
+  white-space:nowrap;
+  background: transparent;
+  font-size: 22rpx;
+  color: #525E69;
+  line-height: 30rpx;
+  font-weight: bold;
+  text-align: left;
+}

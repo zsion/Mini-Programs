@@ -1,0 +1,66 @@
+/* ClinicalRegistration//Subject_info.wxss */
+Page{
+  background: #fff;
+}
+.info-body{
+  width:94%;
+  margin:auto;
+  font-size: 26rpx;
+}
+.info{
+  display: flex;
+  justify-content: flex-start;
+  align-items: top;
+  border-bottom: 1rpx solid#ECEEF2;
+  padding:20rpx 0 20rpx 0;
+}
+.info view:first-child{
+  white-space: nowrap;
+  margin-right: 15rpx;
+  color: #31363B;
+}
+.info view:last-child{
+  color: #909599;
+}
+.info-sex{
+  justify-content: space-between;
+}
+.info-sex view{
+  width:50%;
+}
+.info-sex view label{
+  color: #31363B;
+  margin-right: 15rpx;
+}
+.info-sex view text{
+  color: #909599;
+}
+
+/***第二部分***/
+.part-II{
+  color: #909599;
+}
+.pip-title{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:80rpx;
+  line-height: 80rpx;
+}
+.pip-title view{
+  margin:0 50rpx 0 50rpx;
+  border-bottom:5rpx solid #fff;
+  font-weight:bold;
+}
+.pip-title view.on{
+  color: #0F0F0F;
+  border-bottom:5rpx solid #00BEEE;
+}
+.pip-content{
+  margin:20rpx 0 50rpx;
+  line-height: 50rpx;
+}
+
+
+

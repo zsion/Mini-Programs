@@ -1,0 +1,48 @@
+<!--ClinicalRegistration//Trial_development.wxml-->
+<import src="/common/null.wxml" />
+<import src="/common/nomore.wxml" />
+<view>
+  <view class='head-wrap'>
+    <view bindtap='tab_touch' data-current="0" class="nav-tab {{Type == 0 ? 'on' : ''}}">中国({{TestingOrganizationTotalCn}})</view>
+    <view bindtap='tab_touch' data-current="1" class="nav-tab {{Type == 1 ? 'on' : ''}}">境外({{TestingOrganizationTotalOther}})</view>
+  </view>
+
+  <scroll-view class='body-wrap add-distance'>
+    <view class='list-wrap' wx:for="{{DataList}}" wx:key="index">
+      <label class='list-tip {{color_array[index%3]}}'>{{item.No}}</label>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/jgmc.png' mode='widthFix'></image><text>机构名称</text>
+      </view>
+      <view class='list-content'>
+        {{item.OrganizationName}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/zyyjz.png' mode='widthFix'></image><text>主要研究者</text>
+      </view>
+      <view class='list-content'>
+        {{item.MajorResearchers}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/address.png' mode='widthFix'></image><text>省</text>
+      </view>
+      <view class='list-content'>
+        {{item.Province}}
+      </view>
+      <view class='list-title'>
+        <image src='/image/ClinicalRegistration/address.png' mode='widthFix'></image><text>市</text>
+      </view>
+      <view class='list-content'>
+        {{item.City}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{con_null==true}}">
+    <template is="null" />
+  </view>
+
+  <view hidden='{{con_null}}' wx:if="{{!have_more}}">
+    <template is="nomore" />
+  </view>
+  
+</view>

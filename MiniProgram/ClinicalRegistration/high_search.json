@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "高级检索",
+  "backgroundColor": "#F6F6F7",
+  "usingComponents": {
+    "area": "/components/area/area",
+    "nameTip": "/components/nameTip/nameTip",
+    "custompicker": "/components/custompicker/custompicker",
+    "datepicker": "/components/datepicker/datepicker"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "中国销售",
+  "usingComponents": {
+    "WarningCode": "/components/WarningCode/WarningCode"
+  }
+}
