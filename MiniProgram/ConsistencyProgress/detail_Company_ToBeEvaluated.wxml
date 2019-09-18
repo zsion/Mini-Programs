@@ -20,7 +20,7 @@
     
     <block wx:for="{{return_list}}" wx:key='index'>
       <block wx:if="{{Target == true}}">
-        <navigator url="//listed/info?type=0&pzwh={{item.ApprovalNo}}" hover-class="navigator-hover">
+        <navigator url="/listed/info?type=0&pzwh={{item.ApprovalNo}}" hover-class="navigator-hover">
           <view class='list-wrap'>
             <view class='list-header'>
               <view>

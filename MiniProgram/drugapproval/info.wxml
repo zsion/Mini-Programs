@@ -67,11 +67,10 @@
                         <view class="td td1">相关批准文号/注册证号</view>
                           
                         <view class="td td2">
-                        
-                             <block wx:if="{{Power}}" >
-                              <block wx:if="{{item.ApprovalOrRegistrationNo!=''&&item.total!=null}}">（{{item.ApprovalOrRegistrationNo}}）</block>
-                            </block>
-                             <block wx:if="{{!Power}}" ><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
+                          <block wx:if="{{Power}}">
+                            {{item.ApprovalOrRegistrationNo}}
+                          </block>
+                          <block wx:else><text class="SeeDetails" bindtap="Show_modal"> 查看详情</text></block>
                         </view>
                     </view>
                </view>
@@ -178,8 +177,8 @@
             <view class="timeline-box"> 
                 <block wx:for="{{item.TimeLine}}" wx:key="key"  wx:for-item='TimeLine'>    
                    <!--承办日期--> <!--CDE送达通知-->                                         
-                   <block wx:if="{{TimeLine.Type == 'UndertakeDate'||TimeLine.Type == 'OnsiteInspection'||TimeLine.Type == 'ThreeInOneDate'||TimeLine.Type == 'SendNotification'||TimeLine.Type == 'SelfCheckDate'||TimeLine.Type == 'PublishDate'}}">
-                      <block wx:if="{{TimeLine.Type == 'OnsiteInspection'&&TimeLine.TypeAdd=='triangle'}}">
+                   <block wx:if="{{TimeLine.Type == 'UndertakeDate'||TimeLine.Type == 'ThreeInOneDate'||TimeLine.Type == 'SendNotification'||TimeLine.Type == 'SelfCheckDate'||TimeLine.Type == 'PublishDate'}}">
+                      <!-- <block wx:if="{{TimeLine.Type == 'OnsiteInspection'&&TimeLine.TypeAdd=='triangle'}}">
                           <view class="timeline-list">
                               <view class="month TimeMonth"></view>
                               <view class="Stick timelist">
@@ -191,7 +190,7 @@
                                   </view>
                               </view>
                           </view>
-                      </block>
+                      </block> -->
                       <view class="timeline-list">
                           <view class="month TimeMonth">{{TimeLine.Mark}}</view>
                           <view class="Stick timelist">

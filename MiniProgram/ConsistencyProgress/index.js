@@ -257,21 +257,21 @@ Page({
     if (result.Data > 0){
       const path = param.type == 0 ? 'DrugList' :'CompanyList'
       wx.navigateTo({
-        url: `/ConsistencyProgress/${path}?search_Type=0&search_Con=${encodeURIComponent(param.key)}`
+        url: `/ConsistencyProgress/${path}?search_Type=${param.type}&search_Con=${encodeURIComponent(param.key)}`
       })
     }else{
       if (param.type == 0){
         this.data.Power.ConsistencyProgress_Co == true ? this.Get_Keywords_Total(1, param.key) : 
-        wx.showToast({
-          title: '暂未找到相关内容',
-          icon: 'none',
-          duration: 2000
+        wx.showModal({
+          title: '温馨提示',
+          content: "暂未找到相关内容",
+          showCancel: false
         });
       }else{
-        wx.showToast({
-          title: '暂未找到相关内容',
-          icon: 'none',
-          duration: 2000
+        wx.showModal({
+          title: '温馨提示',
+          content: "暂未找到相关内容",
+          showCancel: false
         });
       }
     }

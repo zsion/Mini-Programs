@@ -403,6 +403,8 @@ Page({
   Get_Name_Array: function (e) {
     e.detail.forEach(function (value, index, array) {
       if (value.field == "SubCategoryId") {
+        let Isopen = value.items.some((v, i) => (v.open == true))
+        value.items.unshift({ item_title: "全选", item_val: "", open: Isopen, pkey: "", total: "" })
         this.setData({
           SubCategoryId: value.items,
         });

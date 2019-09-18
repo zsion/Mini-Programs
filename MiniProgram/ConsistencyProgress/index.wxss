@@ -222,6 +222,7 @@ Page{
   padding: 0 15rpx 0 15rpx;
   font-size: 22rpx;
   border-radius: 20rpx;
+  white-space: nowrap;
 }
 .news-I-II{
   color: #BB801F;

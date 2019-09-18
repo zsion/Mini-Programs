@@ -306,13 +306,6 @@ Page({
 
   //监听组件展开/收起状态-控制列表显示/隐藏
   Get_Name_Array: function (e) {
-    e.detail.forEach(function (value, index, array) {
-      if (value.field == "SubCategoryId") {
-        this.setData({
-          SubCategoryId: value.items,
-        });
-      }
-    }, this);
     this.setData({
       Name_Array: e.detail,
       According: !e.detail.some((v, i) => (v.Open == true)),//阻止scroll-view穿透

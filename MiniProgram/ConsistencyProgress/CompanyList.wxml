@@ -17,7 +17,7 @@
           <view>
             <label>待评价</label>
             <block wx:if="{{item.NeedEvaluate == 0}}">
-              <view class="zero" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+              <view class="zero">{{item.NeedEvaluate}}</view>
             </block>
             <block wx:else>
               <navigator url="/ConsistencyProgress/detail_Company_ToBeEvaluated?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
@@ -26,7 +26,7 @@
           <view>
             <label>BE备案</label>
             <block wx:if="{{item.BE == 0}}">
-              <view class="zero" hover-class="navigator-hover">{{item.BE}}</view>
+              <view class="zero">{{item.BE}}</view>
             </block>
             <block wx:else>
               <navigator url="/ConsistencyProgress/detail_Company_BE?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.BE}}</navigator>
@@ -35,7 +35,7 @@
           <view>
             <label>申报</label>
             <block wx:if="{{item.Approval == 0}}">
-              <view class="zero" hover-class="navigator-hover">{{item.Approval}}</view>
+              <view class="zero">{{item.Approval}}</view>
             </block>
             <block wx:else>
               <navigator url="/ConsistencyProgress/detail_Company_Approval?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
@@ -44,7 +44,7 @@
           <view>
             <label>通过</label>
             <block wx:if="{{item.Pass == 0}}">
-              <view class="zero" hover-class="navigator-hover">{{item.Pass}}</view>
+              <view class="zero">{{item.Pass}}</view>
             </block>
             <block wx:else>
               <navigator url="/ConsistencyProgress/detail_Company_Pass?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Pass}}</navigator>

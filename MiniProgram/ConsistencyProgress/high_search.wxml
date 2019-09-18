@@ -19,8 +19,8 @@
       <!-- 最高进程 -->
       <custompicker id="CustomPicker_HighestProcessId" Power="{{true}}" address="{{picker_address}}" type="0" name="最高进程" bind:Public_value="Get_HighestProcessId" />
 
-      <!-- 289目录品 -->
-      <custompicker id="CustomPicker_IsVariety289" Power="{{true}}" address="{{picker_address}}" type="1" name="289目录品" bind:Public_value="Get_IsVariety289" />
+      <!-- 289目录品种 -->
+      <custompicker id="CustomPicker_IsVariety289" Power="{{true}}" address="{{picker_address}}" type="1" name="289目录品种" bind:Public_value="Get_IsVariety289" />
 
       <!-- 待评价企业数 -->
       <numberpicker id="Numberpicker_NumberNeedEvaluate" Power="{{true}}" Name="待评价企业数" bind:Number_Start="Get_NumberNeedEvaluate_Start" bind:Number_End="Get_NumberNeedEvaluate_End"/>
@@ -62,8 +62,8 @@
       <!-- 最高进程 -->
       <custompicker id="CustomPicker_HighestProcessId_Company" Power="{{true}}" address="{{picker_address_Company}}" type="0" name="最高进程" bind:Public_value="Get_HighestProcessId_Company" />
 
-      <!-- 289目录品 -->
-      <custompicker id="CustomPicker_IsVariety289_Company" Power="{{true}}" address="{{picker_address_Company}}" type="1" name="289目录品" bind:Public_value="Get_IsVariety289_Company" />
+      <!-- 289目录品种 -->
+      <custompicker id="CustomPicker_IsVariety289_Company" Power="{{true}}" address="{{picker_address_Company}}" type="1" name="289目录品种" bind:Public_value="Get_IsVariety289_Company" />
 
       <!-- BE备案品种数 -->
       <numberpicker id="Numberpicker_NumberBE" Power="{{true}}" Name="BE备案品种数" bind:Number_Start="Get_NumberBE_Start" bind:Number_End="Get_NumberBE_End"/>

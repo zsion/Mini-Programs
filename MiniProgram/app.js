@@ -37,7 +37,7 @@ App({
               code: res.code
             },
             success: function (res) {
-              console.log(res.data.Data)
+              //console.log(res.data.Data)
               that.globalData.order = res.data.Data.token;
               that.globalData.Islock = res.data.Data.lockinfo.islock;
               try {

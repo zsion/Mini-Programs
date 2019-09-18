@@ -189,13 +189,13 @@
           <view class="auto-width news-body">
             <view class="news-I between-layout">
               <view>{{cell.DrugName}}</view>
-              <view class="news-I-I" wx:if="{{cell.CollectionCategory == '通过质量和疗效一致性评价的药品'}}">新3/4类</view>
-              <view class="news-I-pub news-I-II" wx:if="{{cell.CollectionCategory == '按化学药品新注册分类批准的仿制药'}}">再评价</view>
+              <view class="news-I-I" wx:if="{{cell.CollectionCategory == '通过质量和疗效一致性评价的药品'}}">再评价</view>
+              <view class="news-I-pub news-I-II" wx:if="{{cell.CollectionCategory == '按化学药品新注册分类批准的仿制药'}}">新3/4类</view>
             </view>
             <view class="news-II">申报企业：{{cell.ManufactureCompanyName}}</view>
             <view class="between-layout news-III">
-              <view>受理号：{{cell.ApprovalNo}}</view>
-              <view>承办日期：{{cell.ApprovalDate}}</view>
+              <view>批文号：{{cell.ApprovalNo}}</view>
+              <view>批准日期：{{cell.ApprovalDate}}</view>
             </view>
           </view>
         </block>
@@ -216,8 +216,8 @@
               </view>
               <view class="news-II">申报企业：{{cell.ApplicantName}}</view>
               <view class="between-layout news-III">
-                <view>受理号：{{cell.RegistrationNo}}</view>
-                <view>承办日期：{{cell.DateTestPublictiy}}</view>
+                <view>登记号：{{cell.RegistrationNo}}</view>
+                <view>公告日期：{{cell.DateTestPublictiy}}</view>
               </view>
             </navigator>
           </block>
@@ -233,8 +233,8 @@
               </view>
               <view class="news-II">申报企业：{{cell.ApplicantName}}</view>
               <view class="between-layout news-III">
-                <view>受理号：{{cell.RegistrationNo}}</view>
-                <view>承办日期：{{cell.DateTestPublictiy}}</view>
+                <view>登记号：{{cell.RegistrationNo}}</view>
+                <view>公告日期：{{cell.DateTestPublictiy}}</view>
               </view>
             </view>
           </block>
@@ -248,20 +248,20 @@
   <block wx:if="{{currentsTab==1 ? true : false}}">
     <block wx:for="{{DrugProgress}}" wx:key='index'>
       <view class="auto-width progress-part">
-        <view class="progress-head">{{item.DrugName}}</view>
+        <view class="progress-head">{{item.SubstanceDrug}}{{item.Dosage}}</view>
         <view class="between-layout progress-body">
           <view>
             <label>待评价企业</label>
             <block wx:if="{{Power.ConsistencyProgress == true}}">
               <block wx:if="{{item.NeedEvaluate == 0}}">
-                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}">{{item.NeedEvaluate}}</view>
               </block>
               <block wx:else>
-                <navigator url="/ConsistencyProgress/detail_Drug_ToBeEvaluated?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
+                <navigator url="/ConsistencyProgress/detail_Drug_ToBeEvaluated?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{item.Dosage}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}">{{item.NeedEvaluate}}</view>
             </block>
           </view>
           
@@ -269,14 +269,14 @@
             <label>BE备案企业</label>
             <block wx:if="{{Power.ConsistencyProgress == true}}">
               <block wx:if="{{item.BE == 0}}">
-                <view class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+                <view class="{{item.BE == 0 ? 'zero':''}}">{{item.BE}}</view>
               </block>
               <block wx:else>
-                <navigator url="/ConsistencyProgress/detail_Drug_BE?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.BE}}</navigator>
+                <navigator url="/ConsistencyProgress/detail_Drug_BE?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{item.Dosage}}" hover-class="navigator-hover">{{item.BE}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}">{{item.BE}}</view>
             </block>
           </view>
 
@@ -284,14 +284,14 @@
             <label>申报企业</label>
             <block wx:if="{{Power.ConsistencyProgress == true}}">
               <block wx:if="{{item.Approval == 0}}">
-                <view class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+                <view class="{{item.Approval == 0 ? 'zero':''}}">{{item.Approval}}</view>
               </block>
               <block wx:else>
-                <navigator url="/ConsistencyProgress/detail_Drug_Approval?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
+                <navigator url="/ConsistencyProgress/detail_Drug_Approval?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{item.Dosage}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}">{{item.Approval}}</view>
             </block>
           </view>
           
@@ -299,14 +299,14 @@
             <label>通过企业</label>
             <block wx:if="{{Power.ConsistencyProgress == true}}">
               <block wx:if="{{item.Pass == 0}}">
-                <view class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+                <view class="{{item.Pass == 0 ? 'zero':''}}">{{item.Pass}}</view>
               </block>
               <block wx:else>
-                <navigator url="/ConsistencyProgress/detail_Drug_Pass?SubstanceDrug={{item.DrugName}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
+                <navigator url="/ConsistencyProgress/detail_Drug_Pass?SubstanceDrug={{item.SubstanceDrug}}&Dosage={{item.Dosage}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}">{{item.Pass}}</view>
             </block>
           </view>
         </view>
@@ -324,14 +324,14 @@
             <label>待评价品种</label>
             <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
               <block wx:if="{{item.NeedEvaluate == 0}}">
-                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>
+                <view class="{{item.NeedEvaluate == 0 ? 'zero':''}}">{{item.NeedEvaluate}}</view>
               </block>
               <block wx:else>
                 <navigator url="/ConsistencyProgress/detail_Company_ToBeEvaluated?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.NeedEvaluate}}</view>          
+              <view bindtap="Show_modal" class="{{item.NeedEvaluate == 0 ? 'zero':''}}">{{item.NeedEvaluate}}</view>          
             </block>
           </view>
 
@@ -339,14 +339,14 @@
             <label>BE备案品种</label>
             <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
               <block wx:if="{{item.BE == 0}}">
-                <view class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+                <view class="{{item.BE == 0 ? 'zero':''}}">{{item.BE}}</view>
               </block>
               <block wx:else>
                 <navigator url="/ConsistencyProgress/detail_Company_BE?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.BE}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.BE}}</view>
+              <view bindtap="Show_modal" class="{{item.BE == 0 ? 'zero':''}}">{{item.BE}}</view>
             </block>
           </view>
 
@@ -354,14 +354,14 @@
             <label>申报品种</label>
             <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
               <block wx:if="{{item.Approval == 0}}">
-                <view class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+                <view class="{{item.Approval == 0 ? 'zero':''}}">{{item.Approval}}</view>
               </block>
               <block wx:else>
                 <navigator url="/ConsistencyProgress/detail_Company_Approval?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Approval}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Approval}}</view>
+              <view bindtap="Show_modal" class="{{item.Approval == 0 ? 'zero':''}}">{{item.Approval}}</view>
             </block>
           </view>
           
@@ -369,14 +369,14 @@
             <label>通过品种</label>
             <block wx:if="{{Power.ConsistencyProgress_Co == true}}">
               <block wx:if="{{item.Pass == 0}}">
-                <view class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+                <view class="{{item.Pass == 0 ? 'zero':''}}">{{item.Pass}}</view>
               </block>
               <block wx:else>
                 <navigator url="/ConsistencyProgress/detail_Company_Pass?CompanyName={{item.CompanyName}}" hover-class="navigator-hover">{{item.Pass}}</navigator>
               </block>
             </block>
             <block wx:else>
-              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}" hover-class="navigator-hover">{{item.Pass}}</view>
+              <view bindtap="Show_modal" class="{{item.Pass == 0 ? 'zero':''}}">{{item.Pass}}</view>
             </block>
           </view>
         </view>
